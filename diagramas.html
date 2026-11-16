@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diagramas de Flujo Visuales - Convocado (Grupo 01)</title>
+  <link rel="stylesheet" href="diagramas.css" />
+</head>
+
+<body>
+
+  <header class="page-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-icon" aria-hidden="true">⚽</span>
+        <div>
+          <h1>Convocado — Diagramas de Flujo Agénticos</h1>
+          <p>Revisión de Diagramas Visuales (Desktop) · Grupo 01</p>
+        </div>
+      </div>
+
+      <!-- Leyenda Global de Origen -->
+      <div class="legend" aria-label="Leyenda de distinción visual">
+        <div class="legend-title">Referencias de Origen:</div>
+        <div class="legend-item">
+          <span class="legend-swatch swatch-mandatory"></span>
+          <span><strong>Elemento Obligatorio</strong> (Surge de la sentencia)</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch swatch-design"></span>
+          <span><strong>Decisión de Diseño</strong> (Agregado por el Grupo 01)</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="diagrams-grid">
+
+    <!-- ===================================================================
+         DIAGRAMA 1: SENTENCIA 1 (CONTROL DE CUPO)
+         =================================================================== -->
+    <section class="diagram-card" aria-labelledby="titulo-diagrama-1">
+      <div class="diagram-header">
+        <span class="sentence-tag">Sentencia 1</span>
+        <h2 id="titulo-diagrama-1">Diagrama de Flujo 1: Control de Cupo al Aceptar Solicitudes</h2>
+        <blockquote class="sentence-quote">
+          “Si el capitán intenta aceptar una solicitud cuando ya no queda lugar, el sistema informa que el cupo está
+          completo e impide una nueva aceptación.”
+        </blockquote>
+      </div>
+
+      <div class="flowchart">
+
+        <!-- 1. INICIO -->
+        <div class="node node-terminal node-mandatory">
+          <span class="node-origin-badge badge-mandatory">Obligatorio Sentencia</span>
+          <div class="node-type">INICIO</div>
+          <div class="node-title">Panel de gestión de solicitudes del partido</div>
+        </div>
+
+        <div class="connector-vertical"></div>
+
+        <!-- 2. INTERVENCIÓN HUMANA + ENTRADA -->
+        <div class="node node-human node-mandatory">
+          <span class="node-origin-badge badge-mandatory">Obligatorio Sentencia</span>
+          <div class="node-type">👤 INTERVENCIÓN HUMANA · ENTRADA</div>
+          <div class="node-title">El Capitán selecciona una solicitud e intenta aceptarla</div>
+          <div class="node-meta">
+            <span class="meta-pill pill-mandatory">Entrada: <code>accionAceptar</code> (Sentencia)</span>
+            <span class="meta-pill pill-design">Entrada: <code>solicitud</code> (Diseño Grupo)</span>
+          </div>
+        </div>
+
+        <div class="connector-vertical"></div>
+
+        <!-- 3. CONSULTA DEL AGENTE -->
+        <div class="node node-agent-query node-mandatory">
+          <span class="node-origin-badge badge-mandatory">Obligatorio Sentencia</span>
+          <div class="node-type">🤖 CONSULTA DEL AGENTE</div>
+          <div class="node-title">Consulta disponibilidad actual de lugares en el equipo/partido</div>
+          <div class="node-meta">
+            <span class="meta-pill pill-mandatory">Dato consultado: <code>lugaresDisponibles</code></span>
+          </div>
+        </div>
+
+        <div class="connector-vertical"></div>
+
+        <!-- 4. DECISIÓN CENTRAL -->
+        <div class="decision-wrapper">
+          <div class="node node-decision node-mandatory">
+            <span class="node-origin-badge badge-mandatory">Condición Central (Sentencia 1)</span>
+            <div class="node-type">◆ DECISIÓN DEL AGENTE</div>
+            <div class="node-question">
+              ¿El capitán intenta aceptar una solicitud y no queda lugar?
+            </div>
+            <div class="node-code"><code>accionAceptar == true && lugaresDisponibles == 0</code></div>
+          </div>
+        </div>
+
+        <!-- BIFURCACIÓN SÍ / NO -->
+        <div class="branches-container">
+          <!-- Conector horizontal superior de bifurcación -->
+          <div class="branch-split-bar"></div>
+
+          <!-- CAMINO SÍ (IZQUIERDA) -->
+          <div class="branch-column branch-yes">
+            <div class="branch-badge badge-yes">CAMINO SÍ (No queda lugar)</div>
+            <div class="connector-vertical short"></div>
+
+            <!-- Acción Obligatoria -->
+            <div class="node node-action node-mandatory">
+              <span class="node-origin-badge badge-mandatory">Obligatorio Sentencia</span>
+              <div class="node-type">⚙️ ACCIÓN DEL AGENTE</div>
+              <div class="node-title">Impide una nueva aceptación y genera el aviso de cupo completo</div>
+            </div>
+
+            <div class="connector-vertical short"></div>
+
+            <!-- Acción Diseño del Grupo -->
+            <div class="node node-action node-design">
+              <span class="node-origin-badge badge-design">Decisión Diseño Grupo</span>
+              <div class="node-type">⚙️ ACCIÓN COMPLEMENTARIA</div>
+              <div class="node-title">Registra el intento rechazado por falta de cupo conservando la solicitud en su
+                estado previo</div>
+            </div>
+
+            <div class="connector-vertical short"></div>
+
+            <!-- Resultado Final SÍ -->
+            <div class="node node-result node-mandatory">
+              <span class="node-origin-badge badge-mandatory">Obligatorio Sentencia</span>
+              <div class="node-type">✅ RESULTADO FINAL</div>
+              <div class="node-title">El sistema informa que el cupo está completo y la solicitud NO es aceptada</div>
+            </div>
+
+            <div class="connector-vertical short"></div>
+
+            <div class="node node-terminal-end node-mandatory">
+              FIN DEL RECORRIDO
+            </div>
+          </div>
+
+          <!-- CAMINO NO (DERECHA) -->
+          <div class="branch-column branch-no">
+            <div class="branch-badge badge-no">CAMINO NO (Sí queda lugar)</div>
+            <div class="connector-vertical short"></div>
+
+            <!-- Acción Camino NO -->
+            <div class="node node-action node-design">
+              <span class="node-origin-badge badge-design">Decisión Diseño Grupo</span>
+              <div class="node-type">⚙️ ACCIÓN DEL AGENTE</div>
+              <div class="node-title">Permite continuar con el flujo normal de aceptación de la solicitud</div>
+            </div>
+
+            <div class="connector-vertical short"></div>
+
+            <!-- Resultado Camino NO -->
+            <div class="node node-result node-design">
+              <span class="node-origin-badge badge-design">Decisión Diseño Grupo</span>
+              <div class="node-type">🏁 RESULTADO FINAL</div>
+              <div class="node-title">La solicitud sigue su curso habitual sin bloqueo por cupo</div>
+            </div>
+
+            <div class="connector-vertical short"></div>
+
+            <div class="node node-terminal-end node-design">
+              FIN DEL RECORRIDO
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         DIAGRAMA 2: SENTENCIA 2 (DERIVACIÓN A EVALUACIÓN MANUAL)
+         =================================================================== -->
+    <section class="diagram-card" aria-labelledby="titulo-diagrama-2">
+      <div class="diagram-header">
+        <span class="sentence-tag">Sentencia 2</span>
+        <h2 id="titulo-diagrama-2">Diagrama de Flujo 2: Derivación a Evaluación Manual</h2>
+        <blockquote class="sentence-quote">
+          “Si el jugador autoriza una solicitud y se cumple al menos una de estas condiciones: la valoración conocida es
+          menor que cuatro, o el equipo está a diez kilómetros o más; el sistema la deriva al capitán para evaluación
+          manual; esa evaluación no reserva un lugar.”
+        </blockquote>
+      </div>
+
+      <div class="flowchart">
+
+        <!-- 1. INICIO -->
+        <div class="node node-terminal node-mandatory">
+          <span class="node-origin-badge badge-mandatory">Obligatorio Sentencia</span>
+          <div class="node-type">INICIO</div>
+          <div class="node-title">Gestión de postulación del jugador para participar en un partido</div>
+        </div>
+
+        <div class="connector-vertical"></div>
+
+        <!-- 2. INTERVENCIÓN HUMANA INICIAL + ENTRADA -->
+        <div class="node node-human node-mandatory">
+          <span class="node-origin-badge badge-mandatory">Obligatorio Sentencia</span>
+          <div class="node-type">👤 INTERVENCIÓN HUMANA INICIAL · ENTRADA</div>
+          <div class="node-title">El Jugador autoriza la solicitud para participar</div>
+          <div class="node-meta">
+            <span class="meta-pill pill-mandatory">Entrada: <code>autorizacionSolicitud</code></span>
+            <span class="meta-pill pill-mandatory">Datos: Jugador y Equipo</span>
+          </div>
+        </div>
+
+        <div class="connector-vertical"></div>
+
+        <!-- 3. CONSULTA DEL AGENTE -->
+        <div class="node node-agent-query node-mandatory">
+          <span class="node-origin-badge badge-mandatory">Obligatorio Sentencia</span>
+          <div class="node-type">🤖 CONSULTA DEL AGENTE</div>
+          <div class="node-title">Consulta valoración conocida, distancia al equipo y lugares disponibles</div>
+          <div class="node-meta">
+            <span class="meta-pill pill-mandatory"><code>valoracionConocida</code></span>
+            <span class="meta-pill pill-mandatory"><code>distanciaAlEquipoKm</code></span>
+            <span class="meta-pill pill-mandatory"><code>lugaresDisponibles</code></span>
+          </div>
+        </div>
+
+        <div class="connector-vertical"></div>
+
+        <!-- 4. DECISIÓN CENTRAL -->
+        <div class="decision-wrapper">
+          <div class="node node-decision node-mandatory">
+            <span class="node-origin-badge badge-mandatory">Condición Central (Sentencia 2)</span>
+            <div class="node-type">◆ DECISIÓN DEL AGENTE</div>
+            <div class="node-question">
+              ¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es
+              mayor o igual a 10 km?
+            </div>
+            <div class="node-code">
+              <code>autorizoSolicitud && (valoracionConocida &lt; 4 || distanciaAlEquipoKm &gt;= 10)</code></div>
+          </div>
+        </div>
+
+        <!-- BIFURCACIÓN SÍ / NO -->
+        <div class="branches-container">
+          <div class="branch-split-bar"></div>
+
+          <!-- CAMINO SÍ (IZQUIERDA) -->
+          <div class="branch-column branch-yes">
+            <div class="branch-badge badge-yes">CAMINO SÍ (Cumple condición)</div>
+            <div class="connector-vertical short"></div>
+
+            <!-- Acción Obligatoria -->
+            <div class="node node-action node-mandatory">
+              <span class="node-origin-badge badge-mandatory">Obligatorio Sentencia</span>
+              <div class="node-type">⚙️ ACCIÓN DEL AGENTE</div>
+              <div class="node-title">Deriva la solicitud al capitán para evaluación manual y mantiene sin cambios los
+                lugares disponibles</div>
+            </div>
+
+            <div class="connector-vertical short"></div>
+
+            <!-- Acción Diseño del Grupo -->
+            <div class="node node-action node-design">
+              <span class="node-origin-badge badge-design">Decisión Diseño Grupo</span>
+              <div class="node-type">🏷️ ACCIÓN COMPLEMENTARIA</div>
+              <div class="node-title">Agrega etiqueta con el motivo exacto de derivación (valoración &lt; 4, distancia
+                &gt;= 10 km, o ambas)</div>
+            </div>
+
+            <div class="connector-vertical short"></div>
+
+            <!-- Resultado Obligatorio -->
+            <div class="node node-result node-mandatory">
+              <span class="node-origin-badge badge-mandatory">Obligatorio Sentencia</span>
+              <div class="node-type">✅ RESULTADO</div>
+              <div class="node-title">Solicitud derivada a evaluación manual; esa evaluación NO reserva un lugar</div>
+            </div>
+
+            <div class="connector-vertical short"></div>
+
+            <!-- Intervención Humana Posterior -->
+            <div class="node node-human node-mandatory">
+              <span class="node-origin-badge badge-mandatory">Obligatorio Sentencia</span>
+              <div class="node-type">👤 INTERVENCIÓN HUMANA POSTERIOR</div>
+              <div class="node-title">El Capitán recibe la solicitud derivada para realizar la evaluación manual</div>
+            </div>
+
+            <div class="connector-vertical short"></div>
+
+            <div class="node node-terminal-end node-mandatory">
+              FIN DEL RECORRIDO
+            </div>
+          </div>
+
+          <!-- CAMINO NO (DERECHA) -->
+          <div class="branch-column branch-no">
+            <div class="branch-badge badge-no">CAMINO NO (Val &gt;= 4 Y Dist &lt; 10 km)</div>
+            <div class="connector-vertical short"></div>
+
+            <!-- Acción Camino NO -->
+            <div class="node node-action node-design">
+              <span class="node-origin-badge badge-design">Decisión Diseño Grupo</span>
+              <div class="node-type">⚙️ ACCIÓN DEL AGENTE</div>
+              <div class="node-title">Encamina la solicitud por el flujo estándar sin derivación por excepción</div>
+            </div>
+
+            <div class="connector-vertical short"></div>
+
+            <!-- Resultado Camino NO -->
+            <div class="node node-result node-design">
+              <span class="node-origin-badge badge-design">Decisión Diseño Grupo</span>
+              <div class="node-type">🏁 RESULTADO FINAL</div>
+              <div class="node-title">La solicitud continúa el proceso regular</div>
+            </div>
+
+            <div class="connector-vertical short"></div>
+
+            <div class="node node-terminal-end node-design">
+              FIN DEL RECORRIDO
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+</body>
+
+</html>

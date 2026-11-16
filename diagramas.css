@@ -1,0 +1,544 @@
+/* ==========================================================================
+   ESTILOS DE DIAGRAMAS DE FLUJO VISUALES - CONVOCADO (GRUPO 01)
+   Optimizado para Desktop, Tablet y Mobile — Paleta Oficial Convocado
+   ========================================================================== */
+
+:root {
+  --bg-page: #081120;
+  --bg-card: #0f1b2d;
+  --bg-node: #081120;
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+  --text-muted: #94a3b8;
+
+  /* Paleta Oficial Convocado */
+  --convocado-green-main: #0f766e;
+  --convocado-green-sec: #10b981;
+  --convocado-green-light: #34d399;
+  --convocado-yellow-accent: #fbbf24;
+
+  /* Colores para Elementos Obligatorios de la Sentencia (Verde Convocado) */
+  --mandatory-border: #10b981;
+  --mandatory-bg: rgba(16, 185, 129, 0.13);
+  --mandatory-badge-bg: #0f766e;
+  --mandatory-badge-text: #ffffff;
+
+  /* Colores para Decisiones de Diseño del Grupo (Amarillo Acento Logo) */
+  --design-border: #fbbf24;
+  --design-bg: rgba(251, 191, 36, 0.11);
+  --design-badge-bg: #78350f;
+  --design-badge-text: #fde68a;
+
+  /* Acentos de tipos de nodo alineados a la identidad verde/amarilla */
+  --decision-accent: #34d399;
+  --human-accent: #10b981;
+  --yes-color: #10b981;
+  --no-color: #fbbf24;
+  --line-color: #475569;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.5;
+  padding-bottom: 3rem;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   ENCABEZADO Y LEYENDA DE ORIGEN
+   ========================================================================== */
+.page-header {
+  background: rgba(8, 17, 32, 0.95);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.28);
+  padding: 1.25rem 2.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
+.header-inner {
+  max-width: 1560px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.brand-icon {
+  font-size: 2rem;
+  background: rgba(15, 118, 110, 0.25);
+  border: 2px solid var(--mandatory-border);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.brand p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: #081120;
+  padding: 0.65rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.legend-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.legend-swatch {
+  width: 22px;
+  height: 14px;
+  border-radius: 4px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.swatch-mandatory {
+  background: var(--mandatory-bg);
+  border: 2px solid var(--mandatory-border);
+}
+
+.swatch-design {
+  background: var(--design-bg);
+  border: 2px dashed var(--design-border);
+}
+
+/* ==========================================================================
+   GRILLA DE LOS DOS DIAGRAMAS EN DESKTOP
+   ========================================================================== */
+.diagrams-grid {
+  max-width: 1560px;
+  margin: 2rem auto 0;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.diagram-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+  width: 100%;
+  overflow: hidden;
+}
+
+.diagram-header {
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(52, 211, 153, 0.2);
+  padding-bottom: 1.25rem;
+}
+
+.sentence-tag {
+  display: inline-block;
+  background: var(--convocado-green-main);
+  color: #ffffff;
+  border: 1px solid var(--convocado-green-light);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+}
+
+.diagram-header h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.65rem;
+  color: #ffffff;
+}
+
+.sentence-quote {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  background: rgba(8, 17, 32, 0.75);
+  border-left: 4px solid var(--mandatory-border);
+  padding: 0.65rem 0.9rem;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   ESTRUCTURA DEL DIAGRAMA DE FLUJO (NODOS Y CONECTORES)
+   ========================================================================== */
+.flowchart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.node {
+  position: relative;
+  width: 100%;
+  max-width: 490px;
+  background: var(--bg-node);
+  border-radius: 10px;
+  padding: 1.15rem 1.15rem 0.9rem;
+  text-align: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Distinción visual clave: Obligatorio (Verde) vs. Diseño del Grupo (Amarillo) */
+.node-mandatory {
+  border: 2px solid var(--mandatory-border);
+  background: linear-gradient(180deg, rgba(15, 118, 110, 0.24) 0%, rgba(8, 17, 32, 0.96) 100%);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.12);
+}
+
+.node-design {
+  border: 2px dashed var(--design-border);
+  background: linear-gradient(180deg, rgba(251, 191, 36, 0.14) 0%, rgba(8, 17, 32, 0.96) 100%);
+  box-shadow: 0 4px 16px rgba(251, 191, 36, 0.1);
+}
+
+/* Etiqueta flotante de origen en cada nodo */
+.node-origin-badge {
+  position: absolute;
+  top: -10px;
+  right: 12px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.16rem 0.6rem;
+  border-radius: 999px;
+}
+
+.badge-mandatory {
+  background: var(--mandatory-badge-bg);
+  color: var(--mandatory-badge-text);
+  border: 1px solid var(--convocado-green-light);
+}
+
+.badge-design {
+  background: var(--design-badge-bg);
+  color: var(--design-badge-text);
+  border: 1px dashed var(--design-border);
+}
+
+/* Formas según tipo de nodo de diagrama */
+.node-terminal {
+  max-width: 340px;
+  border-radius: 999px;
+  padding: 0.9rem 1.4rem 0.75rem;
+}
+
+.node-terminal-end {
+  max-width: 210px;
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.node-decision {
+  max-width: 520px;
+  border-width: 2.5px;
+  border-color: var(--convocado-green-light);
+  background: linear-gradient(180deg, rgba(15, 118, 110, 0.34) 0%, rgba(8, 17, 32, 0.97) 100%);
+  clip-path: polygon(4% 0%, 96% 0%, 100% 50%, 96% 100%, 4% 100%, 0% 50%);
+  padding: 1.35rem 2.2rem 1.05rem;
+}
+
+.decision-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding-top: 0.3rem;
+}
+
+.node-type {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--convocado-green-light);
+  margin-bottom: 0.25rem;
+}
+
+.node-design .node-type {
+  color: var(--convocado-yellow-accent);
+}
+
+.node-title {
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.node-question {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0.2rem 0 0.45rem;
+}
+
+.node-code {
+  font-size: 0.76rem;
+  color: var(--convocado-green-light);
+  background: rgba(8, 17, 32, 0.85);
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.22rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Metadatos internos de entrada/consulta */
+.node-meta {
+  margin-top: 0.55rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.meta-pill {
+  font-size: 0.73rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 6px;
+}
+
+.pill-mandatory {
+  background: rgba(15, 118, 110, 0.28);
+  color: #a7f3d0;
+  border: 1px solid rgba(16, 185, 129, 0.5);
+}
+
+.pill-design {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fde68a;
+  border: 1px dashed rgba(251, 191, 36, 0.65);
+}
+
+/* ==========================================================================
+   CONECTORES Y FLECHAS
+   ========================================================================== */
+.connector-vertical {
+  width: 2px;
+  height: 28px;
+  background-color: var(--line-color);
+  position: relative;
+}
+
+.connector-vertical.short {
+  height: 22px;
+}
+
+.connector-vertical::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 7px solid var(--line-color);
+}
+
+/* ==========================================================================
+   BIFURCACIÓN DE CAMINOS SÍ / NO
+   ========================================================================== */
+.branches-container {
+  width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.15rem;
+  padding-top: 22px;
+  margin-top: 4px;
+}
+
+.branches-container::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 26px;
+  background-color: var(--line-color);
+}
+
+.branch-split-bar {
+  position: absolute;
+  top: 22px;
+  left: 25%;
+  right: 25%;
+  height: 2px;
+  background-color: var(--line-color);
+}
+
+.branch-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 0;
+}
+
+.branch-column::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 14px;
+  background-color: var(--line-color);
+}
+
+.branch-badge {
+  margin-top: 14px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.badge-yes {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+  border: 1.5px solid var(--yes-color);
+}
+
+.badge-no {
+  background: rgba(251, 191, 36, 0.16);
+  color: #fde68a;
+  border: 1.5px solid var(--no-color);
+}
+
+.branch-column .node {
+  padding: 1.05rem 0.9rem 0.8rem;
+}
+
+.branch-column .node-title {
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   ADAPTACIÓN RESPONSIVE DE DIAGRAMAS (TABLET Y MOBILE)
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .diagrams-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1.25rem;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .legend {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .diagram-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .node-decision {
+    clip-path: none;
+    border-radius: 12px;
+    padding: 1.35rem 1rem 1rem;
+  }
+
+  .node-origin-badge {
+    position: static;
+    display: inline-block;
+    margin-bottom: 0.45rem;
+  }
+
+  .node,
+  .branch-column .node {
+    padding: 0.9rem 0.85rem;
+  }
+
+  /* Apilar Camino SÍ y Camino NO en pantallas móviles para evitar overflow horizontal */
+  .branches-container {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding-top: 12px;
+  }
+
+  .branch-split-bar {
+    display: none;
+  }
+
+  .branches-container::before {
+    height: 16px;
+  }
+
+  .branch-column::before {
+    display: none;
+  }
+
+  .branch-badge {
+    margin-top: 4px;
+    width: 100%;
+    max-width: 320px;
+  }
+}
