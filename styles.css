@@ -1,0 +1,1179 @@
+/* ==========================================================================
+   ESTILOS GENERALES DE LA LANDING - CONVOCADO (GRUPO 01)
+   Diseño Responsive Completo (Desktop, Tablet 1024px, Tablet 768px, Mobile 480px)
+   Identidad Visual alineada al Logo Oficial de Convocado
+   ========================================================================== */
+
+:root {
+    --bg-deep: #081120;
+    --bg-section-alt: #0b1628;
+    --surface-card: #0f1b2d;
+    --surface-elevated: #081120;
+    --border-subtle: #1e334d;
+    --border-highlight: #0f766e;
+
+    --brand-primary: #0f766e;
+    --brand-secondary: #10b981;
+    --brand-light: #34d399;
+    --brand-yellow: #fbbf24;
+    --brand-white: #ffffff;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    padding-bottom: 0;
+}
+
+.section-container {
+    max-width: 1520px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+}
+
+/* ==========================================================================
+   1. HEADER STICKY
+   ========================================================================== */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: rgba(8, 17, 32, 0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.header-container {
+    max-width: 1520px;
+    margin: 0 auto;
+    padding: 0.85rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.95rem;
+    text-decoration: none;
+    color: var(--brand-white);
+}
+
+.header-logo-container,
+.hero-logo-container,
+.footer-logo-container {
+    background: var(--brand-white);
+    border: 2px solid var(--brand-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.header-logo-container {
+    height: 56px;
+    padding: 4px 9px;
+    border-radius: 11px;
+    box-shadow: 0 0 18px rgba(16, 185, 129, 0.28);
+}
+
+.footer-logo-container {
+    height: 56px;
+    padding: 4px 9px;
+    border-radius: 11px;
+    box-shadow: 0 0 18px rgba(16, 185, 129, 0.25);
+}
+
+.convocado-logo-img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-size: 1.18rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--brand-white);
+}
+
+.brand-group {
+    font-size: 0.76rem;
+    color: var(--brand-light);
+    font-weight: 600;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: rgba(15, 27, 45, 0.85);
+    padding: 0.35rem;
+    border-radius: 999px;
+    border: 1px solid rgba(16, 185, 129, 0.28);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 0.45rem 1.15rem;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--brand-white);
+    background: var(--brand-primary);
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.35), inset 0 0 0 1px var(--brand-light);
+}
+
+.header-legend {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+}
+
+.legend-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.76rem;
+    font-weight: 600;
+    padding: 0.36rem 0.8rem;
+    border-radius: 8px;
+    background: var(--surface-elevated);
+}
+
+.chip-mandatory {
+    border: 1px solid var(--brand-secondary);
+    color: #a7f3d0;
+}
+
+.chip-design {
+    border: 1px dashed var(--brand-yellow);
+    color: #fde68a;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.dot-mandatory {
+    background: var(--brand-secondary);
+}
+
+.dot-design {
+    background: var(--brand-yellow);
+}
+
+/* ==========================================================================
+   2. HERO / PRESENTACIÓN DE LA STARTUP
+   ========================================================================== */
+.hero-section {
+    padding: 4.5rem 0 4.25rem;
+    background:
+        radial-gradient(circle at 18% 25%, rgba(15, 118, 110, 0.28), transparent 42%),
+        radial-gradient(circle at 82% 28%, rgba(16, 185, 129, 0.14), transparent 42%),
+        radial-gradient(circle at 50% 85%, rgba(251, 191, 36, 0.06), transparent 45%);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.95fr;
+    gap: 3.25rem;
+    align-items: center;
+}
+
+.eyebrow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    background: rgba(15, 118, 110, 0.25);
+    border: 1px solid rgba(52, 211, 153, 0.45);
+    color: var(--brand-light);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.38rem 0.95rem;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.hero-brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    margin-bottom: 1.4rem;
+}
+
+.hero-logo-container {
+    height: 136px;
+    padding: 10px 16px;
+    border-radius: 20px;
+    border: 2.5px solid var(--brand-secondary);
+    box-shadow:
+        0 0 36px rgba(16, 185, 129, 0.42),
+        0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+.startup-label {
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--brand-yellow);
+    margin-bottom: 0.2rem;
+}
+
+.hero-title {
+    font-size: 3.45rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+    color: var(--brand-white);
+    text-shadow: 0 4px 24px rgba(15, 118, 110, 0.55);
+}
+
+.hero-objective {
+    font-size: 1.38rem;
+    font-weight: 700;
+    color: var(--brand-white);
+    margin-bottom: 0.95rem;
+    border-left: 4px solid var(--brand-secondary);
+    padding-left: 1.1rem;
+}
+
+.hero-description {
+    font-size: 1.02rem;
+    color: var(--text-secondary);
+    max-width: 680px;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.8rem 1.4rem;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--brand-secondary) 0%, var(--brand-primary) 100%);
+    color: var(--brand-white);
+    border: 1px solid var(--brand-light);
+    box-shadow: 0 6px 18px rgba(15, 118, 110, 0.4);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--brand-light) 0%, var(--brand-secondary) 100%);
+    color: #042f2e;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: var(--surface-card);
+    color: var(--brand-white);
+    border: 1px solid rgba(52, 211, 153, 0.4);
+}
+
+.btn-secondary:hover {
+    border-color: var(--brand-yellow);
+    color: var(--brand-yellow);
+}
+
+.btn-ghost {
+    background: rgba(15, 118, 110, 0.18);
+    color: #a7f3d0;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    padding: 0.55rem 1.05rem;
+    border-radius: 8px;
+    font-size: 0.83rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.18s ease;
+    display: inline-block;
+}
+
+.btn-ghost:hover {
+    background: var(--brand-primary);
+    border-color: var(--brand-light);
+    color: var(--brand-white);
+}
+
+/* Tarjeta lateral del Hero */
+.hero-summary-card {
+    background: var(--surface-card);
+    border: 1px solid rgba(16, 185, 129, 0.32);
+    border-radius: 16px;
+    padding: 1.85rem;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.summary-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 1.25rem;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--brand-secondary);
+    box-shadow: 0 0 10px var(--brand-secondary);
+    flex-shrink: 0;
+}
+
+.summary-card-header h2 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--brand-white);
+}
+
+.summary-rules {
+    display: flex;
+    flex-direction: column;
+    gap: 1.05rem;
+}
+
+.summary-rule-item {
+    display: flex;
+    gap: 1rem;
+    background: rgba(8, 17, 32, 0.72);
+    padding: 1.1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.rule-num {
+    font-size: 1.05rem;
+    font-weight: 900;
+    color: var(--brand-yellow);
+    background: rgba(15, 118, 110, 0.35);
+    border: 1px solid rgba(52, 211, 153, 0.4);
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.summary-rule-item h3 {
+    font-size: 0.96rem;
+    color: var(--brand-white);
+    margin-bottom: 0.25rem;
+}
+
+.summary-rule-item p {
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+}
+
+.summary-card-footer {
+    margin-top: 1.2rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 0.8rem;
+    color: var(--brand-light);
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   3. SECCIÓN NUESTRO ENFOQUE
+   ========================================================================== */
+.approach-section {
+    padding: 4.5rem 0;
+    border-bottom: 1px solid rgba(16, 185, 129, 0.22);
+}
+
+.approach-card {
+    background: linear-gradient(180deg, rgba(15, 27, 45, 0.96) 0%, rgba(8, 17, 32, 0.96) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.32);
+    border-radius: 18px;
+    padding: 2.6rem 2.8rem;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+}
+
+.approach-header {
+    margin-bottom: 1.2rem;
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 0.76rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--brand-light);
+    margin-bottom: 0.35rem;
+}
+
+.approach-header h2 {
+    font-size: 1.65rem;
+    color: var(--brand-white);
+}
+
+.approach-lead {
+    font-size: 1.06rem;
+    color: var(--text-secondary);
+    line-height: 1.72;
+    margin-bottom: 2rem;
+}
+
+.origin-comparison-banner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem;
+    align-items: stretch;
+}
+
+.origin-box {
+    padding: 1.35rem 1.5rem;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.origin-mandatory {
+    background: linear-gradient(135deg, rgba(15, 118, 110, 0.22) 0%, rgba(8, 17, 32, 0.85) 100%);
+    border: 2px solid var(--brand-secondary);
+}
+
+.origin-design {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.12) 0%, rgba(8, 17, 32, 0.85) 100%);
+    border: 2px dashed var(--brand-yellow);
+}
+
+.origin-badge {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 0.73rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.24rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 0.6rem;
+}
+
+.origin-box p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+/* ==========================================================================
+   4. SECCIONES SENTENCIA 1 Y SENTENCIA 2 (SPLIT LAYOUT DESKTOP 45% / 55%)
+   ========================================================================== */
+.sentence-section {
+    padding: 4.75rem 0;
+    border-bottom: 1px solid rgba(16, 185, 129, 0.24);
+}
+
+.sentence-section.alt-bg {
+    background-color: var(--bg-section-alt);
+}
+
+.section-heading-bar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2.1rem;
+    padding-bottom: 1.15rem;
+    border-bottom: 1px solid var(--border-subtle);
+    flex-wrap: wrap;
+}
+
+.section-main-title {
+    font-size: 1.75rem;
+    color: var(--brand-white);
+}
+
+.sentence-split-layout {
+    display: grid;
+    grid-template-columns: 45fr 55fr;
+    gap: 2.25rem;
+    align-items: start;
+}
+
+.sentence-left-col,
+.sentence-right-col {
+    min-width: 0;
+}
+
+.sentence-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Caja destacada de Sentencia Oficial */
+.official-sentence-box {
+    background: linear-gradient(135deg, rgba(15, 118, 110, 0.26) 0%, rgba(8, 17, 32, 0.96) 100%);
+    border: 2px solid var(--brand-secondary);
+    border-radius: 14px;
+    padding: 1.55rem 1.7rem;
+    box-shadow: 0 8px 26px rgba(15, 118, 110, 0.18);
+}
+
+.box-label {
+    margin-bottom: 0.65rem;
+}
+
+.badge-mandatory-inline {
+    display: inline-block;
+    background: var(--brand-primary);
+    color: var(--brand-white);
+    border: 1px solid var(--brand-light);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.22rem 0.7rem;
+    border-radius: 999px;
+}
+
+.official-sentence-box blockquote {
+    font-size: 1.04rem;
+    font-weight: 600;
+    color: var(--brand-white);
+    line-height: 1.62;
+}
+
+/* Tarjetas de Análisis y Propuesta */
+.info-card {
+    background: var(--surface-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    padding: 1.65rem 1.75rem;
+}
+
+.card-title {
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--brand-white);
+    margin-bottom: 1.1rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.analysis-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.analysis-list li {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 0.85rem;
+    font-size: 0.93rem;
+    line-height: 1.55;
+}
+
+.analysis-key {
+    font-weight: 700;
+    color: var(--brand-light);
+}
+
+.analysis-val {
+    color: var(--text-secondary);
+    overflow-wrap: break-word;
+}
+
+.analysis-val code {
+    background: rgba(8, 17, 32, 0.9);
+    color: var(--brand-yellow);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    padding: 0.12rem 0.45rem;
+    border-radius: 4px;
+    font-size: 0.84rem;
+    word-break: break-word;
+}
+
+/* Bloques de Propuesta Agéntica separados por origen */
+.proposal-split-block {
+    padding: 1.15rem 1.25rem;
+    border-radius: 11px;
+    margin-top: 1rem;
+}
+
+.proposal-split-block p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    margin-top: 0.55rem;
+    line-height: 1.58;
+}
+
+.mandatory-block {
+    background: rgba(15, 118, 110, 0.16);
+    border: 1.5px solid var(--brand-secondary);
+}
+
+.design-block {
+    background: rgba(251, 191, 36, 0.1);
+    border: 1.5px dashed var(--brand-yellow);
+}
+
+.origin-pill {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.2rem 0.65rem;
+    border-radius: 6px;
+}
+
+/* ==========================================================================
+   5. DESPLEGABLES (DETAILS / SUMMARY)
+   ========================================================================== */
+.accordions-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.custom-details {
+    background: var(--surface-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.custom-details:hover {
+    border-color: rgba(52, 211, 153, 0.55);
+}
+
+.custom-details[open] {
+    border-color: var(--brand-secondary);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.details-summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.05rem 1.35rem;
+    cursor: pointer;
+    font-size: 0.94rem;
+    font-weight: 700;
+    color: var(--brand-white);
+    background: rgba(8, 17, 32, 0.65);
+    user-select: none;
+    transition: background 0.18s ease, color 0.18s ease;
+}
+
+.details-summary::-webkit-details-marker {
+    display: none;
+}
+
+.details-summary:hover {
+    background: rgba(15, 118, 110, 0.32);
+    color: var(--brand-light);
+}
+
+.summary-chevron {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    background: rgba(15, 118, 110, 0.35);
+    border: 1px solid var(--brand-secondary);
+    color: var(--brand-yellow);
+    font-size: 0.78rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.22s ease, background 0.18s ease;
+}
+
+.details-summary:hover .summary-chevron {
+    background: var(--brand-primary);
+    border-color: var(--brand-yellow);
+}
+
+.custom-details[open] .summary-chevron {
+    transform: rotate(180deg);
+    background: var(--brand-primary);
+}
+
+.details-body {
+    padding: 1.35rem 1.55rem;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+.details-body h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--brand-light);
+    margin: 1rem 0 0.45rem;
+}
+
+.details-body h4:first-child {
+    margin-top: 0;
+}
+
+.details-body ul {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.details-body p {
+    margin-bottom: 0.65rem;
+}
+
+/* Tabla comparativa dentro del desplegable */
+.origin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.6rem 0 1.1rem;
+    font-size: 0.84rem;
+}
+
+.origin-table th,
+.origin-table td {
+    border: 1px solid var(--border-subtle);
+    padding: 0.55rem 0.75rem;
+    text-align: left;
+}
+
+.origin-table th {
+    background: rgba(8, 17, 32, 0.92);
+    color: var(--brand-white);
+    font-weight: 700;
+}
+
+.table-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 0.16rem 0.55rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   6. AJUSTES DEL DIAGRAMA INTEGRADO EN LA COLUMNA DERECHA
+   ========================================================================== */
+.diagram-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.45rem;
+    flex-wrap: wrap;
+}
+
+.diagram-status {
+    font-size: 0.75rem;
+    color: var(--brand-light);
+    font-weight: 600;
+}
+
+.diagram-header h3 {
+    font-size: 1.18rem;
+    color: var(--brand-white);
+}
+
+.diagram-footer-legend {
+    margin-top: 1.6rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   7. FOOTER INSTITUCIONAL Y SECCIÓN DE INTEGRANTES (GRUPO 01)
+   ========================================================================== */
+.site-footer {
+    background: linear-gradient(180deg, #081120 0%, #050b14 100%);
+    border-top: 2px solid var(--brand-primary);
+    box-shadow: 0 -4px 24px rgba(15, 118, 110, 0.15);
+    padding: 2.75rem 0 2.5rem;
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-bottom: 1.85rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-brand strong {
+    color: var(--brand-white);
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+}
+
+.footer-brand p {
+    font-size: 0.84rem;
+    color: var(--brand-light);
+    margin-top: 0.15rem;
+}
+
+.footer-meta {
+    text-align: center;
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+}
+
+.footer-meta strong {
+    color: var(--brand-yellow);
+}
+
+/* Bloque de Integrantes del Grupo 01 */
+.footer-team {
+    padding-top: 1.65rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-team-title {
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--brand-light);
+}
+
+.footer-team-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.footer-team-member {
+    background: rgba(15, 27, 45, 0.9);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    color: var(--brand-white);
+    font-size: 0.86rem;
+    font-weight: 600;
+    padding: 0.48rem 1.1rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.footer-team-member::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand-yellow);
+}
+
+/* ==========================================================================
+   8. MEDIA QUERIES — RESPONSIVE DESIGN
+   - Tablet (1024px aprox.)
+   - Tablet pequeña (768px aprox.)
+   - Mobile (480px aprox.)
+   ========================================================================== */
+
+/* Tablet (hasta 1080px / 1024px) */
+@media (max-width: 1080px) {
+
+    .section-container,
+    .header-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .header-container {
+        justify-content: space-between;
+    }
+
+    .header-legend {
+        width: 100%;
+        justify-content: center;
+        padding-top: 0.35rem;
+        border-top: 1px solid rgba(30, 51, 77, 0.6);
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2.25rem;
+    }
+
+    .hero-description {
+        max-width: 100%;
+    }
+
+    /* Cambiar layout 45/55 a 1 columna (primero análisis, luego diagrama) */
+    .sentence-split-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* Tablet pequeña (hasta 768px) */
+@media (max-width: 768px) {
+
+    .section-container,
+    .header-container {
+        padding-left: 1.15rem;
+        padding-right: 1.15rem;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.85rem;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .main-nav {
+        width: 100%;
+        justify-content: center;
+        border-radius: 14px;
+    }
+
+    .nav-link {
+        font-size: 0.82rem;
+        padding: 0.42rem 0.85rem;
+    }
+
+    .hero-section {
+        padding: 3rem 0;
+    }
+
+    .hero-title {
+        font-size: 2.65rem;
+    }
+
+    .hero-objective {
+        font-size: 1.18rem;
+    }
+
+    .approach-section,
+    .sentence-section {
+        padding: 3.25rem 0;
+    }
+
+    .approach-card {
+        padding: 1.75rem 1.5rem;
+    }
+
+    /* Tarjetas comparativas de Nuestro Enfoque en una sola columna */
+    .origin-comparison-banner {
+        grid-template-columns: 1fr;
+        gap: 1.15rem;
+    }
+
+    .section-heading-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.9rem;
+    }
+
+    .section-main-title {
+        font-size: 1.45rem;
+    }
+
+    .analysis-list li {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+
+    /* Footer apilado verticalmente */
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.35rem;
+    }
+
+    .footer-brand {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Mobile (hasta 480px) */
+@media (max-width: 480px) {
+
+    .section-container,
+    .header-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .brand-logo {
+        gap: 0.7rem;
+    }
+
+    .header-logo-container {
+        height: 48px;
+    }
+
+    .main-nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.35rem;
+        padding: 0.4rem;
+    }
+
+    .nav-link {
+        text-align: center;
+        padding: 0.45rem 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .header-legend {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.4rem;
+    }
+
+    .legend-chip {
+        justify-content: center;
+    }
+
+    .hero-brand-lockup {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .hero-logo-container {
+        height: 110px;
+    }
+
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    /* Botones en columna en mobile */
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .hero-summary-card,
+    .info-card,
+    .official-sentence-box,
+    .approach-card {
+        padding: 1.25rem 1.1rem;
+    }
+
+    .summary-rule-item {
+        flex-direction: column;
+        gap: 0.65rem;
+    }
+
+    .details-summary {
+        padding: 0.9rem 1rem;
+        font-size: 0.86rem;
+    }
+
+    .details-body {
+        padding: 1rem;
+    }
+
+    .origin-table th,
+    .origin-table td {
+        padding: 0.45rem 0.5rem;
+        font-size: 0.78rem;
+    }
+
+    .table-badge {
+        white-space: normal;
+        text-align: center;
+    }
+
+    .footer-team-list {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .footer-team-member {
+        justify-content: center;
+        width: 100%;
+    }
+}
