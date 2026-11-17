@@ -12,6 +12,15 @@
 
 ---
 
+## Enlaces de Entrega
+
+- **Repositorio en GitHub:** [https://github.com/Adrilu-web/tp3-frontend-grupo1a-Convocado](https://github.com/Adrilu-web/tp3-frontend-grupo1a-Convocado)
+- **Landing publicada (Vercel):** [https://TU-LINK-AQUI.vercel.app](https://TU-LINK-AQUI.vercel.app)
+
+> **Comprobación de acceso y funcionamiento:** Ambos enlaces fueron verificados desde una ventana de navegación privada (sin sesión iniciada). El sitio carga correctamente el logo original de Convocado, los dos diagramas de flujo visuales y los desplegables interactivos con clic y teclado en vista desktop.
+
+---
+
 ## Startup Seleccionada
 
 - **Startup:** Convocado
@@ -156,6 +165,13 @@ A continuación se documenta cronológicamente la secuencia real de prompts e in
 - **Problema detectado:** el texto inicial estático de los botones generales en `index.html` decía `"Expandir / Contraer Desplegables"` (con clase `.Quick-controls`), `script.js` manipulaba atributos en lugar de la propiedad booleana nativa `.open` de `HTMLDetailsElement` sin reflejar `aria-expanded`, y faltaban estilos `:focus-visible` en `styles.css` para visualizar claramente el foco al navegar con teclado por los `<summary>` y botones.
 - **Corrección solicitada:** mantener un único botón general por sección que muestre `"Expandir todo"` cuando haya algún desplegable cerrado (abriéndolos todos al hacer clic) y `"Contraer todo"` cuando todos estén abiertos (cerrándolos todos al hacer clic), sincronizar su etiqueta al abrir o cerrar manualmente cualquier `<details>` con clic o teclado, y agregar foco visible para navegación por teclado en Sentencia 1 y Sentencia 2.
 - **Resultado obtenido:** botones generales de Sentencia 1 y Sentencia 2 sincronizados dinámicamente mediante la propiedad nativa `el.open` y eventos `toggle`, texto inicial consistente (`"Expandir todo"` con `aria-expanded`), preservación del comportamiento nativo de `<details>`/`<summary>` con clic y teclado (`Tab`, `Enter`, `Espacio`) e incorporación de contornos `:focus-visible` de alto contraste en `styles.css`.
+
+### 12. Incorporación del apartado de enlaces de entrega en `README.md`
+- **Prompt enviado:**
+  > *"crea un apartado en el readme para los enlaces bien visible, arriba, justo debajo de ## Integrantes o al principio del archivo, con este formato: Enlaces de Entrega / Repositorio en GitHub: https://github.com/Adrilu-web/tp3-frontend-grupo1a-Convocado / Landing publicada (Vercel): https://TU-LINK-AQUI.vercel.app / Comprobación de acceso y funcionamiento: Ambos enlaces fueron verificados desde una ventana de navegación privada (sin sesión iniciada). El sitio carga correctamente el logo original de Convocado, los dos diagramas de flujo visuales y los desplegables interactivos con clic y teclado en vista desktop."*
+- **Problema detectado:** ausencia de una sección visible en `README.md` con los dos enlaces obligatorios exigidos por la consigna y la rúbrica (repositorio de GitHub y landing publicada en Vercel), así como la nota de comprobación de acceso sin sesión.
+- **Corrección solicitada:** crear el apartado `## Enlaces de Entrega` en la parte superior del `README.md`, justo debajo de `## Integrantes`, incluyendo los enlaces al repositorio y a la publicación en Vercel junto con el bloque de comprobación de funcionamiento.
+- **Resultado obtenido:** sección `## Enlaces de Entrega` incorporada al inicio de `README.md` con ambos enlaces identificados y la constancia de verificación en ventana privada.
 
 ---
 
