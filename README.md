@@ -213,6 +213,17 @@ A continuación se documenta cronológicamente la secuencia real de prompts e in
 
 ---
 
+## Aportes de Judith Leonardo
+
+- **Aplicación:** Antigravity. **Modelo:** Gemini 4 Argon (Medium).
+- **Rol:** dirección de la identidad visual y diseño responsive en `styles.css` (Prompts 7 y 8), auditoría del proyecto frente a la rúbrica oficial e incorporación del apartado de enlaces de entrega y comprobación en `README.md` (Prompt 12).
+- **Qué se pidió al agente:**
+  1. Alinear la identidad visual de toda la landing en `styles.css` con la paleta cromática oficial del logo de **Convocado** (`#0f766e`, `#10b981`, `#34d399`, `#fbbf24`, `#ffffff`, `#081120`), diferenciando visualmente los bloques obligatorios de la sentencia frente a las decisiones de diseño del Grupo 01.
+  2. Estilizar la sección de integrantes del Grupo 01 en el footer y construir la adaptación responsive completa para Tablet (`1024px`), Tablet pequeña (`768px`) y Mobile (`480px`) evitando desbordes horizontales.
+  3. Revisar el cumplimiento integral de la consigna y agregar en `README.md` el apartado `## Enlaces de Entrega` (repositorio en GitHub y landing en Vercel con constancia de verificación sin sesión) junto con el registro del Prompt 12.
+
+---
+
 ## Cómo Ejecutar el Proyecto
 
 El proyecto no requiere instalación de dependencias ni servidores adicionales:
