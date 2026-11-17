@@ -3,7 +3,7 @@
  * Interacciones de navegación activa y control dinámico de desplegables (<details>)
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+function initConvocadoLanding() {
   const navLinks = document.querySelectorAll('.main-nav .nav-link');
   const sections = document.querySelectorAll('main section[id]');
   const toggleButtons = document.querySelectorAll('.js-toggle-details');
@@ -29,9 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
   updateActiveNavLink();
 
   // 2. Actualizar el texto del botón ("Expandir todo" / "Contraer todo") según el estado de la sección
-  function syncToggleButtonLabel(button, detailsElements) {
-    const allOpen = Array.from(detailsElements).every((el) => el.hasAttribute('open'));
+  function syncToggleButtonLabel(button, detailsList) {
+    const allOpen = detailsList.length > 0 && detailsList.every((el) => el.open);
     button.textContent = allOpen ? 'Contraer todo' : 'Expandir todo';
+    button.setAttribute('aria-expanded', String(allOpen));
   }
 
   // 3. Configurar botones y escuchar cambios individuales en cada <details>
@@ -40,31 +41,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const section = document.getElementById(targetSectionId);
     if (!section) return;
 
-    const detailsElements = section.querySelectorAll('details.custom-details');
+    const detailsList = Array.from(section.querySelectorAll('details.custom-details'));
+    if (detailsList.length === 0) return;
 
     // Estado inicial del texto del botón al cargar la página
-    syncToggleButtonLabel(button, detailsElements);
+    syncToggleButtonLabel(button, detailsList);
 
-    // Al hacer clic en el botón, expandir o contraer todos y actualizar etiqueta
+    // Al hacer clic en el botón: si hay alguno cerrado, abrir todos; si todos están abiertos, cerrarlos todos
     button.addEventListener('click', () => {
-      const allOpen = Array.from(detailsElements).every((el) => el.hasAttribute('open'));
+      const allOpen = detailsList.every((el) => el.open);
+      const shouldOpen = !allOpen;
 
-      detailsElements.forEach((el) => {
-        if (allOpen) {
-          el.removeAttribute('open');
-        } else {
-          el.setAttribute('open', '');
-        }
+      detailsList.forEach((el) => {
+        el.open = shouldOpen;
       });
 
-      syncToggleButtonLabel(button, detailsElements);
+      syncToggleButtonLabel(button, detailsList);
     });
 
-    // Si el usuario abre o cierra manualmente un desplegable individual, sincronizar el botón
-    detailsElements.forEach((detailEl) => {
+    // Si el usuario abre o cierra manualmente un desplegable individual (clic o teclado), sincronizar el botón
+    detailsList.forEach((detailEl) => {
       detailEl.addEventListener('toggle', () => {
-        syncToggleButtonLabel(button, detailsElements);
+        syncToggleButtonLabel(button, detailsList);
       });
     });
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initConvocadoLanding);
+} else {
+  initConvocadoLanding();
+}

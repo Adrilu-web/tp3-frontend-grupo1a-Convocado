@@ -347,6 +347,16 @@ body {
     color: var(--brand-white);
 }
 
+/* Foco visible accesible para navegación con teclado en botones y enlaces */
+.brand-logo:focus-visible,
+.nav-link:focus-visible,
+.btn:focus-visible,
+.btn-ghost:focus-visible {
+    outline: 2px solid var(--brand-yellow);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.25);
+}
+
 /* Tarjeta lateral del Hero */
 .hero-summary-card {
     background: var(--surface-card);
@@ -730,6 +740,18 @@ body {
 .details-summary:hover {
     background: rgba(15, 118, 110, 0.32);
     color: var(--brand-light);
+}
+
+.details-summary:focus-visible {
+    outline: 2px solid var(--brand-yellow);
+    outline-offset: -2px;
+    background: rgba(15, 118, 110, 0.32);
+    color: var(--brand-light);
+}
+
+.details-summary:focus-visible .summary-chevron {
+    background: var(--brand-primary);
+    border-color: var(--brand-yellow);
 }
 
 .summary-chevron {

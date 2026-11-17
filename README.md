@@ -14,21 +14,24 @@
 
 ## Startup Seleccionada
 
-**Convocado**
-
-Convocado es una red social deportiva cuyo objetivo es permitir que los jugadores encuentren equipos y soliciten participar en partidos.
+- **Startup:** Convocado
+- **Categoría:** Deportes y conexión de equipos
+- **Objetivo de la startup:** Red para que jugadores encuentren equipos y soliciten participar en partidos.
+- **Origen:** Startup creada por estudiantes del IFTS 16. Propuesta del Grupo 01 del IFTS 29.
 
 ---
 
 ## Bloque Asignado
 
-**Grupo 01**
+- **Grupo:** Grupo 01 (IFTS 29)
+- **Bloque:** Cupo y revisión
+- **Asignación:** S08-B (R3 y R4)
 
-- **Sentencia 1 — Control de cupo al aceptar solicitudes:**
+- **Sentencia 1 (R3) — Control de cupo al aceptar solicitudes:**
   > *"Si el capitán intenta aceptar una solicitud cuando ya no queda lugar, el sistema informa que el cupo está completo e impide una nueva aceptación."*
 
-- **Sentencia 2 — Derivación a evaluación manual según valoración o distancia:**
-  > *"Si el jugador autoriza una solicitud y se cumple al menos una de estas condiciones: la valoración conocida es menor que cuatro, o el equipo está a diez kilómetros o más; el sistema la deriva al capitán para evaluación manual; esa evaluación no reserva un lugar."*
+- **Sentencia 2 (R4) — Derivación a evaluación manual según valoración o distancia:**
+  > *"Si el jugador autoriza una solicitud y se cumple al menos una de estas condiciones —su valoración conocida es menor que cuatro, o el equipo está a diez kilómetros o más—, el sistema la deriva al capitán para evaluación manual; esa evaluación no reserva un lugar."*
 
 ---
 
@@ -138,6 +141,20 @@ A continuación se documenta cronológicamente la secuencia real de prompts e in
 
 ### 9. README y documentación
 - **Creación inicial y refinamiento de trazabilidad en `README.md`:** se solicitó primero generar el `README.md` académico del proyecto y, finalmente, actualizar únicamente `README.md` para no atribuir autoría humana directa del código generado inicialmente por Antigravity, separar los aportes de análisis/validación frente a la implementación asistida por IA, detallar el modelo observado (`Gemini 4 Argon (Medium)`) y el modelo no informado en etapas previas, e incorporar este registro cronológico de prompts y cambios solicitados.
+
+### 10. Corrección de fidelidad con la consigna oficial
+- **Prompt enviado:**
+  > *"Corrige únicamente la fidelidad del proyecto con la consigna oficial. 1. Reemplaza la Sentencia 2 en todos los archivos donde aparezca por su texto literal: "Si el jugador autoriza una solicitud y se cumple al menos una de estas condiciones —su valoración conocida es menor que cuatro, o el equipo está a diez kilómetros o más—, el sistema la deriva al capitán para evaluación manual; esa evaluación no reserva un lugar." No cambies palabras ni puntuación. 2. Verifica que la Sentencia 1 también coincida literalmente con la consigna. Si ya coincide, no la modifiques. 3. Incorpora de forma clara y sin recargar la landing: Convocado, Categoría: Deportes y conexión de equipos, Bloque: Cupo y revisión, Asignación: S08-B, R3 y R4, Startup creada por estudiantes del IFTS 16., Propuesta del Grupo 01 del IFTS 29. 4. Actualiza README.md con esos mismos datos. No modifiques todavía JavaScript, botones, desplegables, diagramas, casos de prueba, casos límite, aportes ni publicación. Al finalizar, indica qué archivos modificaste y qué cambiaste."*
+- **Problema detectado:** redacción no literal de la Sentencia 2 y ausencia de datos de asignación/origen.
+- **Corrección solicitada:** reemplazar todas las apariciones de la Sentencia 2 por su redacción literal exacta (sin alterar palabras ni puntuación), verificar la coincidencia literal de la Sentencia 1 e incorporar de manera clara en la landing y en `README.md` los datos oficiales de la startup, categoría, bloque, código de asignación y reconocimiento de origen institucional.
+- **Resultado:** sentencias alineadas con la consigna e incorporación de Convocado, categoría (`Deportes y conexión de equipos`), bloque `Cupo y revisión`, `S08-B`, `R3/R4`, origen `IFTS 16` y propuesta `Grupo 01 IFTS 29`.
+
+### 11. Corrección de botones Expandir/Contraer y accesibilidad con teclado
+- **Prompt enviado:**
+  > *"Corrige únicamente el funcionamiento de Expandir/Contraer. 1. Mantén un único botón general por sección. 2. Si hay algún desplegable cerrado, debe mostrar "Expandir todo" y abrirlos todos. 3. Si todos están abiertos, debe mostrar "Contraer todo" y cerrarlos todos. 4. Si se abre o cierra manualmente un <details>, actualiza el texto del botón según el estado. 5. Mantén <details>/<summary> funcionando con clic y teclado. 6. Agrega foco visible para navegación con teclado. 7. Comprueba el funcionamiento en Sentencia 1 y Sentencia 2. Modifica solo index.html, script.js y styles.css si es necesario. Además, registra este prompt como una nueva iteración en README.md, indicando: problema detectado; corrección solicitada; resultado obtenido."*
+- **Problema detectado:** el texto inicial estático de los botones generales en `index.html` decía `"Expandir / Contraer Desplegables"` (con clase `.Quick-controls`), `script.js` manipulaba atributos en lugar de la propiedad booleana nativa `.open` de `HTMLDetailsElement` sin reflejar `aria-expanded`, y faltaban estilos `:focus-visible` en `styles.css` para visualizar claramente el foco al navegar con teclado por los `<summary>` y botones.
+- **Corrección solicitada:** mantener un único botón general por sección que muestre `"Expandir todo"` cuando haya algún desplegable cerrado (abriéndolos todos al hacer clic) y `"Contraer todo"` cuando todos estén abiertos (cerrándolos todos al hacer clic), sincronizar su etiqueta al abrir o cerrar manualmente cualquier `<details>` con clic o teclado, y agregar foco visible para navegación por teclado en Sentencia 1 y Sentencia 2.
+- **Resultado obtenido:** botones generales de Sentencia 1 y Sentencia 2 sincronizados dinámicamente mediante la propiedad nativa `el.open` y eventos `toggle`, texto inicial consistente (`"Expandir todo"` con `aria-expanded`), preservación del comportamiento nativo de `<details>`/`<summary>` con clic y teclado (`Tab`, `Enter`, `Espacio`) e incorporación de contornos `:focus-visible` de alto contraste en `styles.css`.
 
 ---
 

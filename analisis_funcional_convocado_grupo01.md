@@ -26,7 +26,7 @@
 ---
 
 ### Sentencia 2
-> *"Si el jugador autoriza una solicitud y se cumple al menos una de estas condiciones: la valoración conocida es menor que cuatro, o el equipo está a diez kilómetros o más; el sistema la deriva al capitán para evaluación manual; esa evaluación no reserva un lugar."*
+> *"Si el jugador autoriza una solicitud y se cumple al menos una de estas condiciones —su valoración conocida es menor que cuatro, o el equipo está a diez kilómetros o más—, el sistema la deriva al capitán para evaluación manual; esa evaluación no reserva un lugar."*
 
 * **Datos necesarios (estrictos de la sentencia):**
   * `autorizacionSolicitud`: Acción del jugador autorizando el envío de su solicitud.
@@ -158,7 +158,7 @@ Para llevar este análisis al desarrollo **Front End**, debemos separar lo que l
 
 ### 8.2. Diagrama de Flujo 2: Derivación a Evaluación Manual (Sentencia 2)
 
-> **Sentencia 2:** *"Si el jugador autoriza una solicitud y se cumple al menos una de estas condiciones: la valoración conocida es menor que cuatro, o el equipo está a diez kilómetros o más; el sistema la deriva al capitán para evaluación manual; esa evaluación no reserva un lugar."*
+> **Sentencia 2:** *"Si el jugador autoriza una solicitud y se cumple al menos una de estas condiciones —su valoración conocida es menor que cuatro, o el equipo está a diez kilómetros o más—, el sistema la deriva al capitán para evaluación manual; esa evaluación no reserva un lugar."*
 
 #### Secuencia Ordenada del Recorrido
 1. **Inicio:**
