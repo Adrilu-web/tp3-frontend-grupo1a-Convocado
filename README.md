@@ -81,6 +81,7 @@ El desarrollo del proyecto se organizó distinguiendo tres niveles de trabajo:
 | Aplicación / Entorno | Modelo | Uso Realizado | Cambios Solicitados |
 | :--- | :--- | :--- | :--- |
 | **Antigravity** | **Modelo observado durante el desarrollo:** Gemini 4 Argon (Medium) <br><br> **Modelo en etapas anteriores:** modelo no informado | Redacción estructurada del análisis funcional, especificación textual de los diagramas de flujo, elaboración del wireframe textual, generación inicial de código HTML, CSS y JavaScript para los diagramas visuales y la landing page, adaptación responsive y redacción del `README.md`. | Alineación estricta a la consigna eliminando suposiciones adicionales, separación entre consecuencias obligatorias y decisiones del grupo, eliminación de sección duplicada, ajuste del wireframe, sustitución de iconos genéricos por `assets/logo.webp`, aplicación de la paleta del logo oficial, cambio dinámico de botones *"Expandir todo"* / *"Contraer todo"*, adaptación responsive e incorporación de integrantes y trazabilidad de IA. |
+| **Cursor** | Cursor Grok 4.6 Medium | Revisión de la landing contra la consigna y corrección de errores conceptuales en los diagramas de la Sentencia 2. | Ajuste de la condición lógica del rombo de decisión y tabla 2B; cambio de etiquetas `lugaresDisponibles` y `Datos: Jugador y Equipo` de `pill-mandatory` a `pill-design`; actualización de datos necesarios y del desplegable 2A. |
 
 ---
 
