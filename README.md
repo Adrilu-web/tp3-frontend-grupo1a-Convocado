@@ -158,6 +158,26 @@ A continuación se documenta cronológicamente la secuencia real de prompts e in
 
 ---
 
+## Aportes de Silvia Podberezski
+
+- **Aplicación:** Cursor. **Modelo:** Cursor Grok 4.6 Medium.
+- **Rol:** revisión del trabajo de la landing contra la consigna y corrección de errores conceptuales de los diagramas.
+- **Qué se pidió al agente:**
+  1. En `index.html`, en el rombo de decisión del Diagrama 2 y en la fila "Decisión:" de la tabla del desplegable 2B, reemplazar "¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?" por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?". El código mostrado debe seguir exactamente igual.
+  2. En `index.html`, la Sentencia 2 no pide consultar los lugares disponibles ni "Jugador y Equipo", así que no deben figurar como obligatorios:
+     - En el Diagrama 2, cambiar las etiquetas "lugaresDisponibles" y "Datos: Jugador y Equipo" de `pill-mandatory` a `pill-design`. Cambiar el título del nodo de consulta del agente por: "Consulta valoración conocida y distancia al equipo".
+     - En "Datos necesarios" de la tarjeta de análisis de la Sentencia 2, dejar solo: `autorizacionSolicitud` (confirmación del jugador), `valoracionConocida` y `distanciaAlEquipoKm`.
+     - En el desplegable 2A, en el ítem "Exigido por la sentencia", quitar lo de la disponibilidad de lugares. En el ítem "Decisión de diseño del grupo", agregar: "Disponibilidad de lugares (`lugaresDisponibles`), para comprobar que la evaluación manual no reserva lugar."
+- **Prompt enviado:**
+  > 1. En index.html, en el rombo de decisión del Diagrama 2 y en la fila "Decisión:" de la tabla del desplegable 2B, reemplazá "¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?" por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?". El código mostrado debe seguir exactamente igual.
+  >
+  > 2. En index.html, la Sentencia 2 no pide consultar los lugares disponibles ni "Jugador y Equipo", así que no deben figurar como obligatorios:
+  > - En el Diagrama 2, cambiá las etiquetas "lugaresDisponibles" y "Datos: Jugador y Equipo" de pill-mandatory a pill-design. Cambiá el título del nodo de consulta del agente por: "Consulta valoración conocida y distancia al equipo".
+  > - En "Datos necesarios" de la tarjeta de análisis de la Sentencia 2, dejá solo: autorizacionSolicitud (confirmación del jugador), valoracionConocida y distanciaAlEquipoKm.
+  > - En el desplegable 2A, en el ítem "Exigido por la sentencia", quitá lo de la disponibilidad de lugares. En el ítem "Decisión de diseño del grupo", agregá: "Disponibilidad de lugares (lugaresDisponibles), para comprobar que la evaluación manual no reserva lugar."
+
+---
+
 ## Cómo Ejecutar el Proyecto
 
 El proyecto no requiere instalación de dependencias ni servidores adicionales:
