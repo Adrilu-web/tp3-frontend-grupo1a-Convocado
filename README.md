@@ -161,13 +161,14 @@ A continuación se documenta cronológicamente la secuencia real de prompts e in
 ## Aportes de Silvia Podberezski
 
 - **Aplicación:** Cursor. **Modelo:** Cursor Grok 4.6 Medium.
-- **Rol:** revisión del trabajo de la landing contra la consigna y corrección de errores conceptuales de los diagramas.
+- **Rol:** revisión del trabajo de la landing contra la consigna y corrección de errores conceptuales de los diagramas y casos recorridos (cumple, no cumple y caso límite) en cada flujo.
 - **Qué se pidió al agente:**
   1. En `index.html`, en el rombo de decisión del Diagrama 2 y en la fila "Decisión:" de la tabla del desplegable 2B, reemplazar "¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?" por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?". El código mostrado debe seguir exactamente igual.
   2. En `index.html`, la Sentencia 2 no pide consultar los lugares disponibles ni "Jugador y Equipo", así que no deben figurar como obligatorios:
      - En el Diagrama 2, cambiar las etiquetas "lugaresDisponibles" y "Datos: Jugador y Equipo" de `pill-mandatory` a `pill-design`. Cambiar el título del nodo de consulta del agente por: "Consulta valoración conocida y distancia al equipo".
      - En "Datos necesarios" de la tarjeta de análisis de la Sentencia 2, dejar solo: `autorizacionSolicitud` (confirmación del jugador), `valoracionConocida` y `distanciaAlEquipoKm`.
      - En el desplegable 2A, en el ítem "Exigido por la sentencia", quitar lo de la disponibilidad de lugares. En el ítem "Decisión de diseño del grupo", agregar: "Disponibilidad de lugares (`lugaresDisponibles`), para comprobar que la evaluación manual no reserva lugar."
+  3. agregar un desplegable 'Casos recorridos' en cada sentencia.
 - **Prompt enviado:**
   > 1. En index.html, en el rombo de decisión del Diagrama 2 y en la fila "Decisión:" de la tabla del desplegable 2B, reemplazá "¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?" por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?". El código mostrado debe seguir exactamente igual.
   >
@@ -175,6 +176,23 @@ A continuación se documenta cronológicamente la secuencia real de prompts e in
   > - En el Diagrama 2, cambiá las etiquetas "lugaresDisponibles" y "Datos: Jugador y Equipo" de pill-mandatory a pill-design. Cambiá el título del nodo de consulta del agente por: "Consulta valoración conocida y distancia al equipo".
   > - En "Datos necesarios" de la tarjeta de análisis de la Sentencia 2, dejá solo: autorizacionSolicitud (confirmación del jugador), valoracionConocida y distanciaAlEquipoKm.
   > - En el desplegable 2A, en el ítem "Exigido por la sentencia", quitá lo de la disponibilidad de lugares. En el ítem "Decisión de diseño del grupo", agregá: "Disponibilidad de lugares (lugaresDisponibles), para comprobar que la evaluación manual no reserva lugar."
+
+- **Prompt enviado (2):**
+  > Hacé SOLO este cambio. Podés modificar únicamente index.html y styles.css (solo si hace falta). No modifiques ningún otro archivo ni ninguna otra línea. No hagas commit ni push.
+  >
+  > En index.html, en la Sentencia 1 y en la Sentencia 2, agregá al final de cada grupo de desplegables (después de 1B y de 2B) un <details class="custom-details"> llamado "Casos recorridos", cerrado por defecto, con la misma estructura que 1A y 1B (summary con details-summary, span, summary-chevron y div details-body). Dentro, una tabla con la clase origin-table y columnas: entrada, qué evalúa el agente, camino SÍ/NO, resultado. En lo que la sentencia define usá "table-badge badge-mandatory" (Obligatorio Sentencia); en lo que no define, "table-badge badge-design" (Diseño Grupo 01). Deben abrir y cerrar con clic y teclado, y el botón "Expandir todo / Contraer todo" debe seguir funcionando. Filas:
+  >
+  > Sentencia 1:
+  > - Cumple: el capitán intenta aceptar y lugaresDisponibles = 0 → SÍ → informa "cupo completo" e impide la aceptación.
+  > - No cumple: el capitán intenta aceptar y lugaresDisponibles = 2 → NO → sigue el flujo normal de aceptación (decisión del grupo).
+  > - Caso límite: lugaresDisponibles = 1 → NO → el capitán acepta y queda 0 lugares (decisión del grupo); el siguiente intento de aceptar cae en la regla de la sentencia: informa cupo completo e impide la aceptación.
+  >
+  > Sentencia 2:
+  > - Cumple: el jugador autoriza, valoración 3,5, equipo a 4 km → SÍ → se deriva al capitán para evaluación manual y no reserva lugar.
+  > - No cumple: el jugador autoriza, valoración 4,5, equipo a 5 km → NO → flujo estándar (decisión del grupo).
+  > - Caso límite: el jugador autoriza, valoración 4,0 y equipo a 10 km → SÍ por la distancia (4,0 no es menor que 4, pero 10 km es "diez kilómetros o más") → se deriva al capitán, que realiza la evaluación manual, y no reserva lugar.
+  >
+  > No hagas commit ni push. Al finalizar, listá qué archivo y qué líneas modificaste.
 
 ---
 
