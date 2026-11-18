@@ -203,7 +203,7 @@
           <div class="node-title">El Jugador autoriza la solicitud para participar</div>
           <div class="node-meta">
             <span class="meta-pill pill-mandatory">Entrada: <code>autorizacionSolicitud</code></span>
-            <span class="meta-pill pill-mandatory">Datos: Jugador y Equipo</span>
+            <span class="meta-pill pill-design">Datos: Jugador y Equipo</span>
           </div>
         </div>
 
@@ -213,11 +213,11 @@
         <div class="node node-agent-query node-mandatory">
           <span class="node-origin-badge badge-mandatory">Obligatorio Sentencia</span>
           <div class="node-type">🤖 CONSULTA DEL AGENTE</div>
-          <div class="node-title">Consulta valoración conocida, distancia al equipo y lugares disponibles</div>
+          <div class="node-title">Consulta valoración conocida y distancia al equipo</div>
           <div class="node-meta">
             <span class="meta-pill pill-mandatory"><code>valoracionConocida</code></span>
             <span class="meta-pill pill-mandatory"><code>distanciaAlEquipoKm</code></span>
-            <span class="meta-pill pill-mandatory"><code>lugaresDisponibles</code></span>
+            <span class="meta-pill pill-design"><code>lugaresDisponibles</code></span>
           </div>
         </div>
 
@@ -229,8 +229,7 @@
             <span class="node-origin-badge badge-mandatory">Condición Central (Sentencia 2)</span>
             <div class="node-type">◆ DECISIÓN DEL AGENTE</div>
             <div class="node-question">
-              ¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es
-              mayor o igual a 10 km?
+              ¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?
             </div>
             <div class="node-code">
               <code>autorizoSolicitud && (valoracionConocida &lt; 4 || distanciaAlEquipoKm &gt;= 10)</code></div>

@@ -91,6 +91,7 @@ El desarrollo del proyecto se organizó distinguiendo tres niveles de trabajo:
 | :--- | :--- | :--- | :--- |
 | **Antigravity** | **Modelo observado durante el desarrollo:** Gemini 4 Argon (Medium) <br><br> **Modelo en etapas anteriores:** modelo no informado | Redacción estructurada del análisis funcional, especificación textual de los diagramas de flujo, elaboración del wireframe textual, generación inicial de código HTML, CSS y JavaScript para los diagramas visuales y la landing page, adaptación responsive y redacción del `README.md`. | Alineación estricta a la consigna eliminando suposiciones adicionales, separación entre consecuencias obligatorias y decisiones del grupo, eliminación de sección duplicada, ajuste del wireframe, sustitución de iconos genéricos por `assets/logo.webp`, aplicación de la paleta del logo oficial, cambio dinámico de botones *"Expandir todo"* / *"Contraer todo"*, adaptación responsive e incorporación de integrantes y trazabilidad de IA. |
 | **Cursor** | Cursor Grok 4.6 Medium | Revisión de la landing contra la consigna y corrección de errores conceptuales en los diagramas de la Sentencia 2. | Ajuste de la condición lógica del rombo de decisión y tabla 2B; cambio de etiquetas `lugaresDisponibles` y `Datos: Jugador y Equipo` de `pill-mandatory` a `pill-design`; actualización de datos necesarios y del desplegable 2A. |
+| **Antigravity** | Claude Sonnet 4.6 (Thinking) | Rotulado de los casos recorridos y agregado de casos límite en cada flujo; alineación de diagramas.html y del análisis funcional con index.html. | Etiquetas Cumple / No cumple / Caso límite, tres filas nuevas en "Casos recorridos" y corrección de la Sentencia 2 (lugaresDisponibles y "Jugador y Equipo" como decisión de diseño). |
 
 ---
 
@@ -218,6 +219,7 @@ Modifica únicamente README.md sin alterar ningún otro archivo del proyecto."*
      - En el desplegable 2A, en el ítem "Exigido por la sentencia", quitar lo de la disponibilidad de lugares. En el ítem "Decisión de diseño del grupo", agregar: "Disponibilidad de lugares (`lugaresDisponibles`), para comprobar que la evaluación manual no reserva lugar."
   3. agregar un desplegable 'Casos recorridos' en cada sentencia.
   4. Rotular los casos recorridos como Cumple / No cumple / Caso límite y agregar casos límite faltantes en cada flujo: Sentencia 1 (lugaresDisponibles = 0 tras aceptar al último jugador) y Sentencia 2 (valoración 4,0 con 9,9 km, y valoración 3,9 con 5 km), para probar cada borde (== 0, < 4, >= 10) por separado.
+  5. Alinear diagramas.html y analisis_funcional_convocado_grupo01.md con la corrección de la Sentencia 2 ya hecha en index.html.
 - **Prompt enviado:**
   > 1. En index.html, en el rombo de decisión del Diagrama 2 y en la fila "Decisión:" de la tabla del desplegable 2B, reemplazá "¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?" por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?". El código mostrado debe seguir exactamente igual.
   >
@@ -278,6 +280,29 @@ Modifica únicamente README.md sin alterar ningún otro archivo del proyecto."*
   >
   > Al finalizar, listá qué archivos y qué líneas modificaste.
   
+- **Aplicación:** Antigravity. **Modelo:** Claude Sonnet 4.6 (Thinking).
+
+- **Prompt enviado (4):**
+  > Hacé SOLO estos cambios. Modificá únicamente diagramas.html, analisis_funcional_convocado_grupo01.md y README.md. No toques index.html, styles.css, diagramas.css ni script.js. No cambies ninguna otra línea, no ejecutes servidores ni capturas, no hagas commit ni push. El objetivo es alinear con lo que ya está corregido en index.html (Sentencia 2: lugaresDisponibles y "Jugador y Equipo" son decisión de diseño del grupo, no obligatorios de la sentencia).
+  >
+  > PARTE 1 — diagramas.html (solo el Diagrama de la Sentencia 2; no toques el de la Sentencia 1):
+  > a) En el nodo de intervención humana inicial, cambiá la clase de <span class="meta-pill pill-mandatory">Datos: Jugador y Equipo</span> a pill-design.
+  > b) En el nodo "CONSULTA DEL AGENTE", reemplazá el título por: "Consulta valoración conocida y distancia al equipo", y cambiá la clase del pill de <code>lugaresDisponibles</code> a pill-design.
+  > c) En la pregunta de la decisión (node-question) reemplazá el texto por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?". No cambies el <code> de node-code.
+  >
+  > PARTE 2 — analisis_funcional_convocado_grupo01.md (solo Sentencia 2):
+  > a) En la sección 2, "Datos necesarios (estrictos de la sentencia)", eliminá el ítem `lugaresDisponibles`.
+  > b) En la sección 3, propuesta de la Sentencia 2, agregá en "Decisión de diseño agregada por la propuesta del grupo" una viñeta: "Consultar la disponibilidad de lugares (`lugaresDisponibles`) para comprobar que la evaluación manual no reserva lugar."
+  > c) En la sección 4, en "Datos exigidos por las sentencias" quitá la mención "y para asegurar la no reserva (`Sentencia 2`)" del punto 1, y en "Datos agregados como decisión de diseño del grupo" agregá la viñeta de la disponibilidad de lugares para la Sentencia 2.
+  > d) En la sección 8.2, punto 3 ("Información de entrada"): marcá "Datos de referencia del jugador y del equipo" como "Decisión de diseño del grupo". En el punto 4: marcá la consulta de lugares disponibles como "Decisión de diseño del grupo" y quitá "Obligatorio de la sentencia" de esa línea.
+  > e) En la sección 8.2, reemplazá la pregunta de la decisión (en el punto 5 y en la tabla de separación) por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?".
+  >
+  > PARTE 3 — README.md:
+  > a) En la tabla "Herramientas de IA Utilizadas" agregá una fila al final: | **Antigravity** | Claude Sonnet 4.6 (Thinking) | Rotulado de los casos recorridos y agregado de casos límite en cada flujo; alineación de diagramas.html y del análisis funcional con index.html. | Etiquetas Cumple / No cumple / Caso límite, tres filas nuevas en "Casos recorridos" y corrección de la Sentencia 2 (lugaresDisponibles y "Jugador y Equipo" como decisión de diseño). |
+  > b) En "## Aportes de Silvia Podberezski", antes del "---" que la cierra, agregá una línea en blanco y luego: "- **Prompt enviado (4):**" con una cita (>) que copie literalmente las PARTES 1, 2 y 3 de este mensaje, y debajo "- **Aplicación:** Antigravity. **Modelo:** Claude Sonnet 4.6 (Thinking)." Además agregá a la lista "Qué se pidió al agente" el ítem 5: "Alinear diagramas.html y analisis_funcional_convocado_grupo01.md con la corrección de la Sentencia 2 ya hecha en index.html."
+  > c) No modifiques ninguna otra sección.
+  >
+  > Al finalizar, listá qué archivos y qué líneas modificaste.
 - **Aplicación:** Antigravity. **Modelo:** Claude Sonnet 4.6 (Thinking).
 
 ---

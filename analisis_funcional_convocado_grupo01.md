@@ -32,7 +32,6 @@
   * `autorizacionSolicitud`: Acción del jugador autorizando el envío de su solicitud.
   * `valoracionConocida`: Valor numérico de la calificación conocida del jugador.
   * `distanciaAlEquipoKm`: Distancia en kilómetros entre el jugador y el equipo.
-  * `lugaresDisponibles`: Cantidad de lugares libres en el equipo/partido.
 * **Condición:**
   * El jugador autoriza una solicitud **Y** se cumple al menos una de estas condiciones (`OR` lógico):
     * `valoracionConocida < 4`
@@ -60,18 +59,20 @@
   * Si se cumple al menos una condición, cambiar el destino de la solicitud a "Evaluación manual del capitán" sin descontar ni reservar un lugar en el cupo.
 * **Decisión de diseño agregada por la propuesta del grupo:**
   * Al derivar la solicitud al capitán, el agente adjunta una **etiqueta de motivo de derivación** (indicando explícitamente si fue derivada por *"Valoración menor a 4"*, por *"Distancia de 10 km o más"*, o por *ambas*), facilitando la lectura del capitán sin alterar las reglas de negocio.
+  * Consultar la disponibilidad de lugares (`lugaresDisponibles`) para comprobar que la evaluación manual no reserva lugar.
 
 ---
 
 ## 4. ¿Qué información consultaría el futuro agente?
 
 ### Datos exigidos por las sentencias:
-1. **Disponibilidad de lugares** en el partido/equipo al momento de aceptar (`Sentencia 1`) y para asegurar la no reserva (`Sentencia 2`).
+1. **Disponibilidad de lugares** en el partido/equipo al momento de aceptar (`Sentencia 1`).
 2. **Valoración conocida** del jugador (`Sentencia 2`).
 3. **Distancia en kilómetros** entre el jugador y el equipo (`Sentencia 2`).
 
 ### Datos agregados como decisión de diseño del grupo:
 * Identificador o nombre del jugador y del equipo para mostrarlos de forma legible en la interfaz del capitán y del jugador.
+* Disponibilidad de lugares (`lugaresDisponibles`) para comprobar que la evaluación manual no reserva lugar (`Sentencia 2`).
 
 ---
 
@@ -167,13 +168,13 @@ Para llevar este análisis al desarrollo **Front End**, debemos separar lo que l
    * El **Jugador** autoriza la solicitud.
 3. **Información de entrada:**
    * Autorización de la solicitud por parte del jugador (`autorizacionSolicitud`) — *Obligatorio de la sentencia*.
-   * Datos de referencia del jugador y del equipo — *Obligatorio de la sentencia*.
+   * Datos de referencia del jugador y del equipo — *Decisión de diseño del grupo*.
 4. **Consulta que realiza el futuro agente:**
    * Consulta la **valoración conocida** del jugador (`valoracionConocida`) — *Obligatorio de la sentencia*.
    * Consulta la **distancia al equipo** en kilómetros (`distanciaAlEquipoKm`) — *Obligatorio de la sentencia*.
-   * Verifica la **cantidad de lugares disponibles** (`lugaresDisponibles`) para garantizar que no se reserve lugar — *Obligatorio de la sentencia*.
+   * Verifica la **cantidad de lugares disponibles** (`lugaresDisponibles`) para garantizar que no se reserve lugar — *Decisión de diseño del grupo*.
 5. **Decisión (Condición central):**
-   * **¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?**
+   * **¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?**
 6. **Camino SÍ (El jugador autorizó la solicitud y se cumple al menos una de las condiciones: `valoracion < 4` O `distancia >= 10 km`):**
    * **Acción (Obligatoria de la sentencia):** El agente deriva la solicitud al capitán para evaluación manual y mantiene sin cambios los lugares disponibles.
    * **Acción (Decisión de diseño del grupo):** El agente agrega una etiqueta indicando qué condición motivó la derivación (*valoración menor que 4*, *distancia mayor o igual a 10 km*, o *ambas*).
@@ -190,7 +191,7 @@ Para llevar este análisis al desarrollo **Front End**, debemos separar lo que l
 | :--- | :--- |
 | Intervención inicial del jugador autorizando la solicitud | **Elemento obligatorio de la sentencia** |
 | Consulta de valoración conocida (`< 4`) y distancia al equipo (`>= 10 km`) | **Elemento obligatorio de la sentencia** |
-| Decisión: *"¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?"* | **Elemento obligatorio de la sentencia** |
+| Decisión: *"¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?"* | **Elemento obligatorio de la sentencia** |
 | Camino SÍ: Derivar la solicitud al capitán para evaluación manual y no reservar un lugar | **Elemento obligatorio de la sentencia** |
 | Intervención humana del capitán para realizar la evaluación manual | **Elemento obligatorio de la sentencia** |
 | Etiqueta informativa con el motivo específico de la derivación (valoración, distancia o ambas) | **Decisión de diseño agregada por el grupo** |
