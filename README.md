@@ -324,6 +324,21 @@ Modifica únicamente README.md sin alterar ningún otro archivo del proyecto."*
 
 ---
 
+## Aportes de Magalí Pintos
+
+- **Aplicación:** Antigravity. **Modelo:** Gemini 4 Argon (Medium) / modelo no informado en etapas iniciales.
+- **Rol:** dirección de la maquetación completa de la landing en `index.html`, incorporación del logo original de la startup en `assets/logo.webp` (Prompts 5 y 6) y publicación del sitio en producción mediante Vercel (Prompt 13— Despliegue en Vercel).
+- **Qué se pidió al agente:**
+  1. Construir la estructura completa de la landing page en `index.html` con enfoque desktop-first (Header sticky, Hero con presentación de Convocado, sección "Nuestro Enfoque", bloques de Sentencia 1 y Sentencia 2 integrando los diagramas visuales, desplegables nativos `<details>`/`<summary>` y Footer del Grupo 01).
+  2. Reemplazar el ícono SVG genérico inicial por el archivo original `assets/logo.webp` en el Header, Hero y Footer, conservando su proporción original y texto alternativo descriptivo.
+  3. Publicar el proyecto en producción en Vercel (https://tp3-frontend-grupo1a-convocado.vercel.app) y documentar el enlace final y el proceso de despliegue en `README.md`.
+- **Prompts enviados:**
+  > *"Los diagramas visuales fueron aprobados. Genera ahora la landing completa para Convocado. Requisitos: HTML, CSS y JavaScript solamente. No usar React. Desktop first. Diseño moderno y profesional. Header sticky. Hero con logo y descripción de Convocado. Sección Nuestro Enfoque. Bloque completo de Sentencia 1. Bloque completo de Sentencia 2. Integrar y reutilizar los diagramas visuales ya desarrollados. Utilizar details/summary para los desplegables. Footer con información del Grupo 01. Diferenciar visualmente: elementos obligatorios de la sentencia, decisiones de diseño del grupo. Genera los archivos finales dentro del proyecto. Verifica que la landing pueda abrirse localmente desde index.html."*
+  >
+  > *"La landing no está mostrando el logo original de la startup Convocado. Actualmente utilizaste un icono SVG genérico de una pelota de fútbol. La consigna exige conservar el logo original de la startup completo y legible. El archivo original del logo está guardado en: assets/logo.webp [...] Muestra el logo original en: el header; el hero; el footer. Conserva siempre la proporción original de la imagen. No recortes ni deformes el logo. Añade un texto alternativo descriptivo: 'Logo original de la startup Convocado'."*
+
+---
+
 ## Cómo Ejecutar el Proyecto
 
 El proyecto no requiere instalación de dependencias ni servidores adicionales:
