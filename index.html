@@ -314,22 +314,28 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>El capitán intenta aceptar y <code>lugaresDisponibles = 0</code>. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
+                        <td><strong>Cumple:</strong> el capitán intenta aceptar y <code>lugaresDisponibles = 0</code>. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                         <td>Si el capitán intenta aceptar y no queda lugar (<code>lugaresDisponibles == 0</code>). <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                         <td>SÍ <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                         <td>Informa <em>"cupo completo"</em> e impide la aceptación. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                       </tr>
                       <tr>
-                        <td>El capitán intenta aceptar y <code>lugaresDisponibles = 2</code>. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
+                        <td><strong>No cumple:</strong> el capitán intenta aceptar y <code>lugaresDisponibles = 2</code>. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                         <td>Si el capitán intenta aceptar y no queda lugar. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                         <td>NO <span class="table-badge badge-design">Diseño Grupo 01</span></td>
                         <td>Sigue el flujo normal de aceptación. <span class="table-badge badge-design">Diseño Grupo 01</span></td>
                       </tr>
                       <tr>
-                        <td><code>lugaresDisponibles = 1</code> y el capitán intenta aceptar. <span class="table-badge badge-design">Diseño Grupo 01</span></td>
+                        <td><strong>Caso límite:</strong> <code>lugaresDisponibles = 1</code> y el capitán intenta aceptar. <span class="table-badge badge-design">Diseño Grupo 01</span></td>
                         <td>Si el capitán intenta aceptar y no queda lugar. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                         <td>NO (primer intento) <span class="table-badge badge-design">Diseño Grupo 01</span></td>
                         <td>El capitán acepta y queda <code>0</code> lugares. <span class="table-badge badge-design">Diseño Grupo 01</span> El siguiente intento de aceptar cae en la regla de la sentencia: informa cupo completo e impide la aceptación. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Caso límite:</strong> <code>lugaresDisponibles = 0</code> justo después de aceptar al último jugador (incluye un segundo clic o un segundo capitán intentando aceptar). <span class="table-badge badge-design">Diseño Grupo 01</span></td>
+                        <td>Si el capitán intenta aceptar y no queda lugar (<code>lugaresDisponibles == 0</code>). <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
+                        <td>SÍ <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
+                        <td>Informa <em>"cupo completo"</em> e impide la aceptación; el contador no cambia. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                       </tr>
                     </tbody>
                   </table>
@@ -660,22 +666,34 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>El jugador autoriza, valoración 3,5, equipo a 4 km. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
+                        <td><strong>Cumple:</strong> el jugador autoriza, valoración 3,5, equipo a 4 km. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                         <td>Si el jugador autorizó la solicitud y se cumple al menos una condición: valoración conocida menor que 4 o distancia al equipo de 10 km o más. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                         <td>SÍ <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                         <td>Se deriva al capitán para evaluación manual y no reserva lugar. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                       </tr>
                       <tr>
-                        <td>El jugador autoriza, valoración 4,5, equipo a 5 km. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
+                        <td><strong>No cumple:</strong> el jugador autoriza, valoración 4,5, equipo a 5 km. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                         <td>Si el jugador autorizó la solicitud y se cumple al menos una condición: valoración conocida menor que 4 o distancia al equipo de 10 km o más. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                         <td>NO <span class="table-badge badge-design">Diseño Grupo 01</span></td>
                         <td>Flujo estándar. <span class="table-badge badge-design">Diseño Grupo 01</span></td>
                       </tr>
                       <tr>
-                        <td>El jugador autoriza, valoración 4,0 y equipo a 10 km. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
+                        <td><strong>Caso límite:</strong> el jugador autoriza, valoración 4,0 y equipo a 10 km. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                         <td>SÍ por la distancia (4,0 no es menor que 4, pero 10 km es <em>"diez kilómetros o más"</em>). <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                         <td>SÍ <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                         <td>Se deriva al capitán, que realiza la evaluación manual, y no reserva lugar. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Caso límite:</strong> el jugador autoriza, valoración 4,0 y equipo a 9,9 km. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
+                        <td>4,0 no es menor que 4 y 9,9 km no llega a diez kilómetros: no se cumple ninguna de las dos condiciones. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
+                        <td>NO <span class="table-badge badge-design">Diseño Grupo 01</span></td>
+                        <td>Flujo estándar. <span class="table-badge badge-design">Diseño Grupo 01</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Caso límite:</strong> el jugador autoriza, valoración 3,9 y equipo a 5 km. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
+                        <td>SÍ por la valoración (3,9 es menor que 4), aunque 5 km no llega a diez kilómetros. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
+                        <td>SÍ <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
+                        <td>Se deriva al capitán para evaluación manual y no reserva lugar. <span class="table-badge badge-mandatory">Obligatorio Sentencia</span></td>
                       </tr>
                     </tbody>
                   </table>

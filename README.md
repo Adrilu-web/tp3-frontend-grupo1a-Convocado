@@ -217,6 +217,7 @@ Modifica únicamente README.md sin alterar ningún otro archivo del proyecto."*
      - En "Datos necesarios" de la tarjeta de análisis de la Sentencia 2, dejar solo: `autorizacionSolicitud` (confirmación del jugador), `valoracionConocida` y `distanciaAlEquipoKm`.
      - En el desplegable 2A, en el ítem "Exigido por la sentencia", quitar lo de la disponibilidad de lugares. En el ítem "Decisión de diseño del grupo", agregar: "Disponibilidad de lugares (`lugaresDisponibles`), para comprobar que la evaluación manual no reserva lugar."
   3. agregar un desplegable 'Casos recorridos' en cada sentencia.
+  4. Rotular los casos recorridos como Cumple / No cumple / Caso límite y agregar casos límite faltantes en cada flujo: Sentencia 1 (lugaresDisponibles = 0 tras aceptar al último jugador) y Sentencia 2 (valoración 4,0 con 9,9 km, y valoración 3,9 con 5 km), para probar cada borde (== 0, < 4, >= 10) por separado.
 - **Prompt enviado:**
   > 1. En index.html, en el rombo de decisión del Diagrama 2 y en la fila "Decisión:" de la tabla del desplegable 2B, reemplazá "¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?" por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?". El código mostrado debe seguir exactamente igual.
   >
@@ -241,6 +242,43 @@ Modifica únicamente README.md sin alterar ningún otro archivo del proyecto."*
   > - Caso límite: el jugador autoriza, valoración 4,0 y equipo a 10 km → SÍ por la distancia (4,0 no es menor que 4, pero 10 km es "diez kilómetros o más") → se deriva al capitán, que realiza la evaluación manual, y no reserva lugar.
   >
   > No hagas commit ni push. Al finalizar, listá qué archivo y qué líneas modificaste.
+
+- **Prompt enviado (3):**
+  > Hacé SOLO estos cambios. Modificá únicamente index.html y README.md. No toques styles.css, script.js, diagramas.html, diagramas.css ni el .md de análisis. No cambies ninguna otra línea, no agregues columnas ni clases nuevas, no ejecutes servidores ni capturas, no hagas commit ni push.
+  >
+  > PARTE 1 — index.html. En los dos desplegables "Casos recorridos" (el de la Sentencia 1 y el de la Sentencia 2), usá las clases y la estructura de las filas que ya existen (table-badge badge-mandatory / badge-design).
+  >
+  > A) Rotulado. En la primera celda (Entrada) de cada fila existente, anteponé el rótulo en negrita con <strong>:
+  > - Sentencia 1: fila 1 "Cumple:", fila 2 "No cumple:", fila 3 "Caso límite:".
+  > - Sentencia 2: fila 1 "Cumple:", fila 2 "No cumple:", fila 3 "Caso límite:".
+  > No cambies nada más del texto de esas filas.
+  >
+  > B) Sentencia 1. Agregá una fila nueva al final del tbody:
+  > - Entrada: "<strong>Caso límite:</strong> <code>lugaresDisponibles = 0</code> justo después de aceptar al último jugador (incluye un segundo clic o un segundo capitán intentando aceptar)." + badge-design
+  > - Qué evalúa el agente: "Si el capitán intenta aceptar y no queda lugar (<code>lugaresDisponibles == 0</code>)." + badge-mandatory
+  > - Camino SÍ/NO: "SÍ" + badge-mandatory
+  > - Resultado: "Informa <em>"cupo completo"</em> e impide la aceptación; el contador no cambia." + badge-mandatory
+  >
+  > C) Sentencia 2. Agregá dos filas nuevas al final del tbody:
+  > Fila 1:
+  > - Entrada: "<strong>Caso límite:</strong> el jugador autoriza, valoración 4,0 y equipo a 9,9 km." + badge-mandatory
+  > - Qué evalúa el agente: "4,0 no es menor que 4 y 9,9 km no llega a diez kilómetros: no se cumple ninguna de las dos condiciones." + badge-mandatory
+  > - Camino: "NO" + badge-design
+  > - Resultado: "Flujo estándar." + badge-design
+  > Fila 2:
+  > - Entrada: "<strong>Caso límite:</strong> el jugador autoriza, valoración 3,9 y equipo a 5 km." + badge-mandatory
+  > - Qué evalúa el agente: "SÍ por la valoración (3,9 es menor que 4), aunque 5 km no llega a diez kilómetros." + badge-mandatory
+  > - Camino: "SÍ" + badge-mandatory
+  > - Resultado: "Se deriva al capitán para evaluación manual y no reserva lugar." + badge-mandatory
+  >
+  > PARTE 2 — README.md. Modificá solo la sección "## Aportes de Silvia Podberezski":
+  > 1. En la lista "Qué se pidió al agente", agregá el ítem 4: "Rotular los casos recorridos como Cumple / No cumple / Caso límite y agregar casos límite faltantes en cada flujo: Sentencia 1 (lugaresDisponibles = 0 tras aceptar al último jugador) y Sentencia 2 (valoración 4,0 con 9,9 km, y valoración 3,9 con 5 km), para probar cada borde (== 0, < 4, >= 10) por separado."
+  > 2. Al final de esa sección, antes del "---", agregá "- **Prompt enviado (3):**" con una cita (>) que copie literalmente las PARTES 1 y 2 de este mensaje, y debajo "- **Aplicación:** Antigravity. **Modelo:** Claude Sonnet 4.6 (Thinking)."
+  > 3. No modifiques ninguna otra sección ni renumeres nada.
+  >
+  > Al finalizar, listá qué archivos y qué líneas modificaste.
+  
+- **Aplicación:** Antigravity. **Modelo:** Claude Sonnet 4.6 (Thinking).
 
 ---
 
