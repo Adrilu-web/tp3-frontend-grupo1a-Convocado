@@ -147,7 +147,7 @@ A continuación se documenta cronológicamente la secuencia real de prompts e in
 
 ### 8. Responsive
 - **Prompt de adaptación multi-dispositivo y footer de equipo:**
-  > *"Realiza una ronda final de mejoras enfocadas en entrega académica. 1. FOOTER: Agregar una sección de integrantes dentro del footer [...] 2. RESPONSIVE DESIGN: Crear una versión responsive completa. Objetivos: Tablet (1024px aprox.), Tablet pequeña (768px aprox.), Mobile (480px aprox.). Adaptar: HEADER, HERO, NUESTRO ENFOQUE, SENTENCIA 1 y SENTENCIA 2, DIAGRAMAS, FOOTER. Evitar: overflow horizontal, elementos cortados, texto fuera de pantalla."*
+  cRealiza una ronda final de mejoras enfocadas en entrega académica. 1. FOOTER: Agregar una sección de integrantes dentro del footer [...] 2. RESPONSIVE DESIGN: Crear una versión responsive completa. Objetivos: Tablet (1024px aprox.), Tablet pequeña (768px aprox.), Mobile (480px aprox.). Adaptar: HEADER, HERO, NUESTRO ENFOQUE, SENTENCIA 1 y SENTENCIA 2, DIAGRAMAS, FOOTER. Evitar: overflow horizontal, elementos cortados, texto fuera de pantalla."*
 
 ### 9. README y documentación
 - **Creación inicial y refinamiento de trazabilidad en `README.md`:** se solicitó primero generar el `README.md` académico del proyecto y, finalmente, actualizar únicamente `README.md` para no atribuir autoría humana directa del código generado inicialmente por Antigravity, separar los aportes de análisis/validación frente a la implementación asistida por IA, detallar el modelo observado (`Gemini 4 Argon (Medium)`) y el modelo no informado en etapas previas, e incorporar este registro cronológico de prompts y cambios solicitados.
@@ -173,6 +173,37 @@ A continuación se documenta cronológicamente la secuencia real de prompts e in
 - **Corrección solicitada:** crear el apartado `## Enlaces de Entrega` en la parte superior del `README.md`, justo debajo de `## Integrantes`, incluyendo los enlaces al repositorio y a la publicación en Vercel junto con el bloque de comprobación de funcionamiento.
 - **Resultado obtenido:** sección `## Enlaces de Entrega` incorporada al inicio de `README.md` con ambos enlaces identificados y la constancia de verificación en ventana privada.
 
+## Prompt 13 — Despliegue en Vercel
+
+- **Proyecto:** Convocado — TP3 Frontend Grupo 1A.
+- **Tecnologías:** HTML, CSS y JavaScript.
+- **Plataforma:** Vercel.
+- **Método utilizado:** Vercel CLI, sin integración automática con GitHub.
+- **URL de producción:** [https://tp3-frontend-grupo1a-convocado.vercel.app](https://tp3-frontend-grupo1a-convocado.vercel.app).
+
+**Prompt de despliegue (síntesis del objetivo solicitado a la IA; no es una transcripción literal):**
+
+> Publicá en producción el proyecto Convocado — TP3 Frontend Grupo 1A mediante Vercel CLI. El proyecto utiliza HTML, CSS y JavaScript y su repositorio es https://github.com/Adrilu-web/tp3-frontend-grupo1a-Convocado. No modifiques el código HTML, CSS ni JavaScript y no conectes automáticamente el repositorio de GitHub con Vercel. Al finalizar, informá la URL pública de producción.
+
+**Estado y alcance:** el despliegue inicial ya se realizó mediante Vercel CLI, sin integración automática con GitHub, según la información proporcionada por el equipo. Esta intervención se limita a documentar ese despliegue en `README.md`; no se atribuye su ejecución autónoma al agente que realiza esta actualización ni se efectuó un nuevo despliegue. La comprobación de acceso consignada en Enlaces de Entrega se conserva como registro previo del equipo; no representa una nueva verificación realizada en esta actualización.
+
+Esta sección conserva el título solicitado «Prompt 13 — Despliegue en Vercel» y se incorpora de forma independiente, sin renumerar ni reemplazar las iteraciones existentes del registro de prompts.
+
+
+## Prompt 14 — incorporación de aportes de Judith Leonardo al archivo README.md:**
+
+> *"Redacta y agrega en README.md una nueva sección llamada "## Aportes de Judith Leonardo", justo debajo de "## Aportes de Silvia Podberezski", teniendo en cuenta mis commits en el repositorio y los prompts utilizados en mis etapas.
+
+Mantén el mismo formato de la sección anterior e incluye:
+- Aplicación: Antigravity. Modelo: Gemini 4 Argon (Medium).
+- Rol: dirección de la identidad visual y diseño responsive en styles.css (Prompts 7 y 8), auditoría del proyecto frente a la rúbrica oficial e incorporación del apartado de enlaces de entrega y comprobación en README.md (Prompt 12).
+- Qué se pidió al agente:
+  1. Alinear la identidad visual de toda la landing en styles.css con la paleta cromática oficial del logo de Convocado (#0f766e, #10b981, #34d399, #fbbf24, #ffffff, #081120), diferenciando visualmente los bloques obligatorios de la sentencia frente a las decisiones de diseño del Grupo 01.
+  2. Estilizar la sección de integrantes del Grupo 01 en el footer y construir la adaptación responsive completa para Tablet (1024px), Tablet pequeña (768px) y Mobile (480px) evitando desbordes horizontales.
+  3. Revisar el cumplimiento integral de la consigna y agregar en README.md el apartado "## Enlaces de Entrega" (repositorio en GitHub y landing en Vercel con constancia de verificación sin sesión) junto con el registro del Prompt 12.
+- Prompts enviados: cita los prompts correspondientes a la identidad visual (Prompt 7), diseño responsive (Prompt 8) e incorporación del apartado de enlaces de entrega (Prompt 12).
+
+Modifica únicamente README.md sin alterar ningún otro archivo del proyecto."*
 ---
 
 ## Aportes de Silvia Podberezski
@@ -221,21 +252,12 @@ A continuación se documenta cronológicamente la secuencia real de prompts e in
   1. Alinear la identidad visual de toda la landing en `styles.css` con la paleta cromática oficial del logo de **Convocado** (`#0f766e`, `#10b981`, `#34d399`, `#fbbf24`, `#ffffff`, `#081120`), diferenciando visualmente los bloques obligatorios de la sentencia frente a las decisiones de diseño del Grupo 01.
   2. Estilizar la sección de integrantes del Grupo 01 en el footer y construir la adaptación responsive completa para Tablet (`1024px`), Tablet pequeña (`768px`) y Mobile (`480px`) evitando desbordes horizontales.
   3. Revisar el cumplimiento integral de la consigna y agregar en `README.md` el apartado `## Enlaces de Entrega` (repositorio en GitHub y landing en Vercel con constancia de verificación sin sesión) junto con el registro del Prompt 12.
-## Prompt 10 — Despliegue en Vercel
-
-- **Proyecto:** Convocado — TP3 Frontend Grupo 1A.
-- **Tecnologías:** HTML, CSS y JavaScript.
-- **Plataforma:** Vercel.
-- **Método utilizado:** Vercel CLI, sin integración automática con GitHub.
-- **URL de producción:** [https://tp3-frontend-grupo1a-convocado.vercel.app](https://tp3-frontend-grupo1a-convocado.vercel.app).
-
-**Prompt de despliegue (síntesis del objetivo solicitado a la IA; no es una transcripción literal):**
-
-> Publicá en producción el proyecto Convocado — TP3 Frontend Grupo 1A mediante Vercel CLI. El proyecto utiliza HTML, CSS y JavaScript y su repositorio es https://github.com/Adrilu-web/tp3-frontend-grupo1a-Convocado. No modifiques el código HTML, CSS ni JavaScript y no conectes automáticamente el repositorio de GitHub con Vercel. Al finalizar, informá la URL pública de producción.
-
-**Estado y alcance:** el despliegue inicial ya se realizó mediante Vercel CLI, sin integración automática con GitHub, según la información proporcionada por el equipo. Esta intervención se limita a documentar ese despliegue en `README.md`; no se atribuye su ejecución autónoma al agente que realiza esta actualización ni se efectuó un nuevo despliegue. La comprobación de acceso consignada en Enlaces de Entrega se conserva como registro previo del equipo; no representa una nueva verificación realizada en esta actualización.
-
-Esta sección conserva el título solicitado «Prompt 10 — Despliegue en Vercel» y se incorpora de forma independiente, sin renumerar ni reemplazar las iteraciones existentes del registro de prompts.
+- **Prompts enviados:**
+  > *"La landing quedó aprobada funcionalmente. Realiza ahora una ronda final de refinamiento visual sin modificar la estructura, el contenido, los diagramas ni la distribución de secciones. OBJETIVO: Alinear la identidad visual de toda la landing con el logo oficial de Convocado. PALETA NUEVA: Verde principal: #0f766e, Verde secundario: #10b981, Verde claro: #34d399, Amarillo acento: #fbbf24, Blanco: #ffffff, Fondo oscuro deportivo: mantener tonos azul oscuro muy oscuros cercanos a #081120."*
+  >
+  > *"Realiza una ronda final de mejoras enfocadas en entrega académica. 1. FOOTER: Agregar una sección de integrantes dentro del footer [...] 2. RESPONSIVE DESIGN: Crear una versión responsive completa. Objetivos: Tablet (1024px aprox.), Tablet pequeña (768px aprox.), Mobile (480px aprox.). Adaptar: HEADER, HERO, NUESTRO ENFOQUE, SENTENCIA 1 y SENTENCIA 2, DIAGRAMAS, FOOTER. Evitar: overflow horizontal, elementos cortados, texto fuera de pantalla."*
+  >
+  > *"crea un apartado en el readme para los enlaces bien visible, arriba, justo debajo de ## Integrantes o al principio del archivo, con este formato: Enlaces de Entrega / Repositorio en GitHub: https://github.com/Adrilu-web/tp3-frontend-grupo1a-Convocado / Landing publicada (Vercel): https://TU-LINK-AQUI.vercel.app / Comprobación de acceso y funcionamiento: Ambos enlaces fueron verificados desde una ventana de navegación privada (sin sesión iniciada). El sitio carga correctamente el logo original de Convocado, los dos diagramas de flujo visuales y los desplegables interactivos con clic y teclado en vista desktop."*
 
 ---
 
