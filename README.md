@@ -273,6 +273,23 @@ El desarrollo del proyecto se organizó distinguiendo tres niveles de trabajo:
 **Reorganización y uniformidad documental de README.md:** ver Prompt 15 en "Registro de prompts y cambios solicitados".
 
 ---
+### Aportes de Elías Zagayny
+
+- **Aplicación:** Antigravity.
+- **Modelo:** Gemini 4 Argon (Medium).
+- **Rol:** dirección, construcción y validación visual de los dos diagramas de flujo agénticos en diagramas.html y diagramas.css (Prompt 4).
+
+**Qué se pidió al agente:**
+
+  1. Construir dos diagramas de flujo visuales reales utilizando únicamente HTML y CSS (uno para la Sentencia 1 · R3 y otro para la Sentencia 2 · R4), garantizando su legibilidad en vista desktop.
+  2. Representar en orden el recorrido completo de cada solución agéntica: nodo de inicio, intervención humana de entrada, consulta del agente en tiempo real, rombo de decisión central, bifurcación en caminos SÍ y NO, acciones del agente y resultado final.
+  3. Diferenciar visualmente mediante bordes, colores e insignias (Obligatorio Sentencia con borde sólido verde vs. Decisión Diseño Grupo con borde punteado ámbar) los pasos que surgen estrictamente de la regla asignada frente a las decisiones de diseño agregadas por el Grupo 01.
+
+**Prompts enviados:**
+
+> *"La especificación textual fue aprobada. Genera ahora los dos diagramas visuales. Requisitos: Un diagrama para cada sentencia. Deben ser diagramas reales, no descripción textual. Utiliza HTML y CSS para representarlos visualmente. Deben ser legibles en desktop. Incluir: inicio, intervención humana, consulta del agente, decisión, camino sí, camino no, acciones, resultado final. Distingue visualmente: elementos obligatorios de la sentencia, decisiones de diseño del grupo. No generes todavía la landing completa. Quiero revisar primero los diagramas visuales."*
+
+---
 
 ## Implementación asistida por IA
 
@@ -421,6 +438,28 @@ Mantén el mismo formato de la sección anterior e incluye:
   > *"Reorganiza únicamente README.md para mejorar su estructura y uniformidad documental, manteniendo íntegramente el contenido vigente. Agrega debajo del título el subtítulo institucional del Tercer Trabajo Práctico Grupal de Desarrollo de Sistemas Web (Front End), correspondiente al segundo cuatrimestre de 2026 de la Tecnicatura Superior en Desarrollo de Software del IFTS N.° 29. Agrupa los aportes individuales bajo una sección común, uniforma la jerarquía de títulos Markdown, mantiene los prompts cronológicos dentro del Registro de prompts y conserva sin modificaciones los aportes, autorías, modelos, tablas, enlaces, sentencias y datos existentes. Mantén las dos URLs de Vercel en sus contextos históricos correspondientes. No inventes ni elimines contenido."*
 - **Objetivo:** mejorar la organización y consistencia visual de `README.md` sin alterar el contenido documentado.
 - **Resultado:** estructura documental ordenada en secciones principales uniformes (`##`), agrupación de los aportes individuales en el orden Silvia Podberezski, Judith Leonardo, Magalí Pintos y Adriana Meyniel (`###`), y estandarización de las entradas numeradas del Registro de prompts (`### 1` a `### 15`) conservando íntegramente el contenido existente.
+
+### 16. Incorporación de aportes de Elías Zagayny al archivo README.md
+- **Prompt enviado:**
+Modifica únicamente el archivo README.md sin alterar ningún otro archivo del proyecto ni borrar el contenido existente.
+
+Agrega una nueva sección titulada "## Aportes de Elías Zagayny" justo debajo de "## Aportes de Judith Leonardo", asegurándote de dejar separadores "---" entre secciones, manteniendo el mismo formato de los aportes anteriores:
+
+- **Aplicación**: Antigravity. 
+- **Modelo**: Gemini 4 Argon (Medium)
+- **Rol**: dirección, construcción y validación visual de los dos diagramas de flujo agénticos en diagramas.html y diagramas.css (Prompt 4).
+
+ **Qué se pidió al agente:**
+
+  1. Construir dos diagramas de flujo visuales reales utilizando únicamente HTML y CSS (uno para la Sentencia 1 · R3 y otro para la Sentencia 2 · R4), garantizando su legibilidad en vista desktop.
+  2. Representar en orden el recorrido completo de cada solución agéntica: nodo de inicio, intervención humana de entrada, consulta del agente en tiempo real, rombo de decisión central, bifurcación en caminos SÍ y NO, acciones del agente y resultado final.
+  3. Diferenciar visualmente mediante bordes, colores e insignias (Obligatorio Sentencia con borde sólido verde vs. Decisión Diseño Grupo con borde punteado ámbar) los pasos que surgen estrictamente de la regla asignada frente a las decisiones de diseño agregadas por el Grupo 01.
+
+ **Prompt enviado:**
+
+  "La especificación textual fue aprobada. Genera ahora los dos diagramas visuales. Requisitos: Un diagrama para cada sentencia. Deben ser diagramas reales, no descripción textual. Utiliza HTML y CSS para representarlos visualmente. Deben ser legibles en desktop. Incluir: inicio, intervención humana, consulta del agente, decisión, camino sí, camino no, acciones, resultado final. Distingue visualmente: elementos obligatorios de la sentencia, decisiones de diseño del grupo. No generes todavía la landing completa. Quiero revisar primero los diagramas visuales."
+
+No hagas commit ni push automáticamente. Al finalizar, indica qué líneas de README.md modificaste.
 
 ---
 
