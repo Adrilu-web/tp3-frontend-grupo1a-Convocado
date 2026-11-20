@@ -73,98 +73,107 @@ El desarrollo del proyecto se organizó distinguiendo tres niveles de trabajo:
 
 - **Aplicación:** Cursor. **Modelo:** Cursor Grok 4.6 Medium.
 - **Rol:** revisión del trabajo de la landing contra la consigna y corrección de errores conceptuales de los diagramas y casos recorridos (cumple, no cumple y caso límite) en cada flujo.
-- **Qué se pidió al agente:**
-  1. En `index.html`, en el rombo de decisión del Diagrama 2 y en la fila "Decisión:" de la tabla del desplegable 2B, reemplazar "¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?" por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?". El código mostrado debe seguir exactamente igual.
-  2. En `index.html`, la Sentencia 2 no pide consultar los lugares disponibles ni "Jugador y Equipo", así que no deben figurar como obligatorios:
-     - En el Diagrama 2, cambiar las etiquetas "lugaresDisponibles" y "Datos: Jugador y Equipo" de `pill-mandatory` a `pill-design`. Cambiar el título del nodo de consulta del agente por: "Consulta valoración conocida y distancia al equipo".
-     - En "Datos necesarios" de la tarjeta de análisis de la Sentencia 2, dejar solo: `autorizacionSolicitud` (confirmación del jugador), `valoracionConocida` y `distanciaAlEquipoKm`.
-     - En el desplegable 2A, en el ítem "Exigido por la sentencia", quitar lo de la disponibilidad de lugares. En el ítem "Decisión de diseño del grupo", agregar: "Disponibilidad de lugares (`lugaresDisponibles`), para comprobar que la evaluación manual no reserva lugar."
-  3. agregar un desplegable 'Casos recorridos' en cada sentencia.
-  4. Rotular los casos recorridos como Cumple / No cumple / Caso límite y agregar casos límite faltantes en cada flujo: Sentencia 1 (lugaresDisponibles = 0 tras aceptar al último jugador) y Sentencia 2 (valoración 4,0 con 9,9 km, y valoración 3,9 con 5 km), para probar cada borde (== 0, < 4, >= 10) por separado.
-  5. Alinear diagramas.html y analisis_funcional_convocado_grupo01.md con la corrección de la Sentencia 2 ya hecha en index.html.
-- **Prompt enviado:**
-  > 1. En index.html, en el rombo de decisión del Diagrama 2 y en la fila "Decisión:" de la tabla del desplegable 2B, reemplazá "¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?" por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?". El código mostrado debe seguir exactamente igual.
-  >
-  > 2. En index.html, la Sentencia 2 no pide consultar los lugares disponibles ni "Jugador y Equipo", así que no deben figurar como obligatorios:
-  > - En el Diagrama 2, cambiá las etiquetas "lugaresDisponibles" y "Datos: Jugador y Equipo" de pill-mandatory a pill-design. Cambiá el título del nodo de consulta del agente por: "Consulta valoración conocida y distancia al equipo".
-  > - En "Datos necesarios" de la tarjeta de análisis de la Sentencia 2, dejá solo: autorizacionSolicitud (confirmación del jugador), valoracionConocida y distanciaAlEquipoKm.
-  > - En el desplegable 2A, en el ítem "Exigido por la sentencia", quitá lo de la disponibilidad de lugares. En el ítem "Decisión de diseño del grupo", agregá: "Disponibilidad de lugares (lugaresDisponibles), para comprobar que la evaluación manual no reserva lugar."
 
-- **Prompt enviado (2):**
-  > Hacé SOLO este cambio. Podés modificar únicamente index.html y styles.css (solo si hace falta). No modifiques ningún otro archivo ni ninguna otra línea. No hagas commit ni push.
-  >
-  > En index.html, en la Sentencia 1 y en la Sentencia 2, agregá al final de cada grupo de desplegables (después de 1B y de 2B) un <details class="custom-details"> llamado "Casos recorridos", cerrado por defecto, con la misma estructura que 1A y 1B (summary con details-summary, span, summary-chevron y div details-body). Dentro, una tabla con la clase origin-table y columnas: entrada, qué evalúa el agente, camino SÍ/NO, resultado. En lo que la sentencia define usá "table-badge badge-mandatory" (Obligatorio Sentencia); en lo que no define, "table-badge badge-design" (Diseño Grupo 01). Deben abrir y cerrar con clic y teclado, y el botón "Expandir todo / Contraer todo" debe seguir funcionando. Filas:
-  >
-  > Sentencia 1:
-  > - Cumple: el capitán intenta aceptar y lugaresDisponibles = 0 → SÍ → informa "cupo completo" e impide la aceptación.
-  > - No cumple: el capitán intenta aceptar y lugaresDisponibles = 2 → NO → sigue el flujo normal de aceptación (decisión del grupo).
-  > - Caso límite: lugaresDisponibles = 1 → NO → el capitán acepta y queda 0 lugares (decisión del grupo); el siguiente intento de aceptar cae en la regla de la sentencia: informa cupo completo e impide la aceptación.
-  >
-  > Sentencia 2:
-  > - Cumple: el jugador autoriza, valoración 3,5, equipo a 4 km → SÍ → se deriva al capitán para evaluación manual y no reserva lugar.
-  > - No cumple: el jugador autoriza, valoración 4,5, equipo a 5 km → NO → flujo estándar (decisión del grupo).
-  > - Caso límite: el jugador autoriza, valoración 4,0 y equipo a 10 km → SÍ por la distancia (4,0 no es menor que 4, pero 10 km es "diez kilómetros o más") → se deriva al capitán, que realiza la evaluación manual, y no reserva lugar.
-  >
-  > No hagas commit ni push. Al finalizar, listá qué archivo y qué líneas modificaste.
+**Qué se pidió al agente:**
 
-- **Prompt enviado (3):**
-  > Hacé SOLO estos cambios. Modificá únicamente index.html y README.md. No toques styles.css, script.js, diagramas.html, diagramas.css ni el .md de análisis. No cambies ninguna otra línea, no agregues columnas ni clases nuevas, no ejecutes servidores ni capturas, no hagas commit ni push.
-  >
-  > PARTE 1 — index.html. En los dos desplegables "Casos recorridos" (el de la Sentencia 1 y el de la Sentencia 2), usá las clases y la estructura de las filas que ya existen (table-badge badge-mandatory / badge-design).
-  >
-  > A) Rotulado. En la primera celda (Entrada) de cada fila existente, anteponé el rótulo en negrita con <strong>:
-  > - Sentencia 1: fila 1 "Cumple:", fila 2 "No cumple:", fila 3 "Caso límite:".
-  > - Sentencia 2: fila 1 "Cumple:", fila 2 "No cumple:", fila 3 "Caso límite:".
-  > No cambies nada más del texto de esas filas.
-  >
-  > B) Sentencia 1. Agregá una fila nueva al final del tbody:
-  > - Entrada: "<strong>Caso límite:</strong> <code>lugaresDisponibles = 0</code> justo después de aceptar al último jugador (incluye un segundo clic o un segundo capitán intentando aceptar)." + badge-design
-  > - Qué evalúa el agente: "Si el capitán intenta aceptar y no queda lugar (<code>lugaresDisponibles == 0</code>)." + badge-mandatory
-  > - Camino SÍ/NO: "SÍ" + badge-mandatory
-  > - Resultado: "Informa <em>"cupo completo"</em> e impide la aceptación; el contador no cambia." + badge-mandatory
-  >
-  > C) Sentencia 2. Agregá dos filas nuevas al final del tbody:
-  > Fila 1:
-  > - Entrada: "<strong>Caso límite:</strong> el jugador autoriza, valoración 4,0 y equipo a 9,9 km." + badge-mandatory
-  > - Qué evalúa el agente: "4,0 no es menor que 4 y 9,9 km no llega a diez kilómetros: no se cumple ninguna de las dos condiciones." + badge-mandatory
-  > - Camino: "NO" + badge-design
-  > - Resultado: "Flujo estándar." + badge-design
-  > Fila 2:
-  > - Entrada: "<strong>Caso límite:</strong> el jugador autoriza, valoración 3,9 y equipo a 5 km." + badge-mandatory
-  > - Qué evalúa el agente: "SÍ por la valoración (3,9 es menor que 4), aunque 5 km no llega a diez kilómetros." + badge-mandatory
-  > - Camino: "SÍ" + badge-mandatory
-  > - Resultado: "Se deriva al capitán para evaluación manual y no reserva lugar." + badge-mandatory
-  >
-  > PARTE 2 — README.md. Modificá solo la sección "## Aportes de Silvia Podberezski":
-  > 1. En la lista "Qué se pidió al agente", agregá el ítem 4: "Rotular los casos recorridos como Cumple / No cumple / Caso límite y agregar casos límite faltantes en cada flujo: Sentencia 1 (lugaresDisponibles = 0 tras aceptar al último jugador) y Sentencia 2 (valoración 4,0 con 9,9 km, y valoración 3,9 con 5 km), para probar cada borde (== 0, < 4, >= 10) por separado."
-  > 2. Al final de esa sección, antes del "---", agregá "- **Prompt enviado (3):**" con una cita (>) que copie literalmente las PARTES 1 y 2 de este mensaje, y debajo "- **Aplicación:** Antigravity. **Modelo:** Claude Sonnet 4.6 (Thinking)."
-  > 3. No modifiques ninguna otra sección ni renumeres nada.
-  >
-  > Al finalizar, listá qué archivos y qué líneas modificaste.
-  
+1. En `index.html`, en el rombo de decisión del Diagrama 2 y en la fila "Decisión:" de la tabla del desplegable 2B, reemplazar "¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?" por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?". El código mostrado debe seguir exactamente igual.
+2. En `index.html`, la Sentencia 2 no pide consultar los lugares disponibles ni "Jugador y Equipo", así que no deben figurar como obligatorios:
+   - En el Diagrama 2, cambiar las etiquetas "lugaresDisponibles" y "Datos: Jugador y Equipo" de `pill-mandatory` a `pill-design`. Cambiar el título del nodo de consulta del agente por: "Consulta valoración conocida y distancia al equipo".
+   - En "Datos necesarios" de la tarjeta de análisis de la Sentencia 2, dejar solo: `autorizacionSolicitud` (confirmación del jugador), `valoracionConocida` y `distanciaAlEquipoKm`.
+   - En el desplegable 2A, en el ítem "Exigido por la sentencia", quitar lo de la disponibilidad de lugares. En el ítem "Decisión de diseño del grupo", agregar: "Disponibilidad de lugares (`lugaresDisponibles`), para comprobar que la evaluación manual no reserva lugar."
+3. agregar un desplegable 'Casos recorridos' en cada sentencia.
+4. Rotular los casos recorridos como Cumple / No cumple / Caso límite y agregar casos límite faltantes en cada flujo: Sentencia 1 (lugaresDisponibles = 0 tras aceptar al último jugador) y Sentencia 2 (valoración 4,0 con 9,9 km, y valoración 3,9 con 5 km), para probar cada borde (== 0, < 4, >= 10) por separado.
+5. Alinear diagramas.html y analisis_funcional_convocado_grupo01.md con la corrección de la Sentencia 2 ya hecha en index.html.
+
+**Prompt enviado:**
+
+> 1. En index.html, en el rombo de decisión del Diagrama 2 y en la fila "Decisión:" de la tabla del desplegable 2B, reemplazá "¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?" por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?". El código mostrado debe seguir exactamente igual.
+>
+> 2. En index.html, la Sentencia 2 no pide consultar los lugares disponibles ni "Jugador y Equipo", así que no deben figurar como obligatorios:
+> \- En el Diagrama 2, cambiá las etiquetas "lugaresDisponibles" y "Datos: Jugador y Equipo" de pill-mandatory a pill-design. Cambiá el título del nodo de consulta del agente por: "Consulta valoración conocida y distancia al equipo".
+> \- En "Datos necesarios" de la tarjeta de análisis de la Sentencia 2, dejá solo: autorizacionSolicitud (confirmación del jugador), valoracionConocida y distanciaAlEquipoKm.
+> \- En el desplegable 2A, en el ítem "Exigido por la sentencia", quitá lo de la disponibilidad de lugares. En el ítem "Decisión de diseño del grupo", agregá: "Disponibilidad de lugares (lugaresDisponibles), para comprobar que la evaluación manual no reserva lugar."
+
+**Prompt enviado (2):**
+
+> Hacé SOLO este cambio. Podés modificar únicamente index.html y styles.css (solo si hace falta). No modifiques ningún otro archivo ni ninguna otra línea. No hagas commit ni push.
+>
+> En index.html, en la Sentencia 1 y en la Sentencia 2, agregá al final de cada grupo de desplegables (después de 1B y de 2B) un `<details class="custom-details">` llamado "Casos recorridos", cerrado por defecto, con la misma estructura que 1A y 1B (summary con details-summary, span, summary-chevron y div details-body). Dentro, una tabla con la clase origin-table y columnas: entrada, qué evalúa el agente, camino SÍ/NO, resultado. En lo que la sentencia define usá "table-badge badge-mandatory" (Obligatorio Sentencia); en lo que no define, "table-badge badge-design" (Diseño Grupo 01). Deben abrir y cerrar con clic y teclado, y el botón "Expandir todo / Contraer todo" debe seguir funcionando. Filas:
+>
+> Sentencia 1:
+> \- Cumple: el capitán intenta aceptar y lugaresDisponibles = 0 → SÍ → informa "cupo completo" e impide la aceptación.
+> \- No cumple: el capitán intenta aceptar y lugaresDisponibles = 2 → NO → sigue el flujo normal de aceptación (decisión del grupo).
+> \- Caso límite: lugaresDisponibles = 1 → NO → el capitán acepta y queda 0 lugares (decisión del grupo); el siguiente intento de aceptar cae en la regla de la sentencia: informa cupo completo e impide la aceptación.
+>
+> Sentencia 2:
+> \- Cumple: el jugador autoriza, valoración 3,5, equipo a 4 km → SÍ → se deriva al capitán para evaluación manual y no reserva lugar.
+> \- No cumple: el jugador autoriza, valoración 4,5, equipo a 5 km → NO → flujo estándar (decisión del grupo).
+> \- Caso límite: el jugador autoriza, valoración 4,0 y equipo a 10 km → SÍ por la distancia (4,0 no es menor que 4, pero 10 km es "diez kilómetros o más") → se deriva al capitán, que realiza la evaluación manual, y no reserva lugar.
+>
+> No hagas commit ni push. Al finalizar, listá qué archivo y qué líneas modificaste.
+
+**Prompt enviado (3):**
+
+> Hacé SOLO estos cambios. Modificá únicamente index.html y README.md. No toques styles.css, script.js, diagramas.html, diagramas.css ni el .md de análisis. No cambies ninguna otra línea, no agregues columnas ni clases nuevas, no ejecutes servidores ni capturas, no hagas commit ni push.
+>
+> PARTE 1 — index.html. En los dos desplegables "Casos recorridos" (el de la Sentencia 1 y el de la Sentencia 2), usá las clases y la estructura de las filas que ya existen (table-badge badge-mandatory / badge-design).
+>
+> A) Rotulado. En la primera celda (Entrada) de cada fila existente, anteponé el rótulo en negrita con `<strong>`:
+> \- Sentencia 1: fila 1 "Cumple:", fila 2 "No cumple:", fila 3 "Caso límite:".
+> \- Sentencia 2: fila 1 "Cumple:", fila 2 "No cumple:", fila 3 "Caso límite:".
+> No cambies nada más del texto de esas filas.
+>
+> B) Sentencia 1. Agregá una fila nueva al final del tbody:
+> \- Entrada: "`<strong>`Caso límite:`</strong>` `<code>`lugaresDisponibles = 0`</code>` justo después de aceptar al último jugador (incluye un segundo clic o un segundo capitán intentando aceptar)." + badge-design
+> \- Qué evalúa el agente: "Si el capitán intenta aceptar y no queda lugar (`<code>`lugaresDisponibles == 0`</code>`)." + badge-mandatory
+> \- Camino SÍ/NO: "SÍ" + badge-mandatory
+> \- Resultado: "Informa `<em>`"cupo completo"`</em>` e impide la aceptación; el contador no cambia." + badge-mandatory
+>
+> C) Sentencia 2. Agregá dos filas nuevas al final del tbody:
+> Fila 1:
+> \- Entrada: "`<strong>`Caso límite:`</strong>` el jugador autoriza, valoración 4,0 y equipo a 9,9 km." + badge-mandatory
+> \- Qué evalúa el agente: "4,0 no es menor que 4 y 9,9 km no llega a diez kilómetros: no se cumple ninguna de las dos condiciones." + badge-mandatory
+> \- Camino: "NO" + badge-design
+> \- Resultado: "Flujo estándar." + badge-design
+> Fila 2:
+> \- Entrada: "`<strong>`Caso límite:`</strong>` el jugador autoriza, valoración 3,9 y equipo a 5 km." + badge-mandatory
+> \- Qué evalúa el agente: "SÍ por la valoración (3,9 es menor que 4), aunque 5 km no llega a diez kilómetros." + badge-mandatory
+> \- Camino: "SÍ" + badge-mandatory
+> \- Resultado: "Se deriva al capitán para evaluación manual y no reserva lugar." + badge-mandatory
+>
+> PARTE 2 — README.md. Modificá solo la sección "## Aportes de Silvia Podberezski":
+> 1. En la lista "Qué se pidió al agente", agregá el ítem 4: "Rotular los casos recorridos como Cumple / No cumple / Caso límite y agregar casos límite faltantes en cada flujo: Sentencia 1 (lugaresDisponibles = 0 tras aceptar al último jugador) y Sentencia 2 (valoración 4,0 con 9,9 km, y valoración 3,9 con 5 km), para probar cada borde (== 0, < 4, >= 10) por separado."
+> 2. Al final de esa sección, antes del "---", agregá "- **Prompt enviado (3):**" con una cita (>) que copie literalmente las PARTES 1 y 2 de este mensaje, y debajo "- **Aplicación:** Antigravity. **Modelo:** Claude Sonnet 4.6 (Thinking)."
+> 3. No modifiques ninguna otra sección ni renumeres nada.
+>
+> Al finalizar, listá qué archivos y qué líneas modificaste.
+
 - **Aplicación:** Antigravity. **Modelo:** Claude Sonnet 4.6 (Thinking).
 
-- **Prompt enviado (4):**
-  > Hacé SOLO estos cambios. Modificá únicamente diagramas.html, analisis_funcional_convocado_grupo01.md y README.md. No toques index.html, styles.css, diagramas.css ni script.js. No cambies ninguna otra línea, no ejecutes servidores ni capturas, no hagas commit ni push. El objetivo es alinear con lo que ya está corregido en index.html (Sentencia 2: lugaresDisponibles y "Jugador y Equipo" son decisión de diseño del grupo, no obligatorios de la sentencia).
-  >
-  > PARTE 1 — diagramas.html (solo el Diagrama de la Sentencia 2; no toques el de la Sentencia 1):
-  > a) En el nodo de intervención humana inicial, cambiá la clase de <span class="meta-pill pill-mandatory">Datos: Jugador y Equipo</span> a pill-design.
-  > b) En el nodo "CONSULTA DEL AGENTE", reemplazá el título por: "Consulta valoración conocida y distancia al equipo", y cambiá la clase del pill de <code>lugaresDisponibles</code> a pill-design.
-  > c) En la pregunta de la decisión (node-question) reemplazá el texto por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?". No cambies el <code> de node-code.
-  >
-  > PARTE 2 — analisis_funcional_convocado_grupo01.md (solo Sentencia 2):
-  > a) En la sección 2, "Datos necesarios (estrictos de la sentencia)", eliminá el ítem `lugaresDisponibles`.
-  > b) En la sección 3, propuesta de la Sentencia 2, agregá en "Decisión de diseño agregada por la propuesta del grupo" una viñeta: "Consultar la disponibilidad de lugares (`lugaresDisponibles`) para comprobar que la evaluación manual no reserva lugar."
-  > c) En la sección 4, en "Datos exigidos por las sentencias" quitá la mención "y para asegurar la no reserva (`Sentencia 2`)" del punto 1, y en "Datos agregados como decisión de diseño del grupo" agregá la viñeta de la disponibilidad de lugares para la Sentencia 2.
-  > d) En la sección 8.2, punto 3 ("Información de entrada"): marcá "Datos de referencia del jugador y del equipo" como "Decisión de diseño del grupo". En el punto 4: marcá la consulta de lugares disponibles como "Decisión de diseño del grupo" y quitá "Obligatorio de la sentencia" de esa línea.
-  > e) En la sección 8.2, reemplazá la pregunta de la decisión (en el punto 5 y en la tabla de separación) por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?".
-  >
-  > PARTE 3 — README.md:
-  > a) En la tabla "Herramientas de IA Utilizadas" agregá una fila al final: | **Antigravity** | Claude Sonnet 4.6 (Thinking) | Rotulado de los casos recorridos y agregado de casos límite en cada flujo; alineación de diagramas.html y del análisis funcional con index.html. | Etiquetas Cumple / No cumple / Caso límite, tres filas nuevas en "Casos recorridos" y corrección de la Sentencia 2 (lugaresDisponibles y "Jugador y Equipo" como decisión de diseño). |
-  > b) En "## Aportes de Silvia Podberezski", antes del "---" que la cierra, agregá una línea en blanco y luego: "- **Prompt enviado (4):**" con una cita (>) que copie literalmente las PARTES 1, 2 y 3 de este mensaje, y debajo "- **Aplicación:** Antigravity. **Modelo:** Claude Sonnet 4.6 (Thinking)." Además agregá a la lista "Qué se pidió al agente" el ítem 5: "Alinear diagramas.html y analisis_funcional_convocado_grupo01.md con la corrección de la Sentencia 2 ya hecha en index.html."
-  > c) No modifiques ninguna otra sección.
-  >
-  > Al finalizar, listá qué archivos y qué líneas modificaste.
+
+**Prompt enviado (4):**
+
+> Hacé SOLO estos cambios. Modificá únicamente diagramas.html, analisis_funcional_convocado_grupo01.md y README.md. No toques index.html, styles.css, diagramas.css ni script.js. No cambies ninguna otra línea, no ejecutes servidores ni capturas, no hagas commit ni push. El objetivo es alinear con lo que ya está corregido en index.html (Sentencia 2: lugaresDisponibles y "Jugador y Equipo" son decisión de diseño del grupo, no obligatorios de la sentencia).
+>
+> PARTE 1 — diagramas.html (solo el Diagrama de la Sentencia 2; no toques el de la Sentencia 1):
+> a) En el nodo de intervención humana inicial, cambiá la clase de `<span class="meta-pill pill-mandatory">Datos: Jugador y Equipo</span>` a pill-design.
+> b) En el nodo "CONSULTA DEL AGENTE", reemplazá el título por: "Consulta valoración conocida y distancia al equipo", y cambiá la clase del pill de `<code>lugaresDisponibles</code>` a pill-design.
+> c) En la pregunta de la decisión (node-question) reemplazá el texto por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?". No cambies el `<code>` de node-code.
+>
+> PARTE 2 — analisis_funcional_convocado_grupo01.md (solo Sentencia 2):
+> a) En la sección 2, "Datos necesarios (estrictos de la sentencia)", eliminá el ítem `lugaresDisponibles`.
+> b) En la sección 3, propuesta de la Sentencia 2, agregá en "Decisión de diseño agregada por la propuesta del grupo" una viñeta: "Consultar la disponibilidad de lugares (`lugaresDisponibles`) para comprobar que la evaluación manual no reserva lugar."
+> c) En la sección 4, en "Datos exigidos por las sentencias" quitá la mención "y para asegurar la no reserva (`Sentencia 2`)" del punto 1, y en "Datos agregados como decisión de diseño del grupo" agregá la viñeta de la disponibilidad de lugares para la Sentencia 2.
+> d) En la sección 8.2, punto 3 ("Información de entrada"): marcá "Datos de referencia del jugador y del equipo" como "Decisión de diseño del grupo". En el punto 4: marcá la consulta de lugares disponibles como "Decisión de diseño del grupo" y quitá "Obligatorio de la sentencia" de esa línea.
+> e) En la sección 8.2, reemplazá la pregunta de la decisión (en el punto 5 y en la tabla de separación) por: "¿El jugador autorizó la solicitud Y se cumple al menos una de estas condiciones: valoración conocida menor que 4, o distancia al equipo de 10 km o más?".
+>
+> PARTE 3 — README.md:
+> a) En la tabla "Herramientas de IA Utilizadas" agregá una fila al final: | **Antigravity** | Claude Sonnet 4.6 (Thinking) | Rotulado de los casos recorridos y agregado de casos límite en cada flujo; alineación de diagramas.html y del análisis funcional con index.html. | Etiquetas Cumple / No cumple / Caso límite, tres filas nuevas en "Casos recorridos" y corrección de la Sentencia 2 (lugaresDisponibles y "Jugador y Equipo" como decisión de diseño). |
+> b) En "## Aportes de Silvia Podberezski", antes del "---" que la cierra, agregá una línea en blanco y luego: "- **Prompt enviado (4):**" con una cita (>) que copie literalmente las PARTES 1, 2 y 3 de este mensaje, y debajo "- **Aplicación:** Antigravity. **Modelo:** Claude Sonnet 4.6 (Thinking)." Además agregá a la lista "Qué se pidió al agente" el ítem 5: "Alinear diagramas.html y analisis_funcional_convocado_grupo01.md con la corrección de la Sentencia 2 ya hecha en index.html."
+> c) No modifiques ninguna otra sección.
+>
+> Al finalizar, listá qué archivos y qué líneas modificaste.
+
 - **Aplicación:** Antigravity. **Modelo:** Claude Sonnet 4.6 (Thinking).
 
 ---
@@ -173,16 +182,20 @@ El desarrollo del proyecto se organizó distinguiendo tres niveles de trabajo:
 
 - **Aplicación:** Antigravity. **Modelo:** Gemini 4 Argon (Medium).
 - **Rol:** dirección de la identidad visual y diseño responsive en `styles.css` (Prompts 7 y 8), auditoría del proyecto frente a la rúbrica oficial e incorporación del apartado de enlaces de entrega y comprobación en `README.md` (Prompt 12).
-- **Qué se pidió al agente:**
-  1. Alinear la identidad visual de toda la landing en `styles.css` con la paleta cromática oficial del logo de **Convocado** (`#0f766e`, `#10b981`, `#34d399`, `#fbbf24`, `#ffffff`, `#081120`), diferenciando visualmente los bloques obligatorios de la sentencia frente a las decisiones de diseño del Grupo 01.
-  2. Estilizar la sección de integrantes del Grupo 01 en el footer y construir la adaptación responsive completa para Tablet (`1024px`), Tablet pequeña (`768px`) y Mobile (`480px`) evitando desbordes horizontales.
-  3. Revisar el cumplimiento integral de la consigna y agregar en `README.md` el apartado `## Enlaces de Entrega` (repositorio en GitHub y landing en Vercel con constancia de verificación sin sesión) junto con el registro del Prompt 12.
-- **Prompts enviados:**
-  > *"La landing quedó aprobada funcionalmente. Realiza ahora una ronda final de refinamiento visual sin modificar la estructura, el contenido, los diagramas ni la distribución de secciones. OBJETIVO: Alinear la identidad visual de toda la landing con el logo oficial de Convocado. PALETA NUEVA: Verde principal: #0f766e, Verde secundario: #10b981, Verde claro: #34d399, Amarillo acento: #fbbf24, Blanco: #ffffff, Fondo oscuro deportivo: mantener tonos azul oscuro muy oscuros cercanos a #081120."*
-  >
-  > *"Realiza una ronda final de mejoras enfocadas en entrega académica. 1. FOOTER: Agregar una sección de integrantes dentro del footer [...] 2. RESPONSIVE DESIGN: Crear una versión responsive completa. Objetivos: Tablet (1024px aprox.), Tablet pequeña (768px aprox.), Mobile (480px aprox.). Adaptar: HEADER, HERO, NUESTRO ENFOQUE, SENTENCIA 1 y SENTENCIA 2, DIAGRAMAS, FOOTER. Evitar: overflow horizontal, elementos cortados, texto fuera de pantalla."*
-  >
-  > *"crea un apartado en el readme para los enlaces bien visible, arriba, justo debajo de ## Integrantes o al principio del archivo, con este formato: Enlaces de Entrega / Repositorio en GitHub: https://github.com/Adrilu-web/tp3-frontend-grupo1a-Convocado / Landing publicada (Vercel): https://TU-LINK-AQUI.vercel.app / Comprobación de acceso y funcionamiento: Ambos enlaces fueron verificados desde una ventana de navegación privada (sin sesión iniciada). El sitio carga correctamente el logo original de Convocado, los dos diagramas de flujo visuales y los desplegables interactivos con clic y teclado en vista desktop."*
+
+**Qué se pidió al agente:**
+
+1. Alinear la identidad visual de toda la landing en `styles.css` con la paleta cromática oficial del logo de **Convocado** (`#0f766e`, `#10b981`, `#34d399`, `#fbbf24`, `#ffffff`, `#081120`), diferenciando visualmente los bloques obligatorios de la sentencia frente a las decisiones de diseño del Grupo 01.
+2. Estilizar la sección de integrantes del Grupo 01 en el footer y construir la adaptación responsive completa para Tablet (`1024px`), Tablet pequeña (`768px`) y Mobile (`480px`) evitando desbordes horizontales.
+3. Revisar el cumplimiento integral de la consigna y agregar en `README.md` el apartado `## Enlaces de Entrega` (repositorio en GitHub y landing en Vercel con constancia de verificación sin sesión) junto con el registro del Prompt 12.
+
+**Prompts enviados:**
+
+> *"La landing quedó aprobada funcionalmente. Realiza ahora una ronda final de refinamiento visual sin modificar la estructura, el contenido, los diagramas ni la distribución de secciones. OBJETIVO: Alinear la identidad visual de toda la landing con el logo oficial de Convocado. PALETA NUEVA: Verde principal: #0f766e, Verde secundario: #10b981, Verde claro: #34d399, Amarillo acento: #fbbf24, Blanco: #ffffff, Fondo oscuro deportivo: mantener tonos azul oscuro muy oscuros cercanos a #081120."*
+>
+> *"Realiza una ronda final de mejoras enfocadas en entrega académica. 1. FOOTER: Agregar una sección de integrantes dentro del footer [...] 2. RESPONSIVE DESIGN: Crear una versión responsive completa. Objetivos: Tablet (1024px aprox.), Tablet pequeña (768px aprox.), Mobile (480px aprox.). Adaptar: HEADER, HERO, NUESTRO ENFOQUE, SENTENCIA 1 y SENTENCIA 2, DIAGRAMAS, FOOTER. Evitar: overflow horizontal, elementos cortados, texto fuera de pantalla."*
+>
+> *"crea un apartado en el readme para los enlaces bien visible, arriba, justo debajo de ## Integrantes o al principio del archivo, con este formato: Enlaces de Entrega / Repositorio en GitHub: https://github.com/Adrilu-web/tp3-frontend-grupo1a-Convocado / Landing publicada (Vercel): https://TU-LINK-AQUI.vercel.app / Comprobación de acceso y funcionamiento: Ambos enlaces fueron verificados desde una ventana de navegación privada (sin sesión iniciada). El sitio carga correctamente el logo original de Convocado, los dos diagramas de flujo visuales y los desplegables interactivos con clic y teclado en vista desktop."*
 
 ---
 
@@ -190,14 +203,18 @@ El desarrollo del proyecto se organizó distinguiendo tres niveles de trabajo:
 
 - **Aplicación:** Antigravity. **Modelo:** Gemini 4 Argon (Medium).
 - **Rol:** dirección de la maquetación completa de la landing en `index.html`, incorporación del logo original de la startup en `assets/logo.webp` (Prompts 5 y 6) y publicación del sitio en producción mediante Vercel (Prompt 13— Despliegue en Vercel).
-- **Qué se pidió al agente:**
-  1. Construir la estructura completa de la landing page en `index.html` con enfoque desktop-first (Header sticky, Hero con presentación de Convocado, sección "Nuestro Enfoque", bloques de Sentencia 1 y Sentencia 2 integrando los diagramas visuales, desplegables nativos `<details>`/`<summary>` y Footer del Grupo 01).
-  2. Reemplazar el ícono SVG genérico inicial por el archivo original `assets/logo.webp` en el Header, Hero y Footer, conservando su proporción original y texto alternativo descriptivo.
-  3. Publicar el proyecto en producción en Vercel (https://tp3-frontend-grupo1a-convocado.vercel.app) y documentar el enlace final y el proceso de despliegue en `README.md`.
-- **Prompts enviados:**
-  > *"Los diagramas visuales fueron aprobados. Genera ahora la landing completa para Convocado. Requisitos: HTML, CSS y JavaScript solamente. No usar React. Desktop first. Diseño moderno y profesional. Header sticky. Hero con logo y descripción de Convocado. Sección Nuestro Enfoque. Bloque completo de Sentencia 1. Bloque completo de Sentencia 2. Integrar y reutilizar los diagramas visuales ya desarrollados. Utilizar details/summary para los desplegables. Footer con información del Grupo 01. Diferenciar visualmente: elementos obligatorios de la sentencia, decisiones de diseño del grupo. Genera los archivos finales dentro del proyecto. Verifica que la landing pueda abrirse localmente desde index.html."*
-  >
-  > *"La landing no está mostrando el logo original de la startup Convocado. Actualmente utilizaste un icono SVG genérico de una pelota de fútbol. La consigna exige conservar el logo original de la startup completo y legible. El archivo original del logo está guardado en: assets/logo.webp [...] Muestra el logo original en: el header; el hero; el footer. Conserva siempre la proporción original de la imagen. No recortes ni deformes el logo. Añade un texto alternativo descriptivo: 'Logo original de la startup Convocado'."*
+
+**Qué se pidió al agente:**
+
+1. Construir la estructura completa de la landing page en `index.html` con enfoque desktop-first (Header sticky, Hero con presentación de Convocado, sección "Nuestro Enfoque", bloques de Sentencia 1 y Sentencia 2 integrando los diagramas visuales, desplegables nativos `<details>`/`<summary>` y Footer del Grupo 01).
+2. Reemplazar el ícono SVG genérico inicial por el archivo original `assets/logo.webp` en el Header, Hero y Footer, conservando su proporción original y texto alternativo descriptivo.
+3. Publicar el proyecto en producción en Vercel (https://tp3-frontend-grupo1a-convocado.vercel.app) y documentar el enlace final y el proceso de despliegue en `README.md`.
+
+**Prompts enviados:**
+
+> *"Los diagramas visuales fueron aprobados. Genera ahora la landing completa para Convocado. Requisitos: HTML, CSS y JavaScript solamente. No usar React. Desktop first. Diseño moderno y profesional. Header sticky. Hero con logo y descripción de Convocado. Sección Nuestro Enfoque. Bloque completo de Sentencia 1. Bloque completo de Sentencia 2. Integrar y reutilizar los diagramas visuales ya desarrollados. Utilizar details/summary para los desplegables. Footer con información del Grupo 01. Diferenciar visualmente: elementos obligatorios de la sentencia, decisiones de diseño del grupo. Genera los archivos finales dentro del proyecto. Verifica que la landing pueda abrirse localmente desde index.html."*
+>
+> *"La landing no está mostrando el logo original de la startup Convocado. Actualmente utilizaste un icono SVG genérico de una pelota de fútbol. La consigna exige conservar el logo original de la startup completo y legible. El archivo original del logo está guardado en: assets/logo.webp [...] Muestra el logo original en: el header; el hero; el footer. Conserva siempre la proporción original de la imagen. No recortes ni deformes el logo. Añade un texto alternativo descriptivo: 'Logo original de la startup Convocado'."*
 
 ---
 
@@ -205,51 +222,55 @@ El desarrollo del proyecto se organizó distinguiendo tres niveles de trabajo:
 
 - **Aplicación:** Antigravity. **Modelo:** Gemini 4 Argon (Medium).
 - **Rol:** creación y configuración inicial del repositorio; elaboración y revisión del análisis funcional y su refinamiento estricto (Prompt 1); especificación textual de los diagramas de flujo (Prompt 2); definición del wireframe y de la sección *"Nuestro Enfoque"* (Prompt 3); corrección de fidelidad con la consigna oficial e incorporación de origen IFTS 16, S08-B y R3/R4 (Prompt 10); corrección de botones Expandir/Contraer y accesibilidad con teclado (Prompt 11); actualización del nombre definitivo del proyecto a `tp3-frontend-grupo1a-Convocado`; y creación del proyecto Vercel en la cuenta `adrilu-web`/`almprojects1`, conexión con el repositorio de GitHub, configuración de `main` como rama de producción y despliegue de producción verificado; reorganización y uniformidad documental de README.md (Prompt 15).
-- **Qué se pidió al agente:**
-  1. **Creación y configuración inicial del repositorio:** inicializar la estructura base del proyecto y la documentación inicial en el repositorio del grupo.
-  2. **Análisis funcional y refinamiento estricto:** analizar funcionalmente la startup **Convocado** y las dos sentencias asignadas al Grupo 01 en `analisis_funcional_convocado_grupo01.md`, y refinarlo reduciendo suposiciones adicionales para mantener separadas las consecuencias obligatorias de la sentencia frente a las decisiones de diseño del grupo.
-  3. **Especificación textual de los diagramas:** preparar la especificación paso a paso de los dos diagramas de flujo (inicio, entrada, consulta del agente, decisión, camino SÍ, camino NO, acción, resultado e intervención humana) en la sección 8 de `analisis_funcional_convocado_grupo01.md` y eliminar la sección duplicada.
-  4. **Wireframe y sección *"Nuestro Enfoque"*:** definir el wireframe textual para desktop y ajustarlo antes de programar eliminando `#comparativa-origen` del menú superior e incorporando la sección breve *"Nuestro Enfoque"* entre el Hero y la Sentencia 1.
-  5. **Corrección de fidelidad con la consigna, IFTS 16, S08-B, R3/R4:** reemplazar la Sentencia 2 en todos los archivos por su texto literal exacto de la consigna oficial, verificar la Sentencia 1 e incorporar en la landing y en `README.md` los datos oficiales (`Convocado`, `Categoría: Deportes y conexión de equipos`, `Bloque: Cupo y revisión`, `Asignación: S08-B`, `R3 y R4`, `Startup creada por estudiantes del IFTS 16.` y `Propuesta del Grupo 01 del IFTS 29.`).
-  6. **Corrección de Expandir/Contraer y accesibilidad con teclado:** mantener un único botón general por sección sincronizado dinámicamente (`"Expandir todo"` / `"Contraer todo"`) con la apertura o cierre individual de cada `<details>`/`<summary>` mediante clic y teclado, y agregar foco visible (`:focus-visible`) en `styles.css`.
-  7. **Actualización del nombre definitivo del proyecto a `tp3-frontend-grupo1a-Convocado`:** buscar en todos los archivos del proyecto cualquier referencia al nombre antiguo `tp3-frontend-grupo1a` usada como nombre de proyecto o carpeta y reemplazarla por `tp3-frontend-grupo1a-Convocado` (especialmente en *"Cómo Ejecutar el Proyecto"* y *"Estructura del Proyecto"*).
-  8. **Creación del proyecto Vercel en la cuenta `adrilu-web`/`almprojects1`, conexión con el repositorio GitHub, configuración de `main` como rama de producción y despliegue verificado:** autenticar Vercel CLI con la cuenta `adrilu-web`, crear y vincular el proyecto `almprojects1/tp3-frontend-grupo1a-convocado`, conectar el repositorio `Adrilu-web/tp3-frontend-grupo1a-Convocado` para despliegues automáticos con `main` como rama de producción (manteniendo el despliegue anterior de Magalí Pintos documentado como despliegue inicial), verificar `.gitignore` y ejecutar el despliegue de producción en https://tp3-frontend-grupo1a-convocado-one.vercel.app.
-  - **Reorganización y uniformidad documental de README.md:** reorganizar la estructura del README, agrupar los aportes individuales, uniformar la jerarquía de títulos Markdown e incorporar el subtítulo institucional, conservando íntegramente los aportes, prompts, autorías, modelos, tablas, enlaces, sentencias y datos existentes.
-- **Prompts enviados:**
-  - **Análisis funcional y refinamiento estricto:**
-    > *"Analiza la startup "Convocado" y las dos sentencias asignadas al Grupo 01. No generes código todavía. Quiero que crees un documento de análisis que incluya: 1. Descripción breve de la startup. 2. Para cada sentencia: datos necesarios, condición, consecuencia. 3. Una propuesta de solución agéntica para cada sentencia. 4. Qué información consultaría el futuro agente. 5. Qué decisiones tomaría. 6. Cuándo sería necesaria una intervención humana. 7. Una explicación clara para estudiantes de Front End. [...] No quiero HTML, CSS ni JavaScript todavía. Quiero solamente el análisis funcional."*
-    >
-    > *"El análisis es correcto. Quiero una versión más alineada con la consigna. Reduce las suposiciones adicionales que no aparecen en las sentencias originales. Mantén claramente separadas: consecuencias obligatorias de la sentencia, decisiones agregadas por la propuesta del grupo. Para cada propuesta indica explícitamente qué surge de la sentencia y qué es una decisión de diseño. Actualiza el archivo y conserva el formato Markdown."*
 
-  - **Especificación textual de los diagramas:**
-    > *"A partir del análisis funcional aprobado, prepara la especificación textual de dos diagramas de flujo, uno para cada sentencia. Todavía no generes HTML, CSS, JavaScript ni la landing completa. Cada especificación debe incluir: inicio; información de entrada; consulta que realiza el futuro agente; decisión; camino SÍ; camino NO; acción; resultado; intervención humana cuando corresponda; aclaración de qué elementos surgen de la sentencia y cuáles son decisiones de diseño del grupo. Para la Sentencia 1, la condición central debe ser: "¿El capitán intenta aceptar una solicitud y no queda lugar?" Para la Sentencia 2, la condición debe conservar exactamente esta lógica: "¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?""*
+**Qué se pidió al agente:**
 
-  - **Wireframe y sección *"Nuestro Enfoque"*:**
-    > *"A partir del análisis funcional y de la especificación de diagramas aprobados, genera una propuesta de estructura para la landing. No programes todavía. Quiero primero: secciones de la landing; orden del contenido; navegación; distribución visual de los diagramas; ubicación del logo de Convocado; ubicación de las sentencias; ubicación de las propuestas; ubicación de los desplegables. La landing será revisada únicamente en desktop. Presenta la estructura como un wireframe textual."*
-    >
-    > *"La estructura propuesta fue aprobada. Antes de generar la landing completa: 1. Elimina la referencia #comparativa-origen de la navegación superior. 2. Agrega una sección breve "Nuestro Enfoque" entre el Hero y la Sentencia 1, explicando en 3 o 4 líneas qué es un flujo agéntico y cómo el grupo propone resolver las dos sentencias. 3. Mantén el resto de la estructura sin cambios. 4. No generes código todavía. Muéstrame únicamente el wireframe actualizado."*
+1. **Creación y configuración inicial del repositorio:** inicializar la estructura base del proyecto y la documentación inicial en el repositorio del grupo.
+2. **Análisis funcional y refinamiento estricto:** analizar funcionalmente la startup **Convocado** y las dos sentencias asignadas al Grupo 01 en `analisis_funcional_convocado_grupo01.md`, y refinarlo reduciendo suposiciones adicionales para mantener separadas las consecuencias obligatorias de la sentencia frente a las decisiones de diseño del grupo.
+3. **Especificación textual de los diagramas:** preparar la especificación paso a paso de los dos diagramas de flujo (inicio, entrada, consulta del agente, decisión, camino SÍ, camino NO, acción, resultado e intervención humana) en la sección 8 de `analisis_funcional_convocado_grupo01.md` y eliminar la sección duplicada.
+4. **Wireframe y sección *"Nuestro Enfoque"*:** definir el wireframe textual para desktop y ajustarlo antes de programar eliminando `#comparativa-origen` del menú superior e incorporando la sección breve *"Nuestro Enfoque"* entre el Hero y la Sentencia 1.
+5. **Corrección de fidelidad con la consigna, IFTS 16, S08-B, R3/R4:** reemplazar la Sentencia 2 en todos los archivos por su texto literal exacto de la consigna oficial, verificar la Sentencia 1 e incorporar en la landing y en `README.md` los datos oficiales (`Convocado`, `Categoría: Deportes y conexión de equipos`, `Bloque: Cupo y revisión`, `Asignación: S08-B`, `R3 y R4`, `Startup creada por estudiantes del IFTS 16.` y `Propuesta del Grupo 01 del IFTS 29.`).
+6. **Corrección de Expandir/Contraer y accesibilidad con teclado:** mantener un único botón general por sección sincronizado dinámicamente (`"Expandir todo"` / `"Contraer todo"`) con la apertura o cierre individual de cada `<details>`/`<summary>` mediante clic y teclado, y agregar foco visible (`:focus-visible`) en `styles.css`.
+7. **Actualización del nombre definitivo del proyecto a `tp3-frontend-grupo1a-Convocado`:** buscar en todos los archivos del proyecto cualquier referencia al nombre antiguo `tp3-frontend-grupo1a` usada como nombre de proyecto o carpeta y reemplazarla por `tp3-frontend-grupo1a-Convocado` (especialmente en *"Cómo Ejecutar el Proyecto"* y *"Estructura del Proyecto"*).
+8. **Creación del proyecto Vercel en la cuenta `adrilu-web`/`almprojects1`, conexión con el repositorio GitHub, configuración de `main` como rama de producción y despliegue verificado:** autenticar Vercel CLI con la cuenta `adrilu-web`, crear y vincular el proyecto `almprojects1/tp3-frontend-grupo1a-convocado`, conectar el repositorio `Adrilu-web/tp3-frontend-grupo1a-Convocado` para despliegues automáticos con `main` como rama de producción (manteniendo el despliegue anterior de Magalí Pintos documentado como despliegue inicial), verificar `.gitignore` y ejecutar el despliegue de producción en https://tp3-frontend-grupo1a-convocado-one.vercel.app.
+9. **Reorganización y uniformidad documental de README.md:** reorganizar la estructura del README, agrupar los aportes individuales, uniformar la jerarquía de títulos Markdown e incorporar el subtítulo institucional, conservando íntegramente los aportes, prompts, autorías, modelos, tablas, enlaces, sentencias y datos existentes.
 
-  - **Corrección de fidelidad con la consigna, IFTS 16, S08-B, R3/R4:**
-    > *"Corrige únicamente la fidelidad del proyecto con la consigna oficial. 1. Reemplaza la Sentencia 2 en todos los archivos donde aparezca por su texto literal: "Si el jugador autoriza una solicitud y se cumple al menos una de estas condiciones —su valoración conocida es menor que cuatro, o el equipo está a diez kilómetros o más—, el sistema la deriva al capitán para evaluación manual; esa evaluación no reserva un lugar." No cambies palabras ni puntuación. 2. Verifica que la Sentencia 1 también coincida literalmente con la consigna. Si ya coincide, no la modifiques. 3. Incorpora de forma clara y sin recargar la landing: Convocado, Categoría: Deportes y conexión de equipos, Bloque: Cupo y revisión, Asignación: S08-B, R3 y R4, Startup creada por estudiantes del IFTS 16., Propuesta del Grupo 01 del IFTS 29. 4. Actualiza README.md con esos mismos datos. No modifiques todavía JavaScript, botones, desplegables, diagramas, casos de prueba, casos límite, aportes ni publicación. Al finalizar, indica qué archivos modificaste y qué cambiaste."*
+**Prompts enviados:**
 
-  - **Corrección de Expandir/Contraer y accesibilidad con teclado:**
-    > *"Corrige únicamente el funcionamiento de Expandir/Contraer. 1. Mantén un único botón general por sección. 2. Si hay algún desplegable cerrado, debe mostrar "Expandir todo" y abrirlos todos. 3. Si todos están abiertos, debe mostrar "Contraer todo" y cerrarlos todos. 4. Si se abre o cierra manualmente un <details>, actualiza el texto del botón según el estado. 5. Mantén <details>/<summary> funcionando con clic y teclado. 6. Agrega foco visible para navegación con teclado. 7. Comprueba el funcionamiento en Sentencia 1 y Sentencia 2. Modifica solo index.html, script.js y styles.css si es necesario. Además, registra este prompt como una nueva iteración en README.md, indicando: problema detectado; corrección solicitada; resultado obtenido."*
+**Análisis funcional y refinamiento estricto:**
+> *"Analiza la startup "Convocado" y las dos sentencias asignadas al Grupo 01. No generes código todavía. Quiero que crees un documento de análisis que incluya: 1. Descripción breve de la startup. 2. Para cada sentencia: datos necesarios, condición, consecuencia. 3. Una propuesta de solución agéntica para cada sentencia. 4. Qué información consultaría el futuro agente. 5. Qué decisiones tomaría. 6. Cuándo sería necesaria una intervención humana. 7. Una explicación clara para estudiantes de Front End. [...] No quiero HTML, CSS ni JavaScript todavía. Quiero solamente el análisis funcional."*
+>
+> *"El análisis es correcto. Quiero una versión más alineada con la consigna. Reduce las suposiciones adicionales que no aparecen en las sentencias originales. Mantén claramente separadas: consecuencias obligatorias de la sentencia, decisiones agregadas por la propuesta del grupo. Para cada propuesta indica explícitamente qué surge de la sentencia y qué es una decisión de diseño. Actualiza el archivo y conserva el formato Markdown."*
 
-  - **Revisión y corrección del nombre definitivo del proyecto (`tp3-frontend-grupo1a-Convocado`):**
-    > *"Busca en TODOS los archivos y carpetas del proyecto cualquier referencia al nombre antiguo: tp3-frontend-grupo1a. Cuando esa referencia represente el nombre del proyecto o de la carpeta, reemplázala por: tp3-frontend-grupo1a-Convocado. Revisa todo el proyecto, incluyendo HTML, CSS, JavaScript, Markdown y cualquier otro archivo de texto. IMPORTANTE: No hagas un reemplazo ciego. No modifiques URLs que ya contengan correctamente "tp3-frontend-grupo1a-Convocado". No modifiques la URL de Vercel. No cambies nombres de archivos. No cambies contenido funcional, estilos, lógica ni textos no relacionados. En README.md revisa especialmente: "Cómo Ejecutar el Proyecto". "Estructura del Proyecto". Al finalizar: 1. Realiza una nueva búsqueda global. 2. Confirma si quedó alguna referencia exacta al nombre antiguo usada como nombre de proyecto/carpeta. 3. Lista cada archivo modificado. 4. Para cada cambio muestra: texto anterior; texto nuevo. No realices ninguna otra modificación."*
+**Especificación textual de los diagramas:**
+> *"A partir del análisis funcional aprobado, prepara la especificación textual de dos diagramas de flujo, uno para cada sentencia. Todavía no generes HTML, CSS, JavaScript ni la landing completa. Cada especificación debe incluir: inicio; información de entrada; consulta que realiza el futuro agente; decisión; camino SÍ; camino NO; acción; resultado; intervención humana cuando corresponda; aclaración de qué elementos surgen de la sentencia y cuáles son decisiones de diseño del grupo. Para la Sentencia 1, la condición central debe ser: "¿El capitán intenta aceptar una solicitud y no queda lugar?" Para la Sentencia 2, la condición debe conservar exactamente esta lógica: "¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?""*
 
-  - **Autenticación, vinculación del proyecto en Vercel (`adrilu-web`/`almprojects1`), conexión con GitHub, verificación de `main` y despliegue de producción:**
-    > *"Quiero conectar y desplegar este proyecto en mi cuenta de Vercel para que los futuros push a GitHub generen despliegues automáticos. Repositorio: https://github.com/Adrilu-web/tp3-frontend-grupo1a-Convocado. Requisitos: 1. No modifiques ningún archivo del proyecto. 2. Comprueba si Vercel CLI está disponible y qué cuenta está autenticada. 3. No ejecutes todavía ningún despliegue ni conexión. 4. Muéstrame un plan breve indicando: comandos que ejecutarías; proyecto de Vercel que crearías o conectarías; rama de producción; cómo comprobarías que GitHub quedó conectado para despliegue automático. 5. Espera mi aprobación antes de ejecutar. 6. No hagas commit ni push."*
-    >
-    > *"Apruebo únicamente el primer paso. Ejecuta: npx vercel login. No vincules proyectos, no conectes GitHub y no despliegues todavía. Cuando finalice el inicio de sesión, ejecuta: npx vercel whoami. Muéstrame la cuenta autenticada y espera mi aprobación. No modifiques archivos, no hagas commit ni push."*
-    >
-    > *"La autenticación se completó correctamente. Continúa únicamente con el siguiente paso: vincular este proyecto local con Vercel. Antes de ejecutar el comando, confirma: cuenta autenticada: adrilu-web; proyecto a crear o vincular: tp3-frontend-grupo1a-convocado; repositorio GitHub: Adrilu-web/tp3-frontend-grupo1a-Convocado; rama de producción: main. [...] Aprobado. Ejecuta únicamente el comando de vinculación indicado: npx vercel link --yes --project tp3-frontend-grupo1a-convocado."*
-    >
-    > *"La vinculación quedó aprobada. Antes de desplegar, verifica únicamente: 1. El contenido completo de .gitignore. 2. El resultado de git status --short. 3. Que .vercel/ y .env.local estén ignorados por Git. 4. Que el repositorio conectado sea: Adrilu-web/tp3-frontend-grupo1a-Convocado. 5. Que la rama de producción configurada sea main."*
-    >
-    > *"La configuración quedó verificada. Ejecuta únicamente el primer despliegue de producción con: npx vercel --prod. No modifiques archivos del proyecto. No hagas commit ni push. No muestres ni copies valores de .env.local. Al finalizar, indícame: si el despliegue terminó correctamente; URL de producción generada; estado final del despliegue; proyecto y cuenta de Vercel utilizados."*
+**Wireframe y sección *"Nuestro Enfoque"*:**
+> *"A partir del análisis funcional y de la especificación de diagramas aprobados, genera una propuesta de estructura para la landing. No programes todavía. Quiero primero: secciones de la landing; orden del contenido; navegación; distribución visual de los diagramas; ubicación del logo de Convocado; ubicación de las sentencias; ubicación de las propuestas; ubicación de los desplegables. La landing será revisada únicamente en desktop. Presenta la estructura como un wireframe textual."*
+>
+> *"La estructura propuesta fue aprobada. Antes de generar la landing completa: 1. Elimina la referencia #comparativa-origen de la navegación superior. 2. Agrega una sección breve "Nuestro Enfoque" entre el Hero y la Sentencia 1, explicando en 3 o 4 líneas qué es un flujo agéntico y cómo el grupo propone resolver las dos sentencias. 3. Mantén el resto de la estructura sin cambios. 4. No generes código todavía. Muéstrame únicamente el wireframe actualizado."*
 
-  - **Reorganización y uniformidad documental de README.md:** ver Prompt 15 en "Registro de prompts y cambios solicitados".
+**Corrección de fidelidad con la consigna, IFTS 16, S08-B, R3/R4:**
+> *"Corrige únicamente la fidelidad del proyecto con la consigna oficial. 1. Reemplaza la Sentencia 2 en todos los archivos donde aparezca por su texto literal: "Si el jugador autoriza una solicitud y se cumple al menos una de estas condiciones —su valoración conocida es menor que cuatro, o el equipo está a diez kilómetros o más—, el sistema la deriva al capitán para evaluación manual; esa evaluación no reserva un lugar." No cambies palabras ni puntuación. 2. Verifica que la Sentencia 1 también coincida literalmente con la consigna. Si ya coincide, no la modifiques. 3. Incorpora de forma clara y sin recargar la landing: Convocado, Categoría: Deportes y conexión de equipos, Bloque: Cupo y revisión, Asignación: S08-B, R3 y R4, Startup creada por estudiantes del IFTS 16., Propuesta del Grupo 01 del IFTS 29. 4. Actualiza README.md con esos mismos datos. No modifiques todavía JavaScript, botones, desplegables, diagramas, casos de prueba, casos límite, aportes ni publicación. Al finalizar, indica qué archivos modificaste y qué cambiaste."*
+
+**Corrección de Expandir/Contraer y accesibilidad con teclado:**
+> *"Corrige únicamente el funcionamiento de Expandir/Contraer. 1. Mantén un único botón general por sección. 2. Si hay algún desplegable cerrado, debe mostrar "Expandir todo" y abrirlos todos. 3. Si todos están abiertos, debe mostrar "Contraer todo" y cerrarlos todos. 4. Si se abre o cierra manualmente un `<details>`, actualiza el texto del botón según el estado. 5. Mantén `<details>/<summary>` funcionando con clic y teclado. 6. Agrega foco visible para navegación con teclado. 7. Comprueba el funcionamiento en Sentencia 1 y Sentencia 2. Modifica solo index.html, script.js y styles.css si es necesario. Además, registra este prompt como una nueva iteración en README.md, indicando: problema detectado; corrección solicitada; resultado obtenido."*
+
+**Revisión y corrección del nombre definitivo del proyecto (`tp3-frontend-grupo1a-Convocado`):**
+> *"Busca en TODOS los archivos y carpetas del proyecto cualquier referencia al nombre antiguo: tp3-frontend-grupo1a. Cuando esa referencia represente el nombre del proyecto o de la carpeta, reemplázala por: tp3-frontend-grupo1a-Convocado. Revisa todo el proyecto, incluyendo HTML, CSS, JavaScript, Markdown y cualquier otro archivo de texto. IMPORTANTE: No hagas un reemplazo ciego. No modifiques URLs que ya contengan correctamente "tp3-frontend-grupo1a-Convocado". No modifiques la URL de Vercel. No cambies nombres de archivos. No cambies contenido funcional, estilos, lógica ni textos no relacionados. En README.md revisa especialmente: "Cómo Ejecutar el Proyecto". "Estructura del Proyecto". Al finalizar: 1. Realiza una nueva búsqueda global. 2. Confirma si quedó alguna referencia exacta al nombre antiguo usada como nombre de proyecto/carpeta. 3. Lista cada archivo modificado. 4. Para cada cambio muestra: texto anterior; texto nuevo. No realices ninguna otra modificación."*
+
+**Autenticación, vinculación del proyecto en Vercel (`adrilu-web`/`almprojects1`), conexión con GitHub, verificación de `main` y despliegue de producción:**
+> *"Quiero conectar y desplegar este proyecto en mi cuenta de Vercel para que los futuros push a GitHub generen despliegues automáticos. Repositorio: https://github.com/Adrilu-web/tp3-frontend-grupo1a-Convocado. Requisitos: 1. No modifiques ningún archivo del proyecto. 2. Comprueba si Vercel CLI está disponible y qué cuenta está autenticada. 3. No ejecutes todavía ningún despliegue ni conexión. 4. Muéstrame un plan breve indicando: comandos que ejecutarías; proyecto de Vercel que crearías o conectarías; rama de producción; cómo comprobarías que GitHub quedó conectado para despliegue automático. 5. Espera mi aprobación antes de ejecutar. 6. No hagas commit ni push."*
+>
+> *"Apruebo únicamente el primer paso. Ejecuta: npx vercel login. No vincules proyectos, no conectes GitHub y no despliegues todavía. Cuando finalice el inicio de sesión, ejecuta: npx vercel whoami. Muéstrame la cuenta autenticada y espera mi aprobación. No modifiques archivos, no hagas commit ni push."*
+>
+> *"La autenticación se completó correctamente. Continúa únicamente con el siguiente paso: vincular este proyecto local con Vercel. Antes de ejecutar el comando, confirma: cuenta autenticada: adrilu-web; proyecto a crear o vincular: tp3-frontend-grupo1a-convocado; repositorio GitHub: Adrilu-web/tp3-frontend-grupo1a-Convocado; rama de producción: main. [...] Aprobado. Ejecuta únicamente el comando de vinculación indicado: npx vercel link --yes --project tp3-frontend-grupo1a-convocado."*
+>
+> *"La vinculación quedó aprobada. Antes de desplegar, verifica únicamente: 1. El contenido completo de .gitignore. 2. El resultado de git status --short. 3. Que .vercel/ y .env.local estén ignorados por Git. 4. Que el repositorio conectado sea: Adrilu-web/tp3-frontend-grupo1a-Convocado. 5. Que la rama de producción configurada sea main."*
+>
+> *"La configuración quedó verificada. Ejecuta únicamente el primer despliegue de producción con: npx vercel --prod. No modifiques archivos del proyecto. No hagas commit ni push. No muestres ni copies valores de .env.local. Al finalizar, indícame: si el despliegue terminó correctamente; URL de producción generada; estado final del despliegue; proyecto y cuenta de Vercel utilizados."*
+
+**Reorganización y uniformidad documental de README.md:** ver Prompt 15 en "Registro de prompts y cambios solicitados".
 
 ---
 
@@ -336,7 +357,7 @@ A continuación se documenta cronológicamente la secuencia real de prompts e in
 
 ### 8. Responsive
 - **Prompt de adaptación multi-dispositivo y footer de equipo:**
-  Realiza una ronda final de mejoras enfocadas en entrega académica. 1. FOOTER: Agregar una sección de integrantes dentro del footer [...] 2. RESPONSIVE DESIGN: Crear una versión responsive completa. Objetivos: Tablet (1024px aprox.), Tablet pequeña (768px aprox.), Mobile (480px aprox.). Adaptar: HEADER, HERO, NUESTRO ENFOQUE, SENTENCIA 1 y SENTENCIA 2, DIAGRAMAS, FOOTER. Evitar: overflow horizontal, elementos cortados, texto fuera de pantalla."*
+  Realiza una ronda final de mejoras enfocadas en entrega académica. 1. FOOTER: Agregar una sección de integrantes dentro del footer [...] 2. RESPONSIVE DESIGN: Crear una versión responsive completa. Objetivos: Tablet (1024px aprox.), Tablet pequeña (768px aprox.), Mobile (480px aprox.). Adaptar: HEADER, HERO, NUESTRO ENFOQUE, SENTENCIA 1 y SENTENCIA 2, DIAGRAMAS, FOOTER. Evitar: overflow horizontal, elementos cortados, texto fuera de pantalla."
 
 ### 9. README y documentación
 - **Creación inicial y refinamiento de trazabilidad en `README.md`:** se solicitó primero generar el `README.md` académico del proyecto y, finalmente, actualizar únicamente `README.md` para no atribuir autoría humana directa del código generado inicialmente por Antigravity, separar los aportes de análisis/validación frente a la implementación asistida por IA, detallar el modelo observado (`Gemini 4 Argon (Medium)`)  e incorporar este registro cronológico de prompts y cambios solicitados.
@@ -381,7 +402,7 @@ Esta sección conserva el título solicitado «Prompt 13 — Despliegue en Verce
 
 ### 14. Incorporación de aportes de Judith Leonardo al archivo README.md
 
-> *"Redacta y agrega en README.md una nueva sección llamada "## Aportes de Judith Leonardo", justo debajo de "## Aportes de Silvia Podberezski", teniendo en cuenta mis commits en el repositorio y los prompts utilizados en mis etapas.
+> "Redacta y agrega en README.md una nueva sección llamada "## Aportes de Judith Leonardo", justo debajo de "## Aportes de Silvia Podberezski", teniendo en cuenta mis commits en el repositorio y los prompts utilizados en mis etapas.
 
 Mantén el mismo formato de la sección anterior e incluye:
 - Aplicación: Antigravity. Modelo: Gemini 4 Argon (Medium).
@@ -392,7 +413,7 @@ Mantén el mismo formato de la sección anterior e incluye:
   3. Revisar el cumplimiento integral de la consigna y agregar en README.md el apartado "## Enlaces de Entrega" (repositorio en GitHub y landing en Vercel con constancia de verificación sin sesión) junto con el registro del Prompt 12.
 - Prompts enviados: cita los prompts correspondientes a la identidad visual (Prompt 7), diseño responsive (Prompt 8) e incorporación del apartado de enlaces de entrega (Prompt 12).
 
-  Modifica únicamente README.md sin alterar ningún otro archivo del proyecto."*
+  Modifica únicamente README.md sin alterar ningún otro archivo del proyecto."
 
 ### 15. Reorganización y uniformidad documental de README.md
 
