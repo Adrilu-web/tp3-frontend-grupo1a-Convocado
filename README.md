@@ -1,5 +1,7 @@
 # Convocado - TP3 Front End
 
+Tercer Trabajo Práctico Grupal de la materia **Desarrollo de Sistemas Web (Front End)**, correspondiente al segundo cuatrimestre de 2026 de la Tecnicatura Superior en Desarrollo de Software del IFTS N.° 29.
+
 ---
 
 ## Integrantes
@@ -63,149 +65,11 @@ El desarrollo del proyecto se organizó distinguiendo tres niveles de trabajo:
 2. **Generación de código asistida por IA:** la implementación inicial de los archivos HTML, CSS y JavaScript fue generada mediante **Antigravity** a partir de instrucciones del equipo, por lo que no se atribuye a ningún integrante la autoría directa del código generado inicialmente por la herramienta.
 3. **Revisión, validación y correcciones realizadas por el equipo:** verificación iterativa de los documentos, diagramas, uso del logo original, identidad visual, comportamiento responsive y documentación.
 
-### Implementación asistida por IA
-
-**Antigravity** generó la implementación inicial de la maquetación HTML (`index.html`, `diagramas.html`), los estilos CSS (`styles.css`, `diagramas.css`), los diagramas de flujo visuales y parte de la interactividad en JavaScript (`script.js`) a partir de las instrucciones suministradas por el equipo. Todos los resultados generados fueron revisados, validados y modificados iterativamente bajo supervisión del Grupo 01 antes de su aprobación en cada etapa.
-
 ---
 
-## Tecnologías Utilizadas
+## Aportes Individuales
 
-- **HTML5** (estructura semántica y desplegables nativos `<details>` / `<summary>`)
-- **CSS3** (Custom Properties, CSS Grid, Flexbox, diseño de diagramas de flujo y Media Queries responsive)
-- **JavaScript (Vanilla JS)** (resaltado de navegación activa en scroll y control dinámico de desplegables)
-- **Git** (control de versiones)
-- **GitHub** (repositorio y documentación del proyecto)
-
----
-
-## Herramientas de IA Utilizadas
-
-- **Aplicación / entorno:** Antigravity
-- **Modelo observado durante el desarrollo:** Gemini 4 Argon (Medium)
-
-
-| Aplicación / Entorno | Modelo | Uso Realizado | Cambios Solicitados |
-| :--- | :--- | :--- | :--- |
-| **Antigravity** | **Modelo observado durante el desarrollo:** Gemini 4 Argon (Medium) | Redacción estructurada del análisis funcional, especificación textual de los diagramas de flujo, elaboración del wireframe textual, generación inicial de código HTML, CSS y JavaScript para los diagramas visuales y la landing page, adaptación responsive y redacción del `README.md`. | Alineación estricta a la consigna eliminando suposiciones adicionales, separación entre consecuencias obligatorias y decisiones del grupo, eliminación de sección duplicada, ajuste del wireframe, sustitución de iconos genéricos por `assets/logo.webp`, aplicación de la paleta del logo oficial, cambio dinámico de botones *"Expandir todo"* / *"Contraer todo"*, adaptación responsive e incorporación de integrantes y trazabilidad de IA. |
-| **Cursor** | Cursor Grok 4.6 Medium | Revisión de la landing contra la consigna y corrección de errores conceptuales en los diagramas de la Sentencia 2. | Ajuste de la condición lógica del rombo de decisión y tabla 2B; cambio de etiquetas `lugaresDisponibles` y `Datos: Jugador y Equipo` de `pill-mandatory` a `pill-design`; actualización de datos necesarios y del desplegable 2A. |
-| **Antigravity** | Claude Sonnet 4.6 (Thinking) | Rotulado de los casos recorridos y agregado de casos límite en cada flujo; alineación de diagramas.html y del análisis funcional con index.html. | Etiquetas Cumple / No cumple / Caso límite, tres filas nuevas en "Casos recorridos" y corrección de la Sentencia 2 (lugaresDisponibles y "Jugador y Equipo" como decisión de diseño). |
-
----
-
-## Cambios Solicitados a la IA
-
-Durante el desarrollo iterativo del proyecto se solicitaron y verificaron los siguientes ajustes:
-
-1. **Generación de estructura inicial y análisis funcional:** redacción del documento funcional eliminando suposiciones no presentes en las sentencias originales y separando consecuencias obligatorias de las decisiones de diseño del grupo.
-2. **Diseño visual y wireframe:** definición de la estructura de navegación sticky, Hero, sección *"Nuestro Enfoque"*, distribución en columnas (`45% / 55%`) para desktop y ubicación de desplegables.
-3. **Diagramas de flujo:** construcción de dos diagramas visuales reales en HTML y CSS con nodos diferenciados por origen (verde para elementos obligatorios de la sentencia y amarillo/ámbar para decisiones de diseño del grupo).
-4. **Refinamientos de identidad visual:** reemplazo de iconos genéricos por el logo oficial de la startup (`assets/logo.webp`) en Header, Hero y Footer conservando su proporción original, y aplicación de la paleta oficial del logo (`#0f766e`, `#10b981`, `#34d399`, `#fbbf24`, `#ffffff`, `#081120`), además de botones dinámicos *"Expandir todo"* / *"Contraer todo"*.
-5. **Mejoras responsive:** adaptación completa para Tablet (`1024px`), Tablet pequeña (`768px`) y Mobile (`480px`), apilando columnas, adaptando el menú y los diagramas sin desbordamiento horizontal.
-6. **Creación del README y cierre académico:** incorporación del listado de integrantes del Grupo 01 en el footer de la landing y generación del archivo `README.md` con el registro de aportes, herramientas de IA y trazabilidad de prompts.
-
----
-
-## Registro de prompts y cambios solicitados
-
-A continuación se documenta cronológicamente la secuencia real de prompts e instrucciones proporcionadas por el equipo durante el desarrollo en **Antigravity**:
-
-### 1. Análisis funcional
-- **Prompt inicial de análisis:**
-  > *"Analiza la startup "Convocado" y las dos sentencias asignadas al Grupo 01. No generes código todavía. Quiero que crees un documento de análisis que incluya: 1. Descripción breve de la startup. 2. Para cada sentencia: datos necesarios, condición, consecuencia. 3. Una propuesta de solución agéntica para cada sentencia. 4. Qué información consultaría el futuro agente. 5. Qué decisiones tomaría. 6. Cuándo sería necesaria una intervención humana. 7. Una explicación clara para estudiantes de Front End. [...] No quiero HTML, CSS ni JavaScript todavía. Quiero solamente el análisis funcional."*
-- **Guardado en el proyecto:** se solicitó guardar el documento en `analisis_funcional_convocado_grupo01.md` dentro de la carpeta del proyecto y mostrar su contenido para revisión.
-- **Refinamiento estricto del análisis:**
-  > *"El análisis es correcto. Quiero una versión más alineada con la consigna. Reduce las suposiciones adicionales que no aparecen en las sentencias originales. Mantén claramente separadas: consecuencias obligatorias de la sentencia, decisiones agregadas por la propuesta del grupo. Para cada propuesta indica explícitamente qué surge de la sentencia y qué es una decisión de diseño. Actualiza el archivo y conserva el formato Markdown."*
-
-### 2. Especificación y corrección documental de diagramas
-- **Prompt de especificación textual:**
-  > *"A partir del análisis funcional aprobado, prepara la especificación textual de dos diagramas de flujo, uno para cada sentencia. Todavía no generes HTML, CSS, JavaScript ni la landing completa. Cada especificación debe incluir: inicio; información de entrada; consulta que realiza el futuro agente; decisión; camino SÍ; camino NO; acción; resultado; intervención humana cuando corresponda; aclaración de qué elementos surgen de la sentencia y cuáles son decisiones de diseño del grupo. Para la Sentencia 1, la condición central debe ser: "¿El capitán intenta aceptar una solicitud y no queda lugar?" Para la Sentencia 2, la condición debe conservar exactamente esta lógica: "¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?""*
-- **Integración y depuración del archivo `.md`:** se solicitó agregar la especificación en la sección 8 de `analisis_funcional_convocado_grupo01.md` y posteriormente eliminar una duplicación detectada de dicha sección 8 conservando una única copia.
-
-### 3. Wireframe
-- **Prompt de propuesta de estructura:**
-  > *"A partir del análisis funcional y de la especificación de diagramas aprobados, genera una propuesta de estructura para la landing. No programes todavía. Quiero primero: secciones de la landing; orden del contenido; navegación; distribución visual de los diagramas; ubicación del logo de Convocado; ubicación de las sentencias; ubicación de las propuestas; ubicación de los desplegables. La landing será revisada únicamente en desktop. Presenta la estructura como un wireframe textual."*
-- **Ajuste del wireframe antes de programar:**
-  > *"La estructura propuesta fue aprobada. Antes de generar la landing completa: 1. Elimina la referencia #comparativa-origen de la navegación superior. 2. Agrega una sección breve "Nuestro Enfoque" entre el Hero y la Sentencia 1, explicando en 3 o 4 líneas qué es un flujo agéntico y cómo el grupo propone resolver las dos sentencias. 3. Mantén el resto de la estructura sin cambios. 4. No generes código todavía. Muéstrame únicamente el wireframe actualizado."*
-
-### 4. Diagramas
-- **Prompt de generación de diagramas visuales:**
-  > *"La especificación textual fue aprobada. Genera ahora los dos diagramas visuales. Requisitos: Un diagrama para cada sentencia. Deben ser diagramas reales, no descripción textual. Utiliza HTML y CSS para representarlos visualmente. Deben ser legibles en desktop. Incluir: inicio, intervención humana, consulta del agente, decisión, camino sí, camino no, acciones, resultado final. Distingue visualmente: elementos obligatorios de la sentencia, decisiones de diseño del grupo. No generes todavía la landing completa. Quiero revisar primero los diagramas visuales."*
-
-### 5. Generación de landing
-- **Prompt de construcción de la landing completa:**
-  > *"Los diagramas visuales fueron aprobados. Genera ahora la landing completa para Convocado. Requisitos: HTML, CSS y JavaScript solamente. No usar React. Desktop first. Diseño moderno y profesional. Header sticky. Hero con logo y descripción de Convocado. Sección Nuestro Enfoque. Bloque completo de Sentencia 1. Bloque completo de Sentencia 2. Integrar y reutilizar los diagramas visuales ya desarrollados. Utilizar details/summary para los desplegables. Footer con información del Grupo 01. Diferenciar visualmente: elementos obligatorios de la sentencia, decisiones de diseño del grupo. Genera los archivos finales dentro del proyecto. Verifica que la landing pueda abrirse localmente desde index.html."*
-
-### 6. Incorporación del logo
-- **Prompt de corrección de marca con el archivo original:**
-  > *"La landing no está mostrando el logo original de la startup Convocado. Actualmente utilizaste un icono SVG genérico de una pelota de fútbol. La consigna exige conservar el logo original de la startup completo y legible. El archivo original del logo está guardado en: assets/logo.webp [...] Muestra el logo original en: el header; el hero; el footer. Conserva siempre la proporción original de la imagen. No recortes ni deformes el logo. Añade un texto alternativo descriptivo: "Logo original de la startup Convocado". [...] También corrige la clase inválida o accidental "hero-logo- emblem" y utiliza un nombre de clase claro y consistente para el contenedor del logo."*
-
-### 7. Refinamiento de identidad visual
-- **Prompt de alineación cromática y mejora UX:**
-  > *"La landing quedó aprobada funcionalmente. Realiza ahora una ronda final de refinamiento visual sin modificar la estructura, el contenido, los diagramas ni la distribución de secciones. OBJETIVO: Alinear la identidad visual de toda la landing con el logo oficial de Convocado. PALETA NUEVA: Verde principal: #0f766e, Verde secundario: #10b981, Verde claro: #34d399, Amarillo acento: #fbbf24, Blanco: #ffffff, Fondo oscuro deportivo: mantener tonos azul oscuro muy oscuros cercanos a #081120. [...] MEJORA UX: Modificar los botones "Expandir / Contraer Desplegables" para que cambien dinámicamente a: "Expandir todo", "Contraer todo" según el estado actual de los desplegables de la sección."*
-
-### 8. Responsive
-- **Prompt de adaptación multi-dispositivo y footer de equipo:**
-  cRealiza una ronda final de mejoras enfocadas en entrega académica. 1. FOOTER: Agregar una sección de integrantes dentro del footer [...] 2. RESPONSIVE DESIGN: Crear una versión responsive completa. Objetivos: Tablet (1024px aprox.), Tablet pequeña (768px aprox.), Mobile (480px aprox.). Adaptar: HEADER, HERO, NUESTRO ENFOQUE, SENTENCIA 1 y SENTENCIA 2, DIAGRAMAS, FOOTER. Evitar: overflow horizontal, elementos cortados, texto fuera de pantalla."*
-
-### 9. README y documentación
-- **Creación inicial y refinamiento de trazabilidad en `README.md`:** se solicitó primero generar el `README.md` académico del proyecto y, finalmente, actualizar únicamente `README.md` para no atribuir autoría humana directa del código generado inicialmente por Antigravity, separar los aportes de análisis/validación frente a la implementación asistida por IA, detallar el modelo observado (`Gemini 4 Argon (Medium)`)  e incorporar este registro cronológico de prompts y cambios solicitados.
-
-### 10. Corrección de fidelidad con la consigna oficial
-- **Prompt enviado:**
-  > *"Corrige únicamente la fidelidad del proyecto con la consigna oficial. 1. Reemplaza la Sentencia 2 en todos los archivos donde aparezca por su texto literal: "Si el jugador autoriza una solicitud y se cumple al menos una de estas condiciones —su valoración conocida es menor que cuatro, o el equipo está a diez kilómetros o más—, el sistema la deriva al capitán para evaluación manual; esa evaluación no reserva un lugar." No cambies palabras ni puntuación. 2. Verifica que la Sentencia 1 también coincida literalmente con la consigna. Si ya coincide, no la modifiques. 3. Incorpora de forma clara y sin recargar la landing: Convocado, Categoría: Deportes y conexión de equipos, Bloque: Cupo y revisión, Asignación: S08-B, R3 y R4, Startup creada por estudiantes del IFTS 16., Propuesta del Grupo 01 del IFTS 29. 4. Actualiza README.md con esos mismos datos. No modifiques todavía JavaScript, botones, desplegables, diagramas, casos de prueba, casos límite, aportes ni publicación. Al finalizar, indica qué archivos modificaste y qué cambiaste."*
-- **Problema detectado:** redacción no literal de la Sentencia 2 y ausencia de datos de asignación/origen.
-- **Corrección solicitada:** reemplazar todas las apariciones de la Sentencia 2 por su redacción literal exacta (sin alterar palabras ni puntuación), verificar la coincidencia literal de la Sentencia 1 e incorporar de manera clara en la landing y en `README.md` los datos oficiales de la startup, categoría, bloque, código de asignación y reconocimiento de origen institucional.
-- **Resultado:** sentencias alineadas con la consigna e incorporación de Convocado, categoría (`Deportes y conexión de equipos`), bloque `Cupo y revisión`, `S08-B`, `R3/R4`, origen `IFTS 16` y propuesta `Grupo 01 IFTS 29`.
-
-### 11. Corrección de botones Expandir/Contraer y accesibilidad con teclado
-- **Prompt enviado:**
-  > *"Corrige únicamente el funcionamiento de Expandir/Contraer. 1. Mantén un único botón general por sección. 2. Si hay algún desplegable cerrado, debe mostrar "Expandir todo" y abrirlos todos. 3. Si todos están abiertos, debe mostrar "Contraer todo" y cerrarlos todos. 4. Si se abre o cierra manualmente un <details>, actualiza el texto del botón según el estado. 5. Mantén <details>/<summary> funcionando con clic y teclado. 6. Agrega foco visible para navegación con teclado. 7. Comprueba el funcionamiento en Sentencia 1 y Sentencia 2. Modifica solo index.html, script.js y styles.css si es necesario. Además, registra este prompt como una nueva iteración en README.md, indicando: problema detectado; corrección solicitada; resultado obtenido."*
-- **Problema detectado:** el texto inicial estático de los botones generales en `index.html` decía `"Expandir / Contraer Desplegables"` (con clase `.Quick-controls`), `script.js` manipulaba atributos en lugar de la propiedad booleana nativa `.open` de `HTMLDetailsElement` sin reflejar `aria-expanded`, y faltaban estilos `:focus-visible` en `styles.css` para visualizar claramente el foco al navegar con teclado por los `<summary>` y botones.
-- **Corrección solicitada:** mantener un único botón general por sección que muestre `"Expandir todo"` cuando haya algún desplegable cerrado (abriéndolos todos al hacer clic) y `"Contraer todo"` cuando todos estén abiertos (cerrándolos todos al hacer clic), sincronizar su etiqueta al abrir o cerrar manualmente cualquier `<details>` con clic o teclado, y agregar foco visible para navegación por teclado en Sentencia 1 y Sentencia 2.
-- **Resultado obtenido:** botones generales de Sentencia 1 y Sentencia 2 sincronizados dinámicamente mediante la propiedad nativa `el.open` y eventos `toggle`, texto inicial consistente (`"Expandir todo"` con `aria-expanded`), preservación del comportamiento nativo de `<details>`/`<summary>` con clic y teclado (`Tab`, `Enter`, `Espacio`) e incorporación de contornos `:focus-visible` de alto contraste en `styles.css`.
-
-### 12. Incorporación del apartado de enlaces de entrega en `README.md`
-- **Prompt enviado:**
-  > *"crea un apartado en el readme para los enlaces bien visible, arriba, justo debajo de ## Integrantes o al principio del archivo, con este formato: Enlaces de Entrega / Repositorio en GitHub: https://github.com/Adrilu-web/tp3-frontend-grupo1a-Convocado / Landing publicada (Vercel): https://TU-LINK-AQUI.vercel.app / Comprobación de acceso y funcionamiento: Ambos enlaces fueron verificados desde una ventana de navegación privada (sin sesión iniciada). El sitio carga correctamente el logo original de Convocado, los dos diagramas de flujo visuales y los desplegables interactivos con clic y teclado en vista desktop."*
-- **Problema detectado:** ausencia de una sección visible en `README.md` con los dos enlaces obligatorios exigidos por la consigna y la rúbrica (repositorio de GitHub y landing publicada en Vercel), así como la nota de comprobación de acceso sin sesión.
-- **Corrección solicitada:** crear el apartado `## Enlaces de Entrega` en la parte superior del `README.md`, justo debajo de `## Integrantes`, incluyendo los enlaces al repositorio y a la publicación en Vercel junto con el bloque de comprobación de funcionamiento.
-- **Resultado obtenido:** sección `## Enlaces de Entrega` incorporada al inicio de `README.md` con ambos enlaces identificados y la constancia de verificación en ventana privada.
-
-## Prompt 13 — Despliegue en Vercel
-
-- **Proyecto:** Convocado — TP3 Frontend Grupo 1A.
-- **Tecnologías:** HTML, CSS y JavaScript.
-- **Plataforma:** Vercel.
-- **Método utilizado:** Vercel CLI, sin integración automática con GitHub.
-- **URL de producción:** [https://tp3-frontend-grupo1a-convocado.vercel.app](https://tp3-frontend-grupo1a-convocado.vercel.app).
-
-**Prompt de despliegue (síntesis del objetivo solicitado a la IA; no es una transcripción literal):**
-
-> Publicá en producción el proyecto Convocado — TP3 Frontend Grupo 1A mediante Vercel CLI. El proyecto utiliza HTML, CSS y JavaScript y su repositorio es https://github.com/Adrilu-web/tp3-frontend-grupo1a-Convocado. No modifiques el código HTML, CSS ni JavaScript y no conectes automáticamente el repositorio de GitHub con Vercel. Al finalizar, informá la URL pública de producción.
-
-**Estado y alcance:** el despliegue inicial ya se realizó mediante Vercel CLI, sin integración automática con GitHub, según la información proporcionada por el equipo. Esta intervención se limita a documentar ese despliegue en `README.md`; no se atribuye su ejecución autónoma al agente que realiza esta actualización ni se efectuó un nuevo despliegue. La comprobación de acceso consignada en Enlaces de Entrega se conserva como registro previo del equipo; no representa una nueva verificación realizada en esta actualización.
-
-Esta sección conserva el título solicitado «Prompt 13 — Despliegue en Vercel» y se incorpora de forma independiente, sin renumerar ni reemplazar las iteraciones existentes del registro de prompts.
-
-
-## Prompt 14 — incorporación de aportes de Judith Leonardo al archivo README.md:**
-
-> *"Redacta y agrega en README.md una nueva sección llamada "## Aportes de Judith Leonardo", justo debajo de "## Aportes de Silvia Podberezski", teniendo en cuenta mis commits en el repositorio y los prompts utilizados en mis etapas.
-
-Mantén el mismo formato de la sección anterior e incluye:
-- Aplicación: Antigravity. Modelo: Gemini 4 Argon (Medium).
-- Rol: dirección de la identidad visual y diseño responsive en styles.css (Prompts 7 y 8), auditoría del proyecto frente a la rúbrica oficial e incorporación del apartado de enlaces de entrega y comprobación en README.md (Prompt 12).
-- Qué se pidió al agente:
-  1. Alinear la identidad visual de toda la landing en styles.css con la paleta cromática oficial del logo de Convocado (#0f766e, #10b981, #34d399, #fbbf24, #ffffff, #081120), diferenciando visualmente los bloques obligatorios de la sentencia frente a las decisiones de diseño del Grupo 01.
-  2. Estilizar la sección de integrantes del Grupo 01 en el footer y construir la adaptación responsive completa para Tablet (1024px), Tablet pequeña (768px) y Mobile (480px) evitando desbordes horizontales.
-  3. Revisar el cumplimiento integral de la consigna y agregar en README.md el apartado "## Enlaces de Entrega" (repositorio en GitHub y landing en Vercel con constancia de verificación sin sesión) junto con el registro del Prompt 12.
-- Prompts enviados: cita los prompts correspondientes a la identidad visual (Prompt 7), diseño responsive (Prompt 8) e incorporación del apartado de enlaces de entrega (Prompt 12).
-
-  Modifica únicamente README.md sin alterar ningún otro archivo del proyecto."*
----
-
-## Aportes de Silvia Podberezski
+### Aportes de Silvia Podberezski
 
 - **Aplicación:** Cursor. **Modelo:** Cursor Grok 4.6 Medium.
 - **Rol:** revisión del trabajo de la landing contra la consigna y corrección de errores conceptuales de los diagramas y casos recorridos (cumple, no cumple y caso límite) en cada flujo.
@@ -305,7 +169,7 @@ Mantén el mismo formato de la sección anterior e incluye:
 
 ---
 
-## Aportes de Judith Leonardo
+### Aportes de Judith Leonardo
 
 - **Aplicación:** Antigravity. **Modelo:** Gemini 4 Argon (Medium).
 - **Rol:** dirección de la identidad visual y diseño responsive en `styles.css` (Prompts 7 y 8), auditoría del proyecto frente a la rúbrica oficial e incorporación del apartado de enlaces de entrega y comprobación en `README.md` (Prompt 12).
@@ -322,7 +186,7 @@ Mantén el mismo formato de la sección anterior e incluye:
 
 ---
 
-## Aportes de Magalí Pintos
+### Aportes de Magalí Pintos
 
 - **Aplicación:** Antigravity. **Modelo:** Gemini 4 Argon (Medium).
 - **Rol:** dirección de la maquetación completa de la landing en `index.html`, incorporación del logo original de la startup en `assets/logo.webp` (Prompts 5 y 6) y publicación del sitio en producción mediante Vercel (Prompt 13— Despliegue en Vercel).
@@ -337,10 +201,10 @@ Mantén el mismo formato de la sección anterior e incluye:
 
 ---
 
-## Aportes de Adriana Meyniel
+### Aportes de Adriana Meyniel
 
 - **Aplicación:** Antigravity. **Modelo:** Gemini 4 Argon (Medium).
-- **Rol:** creación y configuración inicial del repositorio; elaboración y revisión del análisis funcional y su refinamiento estricto (Prompt 1); especificación textual de los diagramas de flujo (Prompt 2); definición del wireframe y de la sección *"Nuestro Enfoque"* (Prompt 3); corrección de fidelidad con la consigna oficial e incorporación de origen IFTS 16, S08-B y R3/R4 (Prompt 10); corrección de botones Expandir/Contraer y accesibilidad con teclado (Prompt 11); actualización del nombre definitivo del proyecto a `tp3-frontend-grupo1a-Convocado`; y creación del proyecto Vercel en la cuenta `adrilu-web`/`almprojects1`, conexión con el repositorio de GitHub, configuración de `main` como rama de producción y despliegue de producción verificado.
+- **Rol:** creación y configuración inicial del repositorio; elaboración y revisión del análisis funcional y su refinamiento estricto (Prompt 1); especificación textual de los diagramas de flujo (Prompt 2); definición del wireframe y de la sección *"Nuestro Enfoque"* (Prompt 3); corrección de fidelidad con la consigna oficial e incorporación de origen IFTS 16, S08-B y R3/R4 (Prompt 10); corrección de botones Expandir/Contraer y accesibilidad con teclado (Prompt 11); actualización del nombre definitivo del proyecto a `tp3-frontend-grupo1a-Convocado`; y creación del proyecto Vercel en la cuenta `adrilu-web`/`almprojects1`, conexión con el repositorio de GitHub, configuración de `main` como rama de producción y despliegue de producción verificado; reorganización y uniformidad documental de README.md (Prompt 15).
 - **Qué se pidió al agente:**
   1. **Creación y configuración inicial del repositorio:** inicializar la estructura base del proyecto y la documentación inicial en el repositorio del grupo.
   2. **Análisis funcional y refinamiento estricto:** analizar funcionalmente la startup **Convocado** y las dos sentencias asignadas al Grupo 01 en `analisis_funcional_convocado_grupo01.md`, y refinarlo reduciendo suposiciones adicionales para mantener separadas las consecuencias obligatorias de la sentencia frente a las decisiones de diseño del grupo.
@@ -350,6 +214,7 @@ Mantén el mismo formato de la sección anterior e incluye:
   6. **Corrección de Expandir/Contraer y accesibilidad con teclado:** mantener un único botón general por sección sincronizado dinámicamente (`"Expandir todo"` / `"Contraer todo"`) con la apertura o cierre individual de cada `<details>`/`<summary>` mediante clic y teclado, y agregar foco visible (`:focus-visible`) en `styles.css`.
   7. **Actualización del nombre definitivo del proyecto a `tp3-frontend-grupo1a-Convocado`:** buscar en todos los archivos del proyecto cualquier referencia al nombre antiguo `tp3-frontend-grupo1a` usada como nombre de proyecto o carpeta y reemplazarla por `tp3-frontend-grupo1a-Convocado` (especialmente en *"Cómo Ejecutar el Proyecto"* y *"Estructura del Proyecto"*).
   8. **Creación del proyecto Vercel en la cuenta `adrilu-web`/`almprojects1`, conexión con el repositorio GitHub, configuración de `main` como rama de producción y despliegue verificado:** autenticar Vercel CLI con la cuenta `adrilu-web`, crear y vincular el proyecto `almprojects1/tp3-frontend-grupo1a-convocado`, conectar el repositorio `Adrilu-web/tp3-frontend-grupo1a-Convocado` para despliegues automáticos con `main` como rama de producción (manteniendo el despliegue anterior de Magalí Pintos documentado como despliegue inicial), verificar `.gitignore` y ejecutar el despliegue de producción en https://tp3-frontend-grupo1a-convocado-one.vercel.app.
+  - **Reorganización y uniformidad documental de README.md:** reorganizar la estructura del README, agrupar los aportes individuales, uniformar la jerarquía de títulos Markdown e incorporar el subtítulo institucional, conservando íntegramente los aportes, prompts, autorías, modelos, tablas, enlaces, sentencias y datos existentes.
 - **Prompts enviados:**
   - **Análisis funcional y refinamiento estricto:**
     > *"Analiza la startup "Convocado" y las dos sentencias asignadas al Grupo 01. No generes código todavía. Quiero que crees un documento de análisis que incluya: 1. Descripción breve de la startup. 2. Para cada sentencia: datos necesarios, condición, consecuencia. 3. Una propuesta de solución agéntica para cada sentencia. 4. Qué información consultaría el futuro agente. 5. Qué decisiones tomaría. 6. Cuándo sería necesaria una intervención humana. 7. Una explicación clara para estudiantes de Front End. [...] No quiero HTML, CSS ni JavaScript todavía. Quiero solamente el análisis funcional."*
@@ -384,6 +249,158 @@ Mantén el mismo formato de la sección anterior e incluye:
     >
     > *"La configuración quedó verificada. Ejecuta únicamente el primer despliegue de producción con: npx vercel --prod. No modifiques archivos del proyecto. No hagas commit ni push. No muestres ni copies valores de .env.local. Al finalizar, indícame: si el despliegue terminó correctamente; URL de producción generada; estado final del despliegue; proyecto y cuenta de Vercel utilizados."*
 
+  - **Reorganización y uniformidad documental de README.md:** ver Prompt 15 en "Registro de prompts y cambios solicitados".
+
+---
+
+## Implementación asistida por IA
+
+**Antigravity** generó la implementación inicial de la maquetación HTML (`index.html`, `diagramas.html`), los estilos CSS (`styles.css`, `diagramas.css`), los diagramas de flujo visuales y parte de la interactividad en JavaScript (`script.js`) a partir de las instrucciones suministradas por el equipo. Todos los resultados generados fueron revisados, validados y modificados iterativamente bajo supervisión del Grupo 01 antes de su aprobación en cada etapa.
+
+---
+
+## Tecnologías Utilizadas
+
+- **HTML5** (estructura semántica y desplegables nativos `<details>` / `<summary>`)
+- **CSS3** (Custom Properties, CSS Grid, Flexbox, diseño de diagramas de flujo y Media Queries responsive)
+- **JavaScript (Vanilla JS)** (resaltado de navegación activa en scroll y control dinámico de desplegables)
+- **Git** (control de versiones)
+- **GitHub** (repositorio y documentación del proyecto)
+
+---
+
+## Herramientas de IA Utilizadas
+
+- **Aplicación / entorno:** Antigravity
+- **Modelo observado durante el desarrollo:** Gemini 4 Argon (Medium)
+
+
+| Aplicación / Entorno | Modelo | Uso Realizado | Cambios Solicitados |
+| :--- | :--- | :--- | :--- |
+| **Antigravity** | **Modelo observado durante el desarrollo:** Gemini 4 Argon (Medium) | Redacción estructurada del análisis funcional, especificación textual de los diagramas de flujo, elaboración del wireframe textual, generación inicial de código HTML, CSS y JavaScript para los diagramas visuales y la landing page, adaptación responsive y redacción del `README.md`. | Alineación estricta a la consigna eliminando suposiciones adicionales, separación entre consecuencias obligatorias y decisiones del grupo, eliminación de sección duplicada, ajuste del wireframe, sustitución de iconos genéricos por `assets/logo.webp`, aplicación de la paleta del logo oficial, cambio dinámico de botones *"Expandir todo"* / *"Contraer todo"*, adaptación responsive e incorporación de integrantes y trazabilidad de IA. |
+| **Cursor** | Cursor Grok 4.6 Medium | Revisión de la landing contra la consigna y corrección de errores conceptuales en los diagramas de la Sentencia 2. | Ajuste de la condición lógica del rombo de decisión y tabla 2B; cambio de etiquetas `lugaresDisponibles` y `Datos: Jugador y Equipo` de `pill-mandatory` a `pill-design`; actualización de datos necesarios y del desplegable 2A. |
+| **Antigravity** | Claude Sonnet 4.6 (Thinking) | Rotulado de los casos recorridos y agregado de casos límite en cada flujo; alineación de diagramas.html y del análisis funcional con index.html. | Etiquetas Cumple / No cumple / Caso límite, tres filas nuevas en "Casos recorridos" y corrección de la Sentencia 2 (lugaresDisponibles y "Jugador y Equipo" como decisión de diseño). |
+
+---
+
+## Cambios Solicitados a la IA
+
+Durante el desarrollo iterativo del proyecto se solicitaron y verificaron los siguientes ajustes:
+
+1. **Generación de estructura inicial y análisis funcional:** redacción del documento funcional eliminando suposiciones no presentes en las sentencias originales y separando consecuencias obligatorias de las decisiones de diseño del grupo.
+2. **Diseño visual y wireframe:** definición de la estructura de navegación sticky, Hero, sección *"Nuestro Enfoque"*, distribución en columnas (`45% / 55%`) para desktop y ubicación de desplegables.
+3. **Diagramas de flujo:** construcción de dos diagramas visuales reales en HTML y CSS con nodos diferenciados por origen (verde para elementos obligatorios de la sentencia y amarillo/ámbar para decisiones de diseño del grupo).
+4. **Refinamientos de identidad visual:** reemplazo de iconos genéricos por el logo oficial de la startup (`assets/logo.webp`) en Header, Hero y Footer conservando su proporción original, y aplicación de la paleta oficial del logo (`#0f766e`, `#10b981`, `#34d399`, `#fbbf24`, `#ffffff`, `#081120`), además de botones dinámicos *"Expandir todo"* / *"Contraer todo"*.
+5. **Mejoras responsive:** adaptación completa para Tablet (`1024px`), Tablet pequeña (`768px`) y Mobile (`480px`), apilando columnas, adaptando el menú y los diagramas sin desbordamiento horizontal.
+6. **Creación del README y cierre académico:** incorporación del listado de integrantes del Grupo 01 en el footer de la landing y generación del archivo `README.md` con el registro de aportes, herramientas de IA y trazabilidad de prompts.
+
+---
+
+## Registro de prompts y cambios solicitados
+
+A continuación se documenta cronológicamente la secuencia real de prompts e instrucciones proporcionadas por el equipo durante el desarrollo en **Antigravity**:
+
+### 1. Análisis funcional
+- **Prompt inicial de análisis:**
+  > *"Analiza la startup "Convocado" y las dos sentencias asignadas al Grupo 01. No generes código todavía. Quiero que crees un documento de análisis que incluya: 1. Descripción breve de la startup. 2. Para cada sentencia: datos necesarios, condición, consecuencia. 3. Una propuesta de solución agéntica para cada sentencia. 4. Qué información consultaría el futuro agente. 5. Qué decisiones tomaría. 6. Cuándo sería necesaria una intervención humana. 7. Una explicación clara para estudiantes de Front End. [...] No quiero HTML, CSS ni JavaScript todavía. Quiero solamente el análisis funcional."*
+- **Guardado en el proyecto:** se solicitó guardar el documento en `analisis_funcional_convocado_grupo01.md` dentro de la carpeta del proyecto y mostrar su contenido para revisión.
+- **Refinamiento estricto del análisis:**
+  > *"El análisis es correcto. Quiero una versión más alineada con la consigna. Reduce las suposiciones adicionales que no aparecen en las sentencias originales. Mantén claramente separadas: consecuencias obligatorias de la sentencia, decisiones agregadas por la propuesta del grupo. Para cada propuesta indica explícitamente qué surge de la sentencia y qué es una decisión de diseño. Actualiza el archivo y conserva el formato Markdown."*
+
+### 2. Especificación y corrección documental de diagramas
+- **Prompt de especificación textual:**
+  > *"A partir del análisis funcional aprobado, prepara la especificación textual de dos diagramas de flujo, uno para cada sentencia. Todavía no generes HTML, CSS, JavaScript ni la landing completa. Cada especificación debe incluir: inicio; información de entrada; consulta que realiza el futuro agente; decisión; camino SÍ; camino NO; acción; resultado; intervención humana cuando corresponda; aclaración de qué elementos surgen de la sentencia y cuáles son decisiones de diseño del grupo. Para la Sentencia 1, la condición central debe ser: "¿El capitán intenta aceptar una solicitud y no queda lugar?" Para la Sentencia 2, la condición debe conservar exactamente esta lógica: "¿El jugador autorizó la solicitud Y la valoración conocida es menor que 4 O la distancia al equipo es mayor o igual a 10 km?""*
+- **Integración y depuración del archivo `.md`:** se solicitó agregar la especificación en la sección 8 de `analisis_funcional_convocado_grupo01.md` y posteriormente eliminar una duplicación detectada de dicha sección 8 conservando una única copia.
+
+### 3. Wireframe
+- **Prompt de propuesta de estructura:**
+  > *"A partir del análisis funcional y de la especificación de diagramas aprobados, genera una propuesta de estructura para la landing. No programes todavía. Quiero primero: secciones de la landing; orden del contenido; navegación; distribución visual de los diagramas; ubicación del logo de Convocado; ubicación de las sentencias; ubicación de las propuestas; ubicación de los desplegables. La landing será revisada únicamente en desktop. Presenta la estructura como un wireframe textual."*
+- **Ajuste del wireframe antes de programar:**
+  > *"La estructura propuesta fue aprobada. Antes de generar la landing completa: 1. Elimina la referencia #comparativa-origen de la navegación superior. 2. Agrega una sección breve "Nuestro Enfoque" entre el Hero y la Sentencia 1, explicando en 3 o 4 líneas qué es un flujo agéntico y cómo el grupo propone resolver las dos sentencias. 3. Mantén el resto de la estructura sin cambios. 4. No generes código todavía. Muéstrame únicamente el wireframe actualizado."*
+
+### 4. Diagramas
+- **Prompt de generación de diagramas visuales:**
+  > *"La especificación textual fue aprobada. Genera ahora los dos diagramas visuales. Requisitos: Un diagrama para cada sentencia. Deben ser diagramas reales, no descripción textual. Utiliza HTML y CSS para representarlos visualmente. Deben ser legibles en desktop. Incluir: inicio, intervención humana, consulta del agente, decisión, camino sí, camino no, acciones, resultado final. Distingue visualmente: elementos obligatorios de la sentencia, decisiones de diseño del grupo. No generes todavía la landing completa. Quiero revisar primero los diagramas visuales."*
+
+### 5. Generación de landing
+- **Prompt de construcción de la landing completa:**
+  > *"Los diagramas visuales fueron aprobados. Genera ahora la landing completa para Convocado. Requisitos: HTML, CSS y JavaScript solamente. No usar React. Desktop first. Diseño moderno y profesional. Header sticky. Hero con logo y descripción de Convocado. Sección Nuestro Enfoque. Bloque completo de Sentencia 1. Bloque completo de Sentencia 2. Integrar y reutilizar los diagramas visuales ya desarrollados. Utilizar details/summary para los desplegables. Footer con información del Grupo 01. Diferenciar visualmente: elementos obligatorios de la sentencia, decisiones de diseño del grupo. Genera los archivos finales dentro del proyecto. Verifica que la landing pueda abrirse localmente desde index.html."*
+
+### 6. Incorporación del logo
+- **Prompt de corrección de marca con el archivo original:**
+  > *"La landing no está mostrando el logo original de la startup Convocado. Actualmente utilizaste un icono SVG genérico de una pelota de fútbol. La consigna exige conservar el logo original de la startup completo y legible. El archivo original del logo está guardado en: assets/logo.webp [...] Muestra el logo original en: el header; el hero; el footer. Conserva siempre la proporción original de la imagen. No recortes ni deformes el logo. Añade un texto alternativo descriptivo: "Logo original de la startup Convocado". [...] También corrige la clase inválida o accidental "hero-logo- emblem" y utiliza un nombre de clase claro y consistente para el contenedor del logo."*
+
+### 7. Refinamiento de identidad visual
+- **Prompt de alineación cromática y mejora UX:**
+  > *"La landing quedó aprobada funcionalmente. Realiza ahora una ronda final de refinamiento visual sin modificar la estructura, el contenido, los diagramas ni la distribución de secciones. OBJETIVO: Alinear la identidad visual de toda la landing con el logo oficial de Convocado. PALETA NUEVA: Verde principal: #0f766e, Verde secundario: #10b981, Verde claro: #34d399, Amarillo acento: #fbbf24, Blanco: #ffffff, Fondo oscuro deportivo: mantener tonos azul oscuro muy oscuros cercanos a #081120. [...] MEJORA UX: Modificar los botones "Expandir / Contraer Desplegables" para que cambien dinámicamente a: "Expandir todo", "Contraer todo" según el estado actual de los desplegables de la sección."*
+
+### 8. Responsive
+- **Prompt de adaptación multi-dispositivo y footer de equipo:**
+  Realiza una ronda final de mejoras enfocadas en entrega académica. 1. FOOTER: Agregar una sección de integrantes dentro del footer [...] 2. RESPONSIVE DESIGN: Crear una versión responsive completa. Objetivos: Tablet (1024px aprox.), Tablet pequeña (768px aprox.), Mobile (480px aprox.). Adaptar: HEADER, HERO, NUESTRO ENFOQUE, SENTENCIA 1 y SENTENCIA 2, DIAGRAMAS, FOOTER. Evitar: overflow horizontal, elementos cortados, texto fuera de pantalla."*
+
+### 9. README y documentación
+- **Creación inicial y refinamiento de trazabilidad en `README.md`:** se solicitó primero generar el `README.md` académico del proyecto y, finalmente, actualizar únicamente `README.md` para no atribuir autoría humana directa del código generado inicialmente por Antigravity, separar los aportes de análisis/validación frente a la implementación asistida por IA, detallar el modelo observado (`Gemini 4 Argon (Medium)`)  e incorporar este registro cronológico de prompts y cambios solicitados.
+
+### 10. Corrección de fidelidad con la consigna oficial
+- **Prompt enviado:**
+  > *"Corrige únicamente la fidelidad del proyecto con la consigna oficial. 1. Reemplaza la Sentencia 2 en todos los archivos donde aparezca por su texto literal: "Si el jugador autoriza una solicitud y se cumple al menos una de estas condiciones —su valoración conocida es menor que cuatro, o el equipo está a diez kilómetros o más—, el sistema la deriva al capitán para evaluación manual; esa evaluación no reserva un lugar." No cambies palabras ni puntuación. 2. Verifica que la Sentencia 1 también coincida literalmente con la consigna. Si ya coincide, no la modifiques. 3. Incorpora de forma clara y sin recargar la landing: Convocado, Categoría: Deportes y conexión de equipos, Bloque: Cupo y revisión, Asignación: S08-B, R3 y R4, Startup creada por estudiantes del IFTS 16., Propuesta del Grupo 01 del IFTS 29. 4. Actualiza README.md con esos mismos datos. No modifiques todavía JavaScript, botones, desplegables, diagramas, casos de prueba, casos límite, aportes ni publicación. Al finalizar, indica qué archivos modificaste y qué cambiaste."*
+- **Problema detectado:** redacción no literal de la Sentencia 2 y ausencia de datos de asignación/origen.
+- **Corrección solicitada:** reemplazar todas las apariciones de la Sentencia 2 por su redacción literal exacta (sin alterar palabras ni puntuación), verificar la coincidencia literal de la Sentencia 1 e incorporar de manera clara en la landing y en `README.md` los datos oficiales de la startup, categoría, bloque, código de asignación y reconocimiento de origen institucional.
+- **Resultado:** sentencias alineadas con la consigna e incorporación de Convocado, categoría (`Deportes y conexión de equipos`), bloque `Cupo y revisión`, `S08-B`, `R3/R4`, origen `IFTS 16` y propuesta `Grupo 01 IFTS 29`.
+
+### 11. Corrección de botones Expandir/Contraer y accesibilidad con teclado
+- **Prompt enviado:**
+  > *"Corrige únicamente el funcionamiento de Expandir/Contraer. 1. Mantén un único botón general por sección. 2. Si hay algún desplegable cerrado, debe mostrar "Expandir todo" y abrirlos todos. 3. Si todos están abiertos, debe mostrar "Contraer todo" y cerrarlos todos. 4. Si se abre o cierra manualmente un <details>, actualiza el texto del botón según el estado. 5. Mantén <details>/<summary> funcionando con clic y teclado. 6. Agrega foco visible para navegación con teclado. 7. Comprueba el funcionamiento en Sentencia 1 y Sentencia 2. Modifica solo index.html, script.js y styles.css si es necesario. Además, registra este prompt como una nueva iteración en README.md, indicando: problema detectado; corrección solicitada; resultado obtenido."*
+- **Problema detectado:** el texto inicial estático de los botones generales en `index.html` decía `"Expandir / Contraer Desplegables"` (con clase `.Quick-controls`), `script.js` manipulaba atributos en lugar de la propiedad booleana nativa `.open` de `HTMLDetailsElement` sin reflejar `aria-expanded`, y faltaban estilos `:focus-visible` en `styles.css` para visualizar claramente el foco al navegar con teclado por los `<summary>` y botones.
+- **Corrección solicitada:** mantener un único botón general por sección que muestre `"Expandir todo"` cuando haya algún desplegable cerrado (abriéndolos todos al hacer clic) y `"Contraer todo"` cuando todos estén abiertos (cerrándolos todos al hacer clic), sincronizar su etiqueta al abrir o cerrar manualmente cualquier `<details>` con clic o teclado, y agregar foco visible para navegación por teclado en Sentencia 1 y Sentencia 2.
+- **Resultado obtenido:** botones generales de Sentencia 1 y Sentencia 2 sincronizados dinámicamente mediante la propiedad nativa `el.open` y eventos `toggle`, texto inicial consistente (`"Expandir todo"` con `aria-expanded`), preservación del comportamiento nativo de `<details>`/`<summary>` con clic y teclado (`Tab`, `Enter`, `Espacio`) e incorporación de contornos `:focus-visible` de alto contraste en `styles.css`.
+
+### 12. Incorporación del apartado de enlaces de entrega en `README.md`
+- **Prompt enviado:**
+  > *"crea un apartado en el readme para los enlaces bien visible, arriba, justo debajo de ## Integrantes o al principio del archivo, con este formato: Enlaces de Entrega / Repositorio en GitHub: https://github.com/Adrilu-web/tp3-frontend-grupo1a-Convocado / Landing publicada (Vercel): https://TU-LINK-AQUI.vercel.app / Comprobación de acceso y funcionamiento: Ambos enlaces fueron verificados desde una ventana de navegación privada (sin sesión iniciada). El sitio carga correctamente el logo original de Convocado, los dos diagramas de flujo visuales y los desplegables interactivos con clic y teclado en vista desktop."*
+- **Problema detectado:** ausencia de una sección visible en `README.md` con los dos enlaces obligatorios exigidos por la consigna y la rúbrica (repositorio de GitHub y landing publicada en Vercel), así como la nota de comprobación de acceso sin sesión.
+- **Corrección solicitada:** crear el apartado `## Enlaces de Entrega` en la parte superior del `README.md`, justo debajo de `## Integrantes`, incluyendo los enlaces al repositorio y a la publicación en Vercel junto con el bloque de comprobación de funcionamiento.
+- **Resultado obtenido:** sección `## Enlaces de Entrega` incorporada al inicio de `README.md` con ambos enlaces identificados y la constancia de verificación en ventana privada.
+
+### 13. Despliegue en Vercel
+
+- **Proyecto:** Convocado — TP3 Frontend Grupo 1A.
+- **Tecnologías:** HTML, CSS y JavaScript.
+- **Plataforma:** Vercel.
+- **Método utilizado:** Vercel CLI, sin integración automática con GitHub.
+- **URL de producción:** [https://tp3-frontend-grupo1a-convocado.vercel.app](https://tp3-frontend-grupo1a-convocado.vercel.app).
+
+**Prompt de despliegue (síntesis del objetivo solicitado a la IA; no es una transcripción literal):**
+
+> Publicá en producción el proyecto Convocado — TP3 Frontend Grupo 1A mediante Vercel CLI. El proyecto utiliza HTML, CSS y JavaScript y su repositorio es https://github.com/Adrilu-web/tp3-frontend-grupo1a-Convocado. No modifiques el código HTML, CSS ni JavaScript y no conectes automáticamente el repositorio de GitHub con Vercel. Al finalizar, informá la URL pública de producción.
+
+**Estado y alcance:** el despliegue inicial ya se realizó mediante Vercel CLI, sin integración automática con GitHub, según la información proporcionada por el equipo. Esta intervención se limita a documentar ese despliegue en `README.md`; no se atribuye su ejecución autónoma al agente que realiza esta actualización ni se efectuó un nuevo despliegue. La comprobación de acceso consignada en Enlaces de Entrega se conserva como registro previo del equipo; no representa una nueva verificación realizada en esta actualización.
+
+Esta sección conserva el título solicitado «Prompt 13 — Despliegue en Vercel» y se incorpora de forma independiente, sin renumerar ni reemplazar las iteraciones existentes del registro de prompts.
+
+
+### 14. Incorporación de aportes de Judith Leonardo al archivo README.md
+
+> *"Redacta y agrega en README.md una nueva sección llamada "## Aportes de Judith Leonardo", justo debajo de "## Aportes de Silvia Podberezski", teniendo en cuenta mis commits en el repositorio y los prompts utilizados en mis etapas.
+
+Mantén el mismo formato de la sección anterior e incluye:
+- Aplicación: Antigravity. Modelo: Gemini 4 Argon (Medium).
+- Rol: dirección de la identidad visual y diseño responsive en styles.css (Prompts 7 y 8), auditoría del proyecto frente a la rúbrica oficial e incorporación del apartado de enlaces de entrega y comprobación en README.md (Prompt 12).
+- Qué se pidió al agente:
+  1. Alinear la identidad visual de toda la landing en styles.css con la paleta cromática oficial del logo de Convocado (#0f766e, #10b981, #34d399, #fbbf24, #ffffff, #081120), diferenciando visualmente los bloques obligatorios de la sentencia frente a las decisiones de diseño del Grupo 01.
+  2. Estilizar la sección de integrantes del Grupo 01 en el footer y construir la adaptación responsive completa para Tablet (1024px), Tablet pequeña (768px) y Mobile (480px) evitando desbordes horizontales.
+  3. Revisar el cumplimiento integral de la consigna y agregar en README.md el apartado "## Enlaces de Entrega" (repositorio en GitHub y landing en Vercel con constancia de verificación sin sesión) junto con el registro del Prompt 12.
+- Prompts enviados: cita los prompts correspondientes a la identidad visual (Prompt 7), diseño responsive (Prompt 8) e incorporación del apartado de enlaces de entrega (Prompt 12).
+
+  Modifica únicamente README.md sin alterar ningún otro archivo del proyecto."*
+
+### 15. Reorganización y uniformidad documental de README.md
+
+- **Prompt enviado (síntesis del objetivo):**
+  > *"Reorganiza únicamente README.md para mejorar su estructura y uniformidad documental, manteniendo íntegramente el contenido vigente. Agrega debajo del título el subtítulo institucional del Tercer Trabajo Práctico Grupal de Desarrollo de Sistemas Web (Front End), correspondiente al segundo cuatrimestre de 2026 de la Tecnicatura Superior en Desarrollo de Software del IFTS N.° 29. Agrupa los aportes individuales bajo una sección común, uniforma la jerarquía de títulos Markdown, mantiene los prompts cronológicos dentro del Registro de prompts y conserva sin modificaciones los aportes, autorías, modelos, tablas, enlaces, sentencias y datos existentes. Mantén las dos URLs de Vercel en sus contextos históricos correspondientes. No inventes ni elimines contenido."*
+- **Objetivo:** mejorar la organización y consistencia visual de `README.md` sin alterar el contenido documentado.
+- **Resultado:** estructura documental ordenada en secciones principales uniformes (`##`), agrupación de los aportes individuales en el orden Silvia Podberezski, Judith Leonardo, Magalí Pintos y Adriana Meyniel (`###`), y estandarización de las entradas numeradas del Registro de prompts (`### 1` a `### 15`) conservando íntegramente el contenido existente.
+
 ---
 
 ## Cómo Ejecutar el Proyecto
@@ -410,4 +427,3 @@ tp3-frontend-grupo1a-Convocado/
 ├── styles.css                              # Estilos generales de la landing, identidad visual y media queries
 └── README.md                               # Documentación académica y técnica del proyecto
 ```
-
